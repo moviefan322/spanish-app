@@ -3,29 +3,40 @@
     {
       "title": "Regular Verbs in the Present Tense",
       "grammar": {
-        "comprar (to buy)": [
-          "compro (I buy)",
-          "compras (you buy)",
-          "compra (he/she/it buys)",
-          "compramos (we buy)",
-          "compráis (you all buy)",
-          "compran (they buy)"
+        "text": [
+          "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject.",
+          "The following verbs can be used as models for all regular verbs in the present tense."
         ],
-        "aprender (to learn)": [
-          "aprendo (I learn)",
-          "aprendes (you learn)",
-          "aprende (he/she/it learns)",
-          "aprendemos (we learn)",
-          "aprendéis (you all learn)",
-          "aprenden (they learn)"
-        ],
-        "recibir (to receive)": [
-          "recibo (I receive)",
-          "recibes (you receive)",
-          "recibe (he/she/it receives)",
-          "recibimos (we receive)",
-          "recibís (you all receive)",
-          "reciben (they receive)"
+        "chart": {
+          "comprar (to buy)": [
+            "compro (I buy)",
+            "compras (you buy)",
+            "compra (he/she/it buys)",
+            "compramos (we buy)",
+            "compráis (you all buy)",
+            "compran (they buy)"
+          ],
+          "aprender (to learn)": [
+            "aprendo (I learn)",
+            "aprendes (you learn)",
+            "aprende (he/she/it learns)",
+            "aprendemos (we learn)",
+            "aprendéis (you all learn)",
+            "aprenden (they learn)"
+          ],
+          "recibir (to receive)": [
+            "recibo (I receive)",
+            "recibes (you receive)",
+            "recibe (he/she/it receives)",
+            "recibimos (we receive)",
+            "recibís (you all receive)",
+            "reciben (they receive)"
+          ]
+        },
+        "notes": [
+          "the first-person singular yo has the same ending in all three conjugations.",
+          "in the -er and -ir verb categories all three third-person singular forms have the same endings.",
+          "subject pronouns are usually omitted in Spanish unless they are needed for clarification or emphasis."
         ]
       },
       "vocabulary": [
@@ -68,105 +79,57 @@
           "vivir": "to live"
         }
       ],
-      "notes": [
-        "the first-person singular yo has the same ending in all three conjugations.",
-        "in the -er and -ir verb categories all three third-person singular forms have the same endings.",
-        "subject pronouns are usually omitted in Spanish unless they are needed for clarification or emphasis."
+      "exercises": [
+        {
+          "title": "¿Qué hacen?",
+          "instructions": "Escribe la forma del presente del verbo entre paréntesis.",
+          "questions": [
+            "Pedro Gomez _(vivir) con su familia en mi ediﬁcio de apartamentos.",
+            "Lucia, la esposa de Pedro, no _(trabajar) todos los dias.",
+            "La hija, Mercedes, _(estudiar) en la universidad.",
+            "Lucia y su esposo _(planear) una visita a Mercedes esta semana.",
+            "Ahora, yo _(subir) a su apartamento.",
+            "Yo _(sacar) a su perro a caminar todos los dias.",
+            "Y tú, ¿_(conversar) con los Gómez?",
+            "Pedro _(necesitar) una persona para cuidar su apartamento esta semana."
+          ],
+          "answers": [
+            "vive",
+            "trabaja",
+            "estudia",
+            "planean",
+            "subo",
+            "saco",
+            "conversas",
+            "necesita"
+          ],
+          "type": "conjugate"
+        },
+        {
+          "title": "Practica",
+          "instructions:": "Escribe en español.",
+          "questions": [
+            "I prepare dinner",
+            "The children climb the stairs",
+            "My cats drink milk",
+            "The customer adds up the bill (la cuenta)",
+            "Carli's mother talks to the reporter (el/la reportero[a]",
+            "The actress fears the critics",
+            "Your friends eat fajitas"
+          ],
+          "answers": [
+            "Yo preparo la cena",
+            "Los niños suben las escaleras",
+            "Mis gatos beben leche",
+            "El cliente suma la cuenta",
+            "La mamá de Carli habla con el reportero",
+            "La actriz teme a los críticos",
+            "Tus amigos comen fajitas"
+          ],
+          "type": "translate"
+        }
       ]
     },
-    {
-      "title": "When is present tense used?",
-      "grammar": [
-        "Ahora, veo a Anna (Now I see Anna)",
-        "Louis llega a la puerta (Louis is arriving at the gate)",
-        " Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)",
-        "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
-        "Este verano, viajo a Alemania (This summer I am traveling to Germany)",
-        "¿Bebes café o tê? (Do you drink coffee or tea?)",
-        "¿Abro la puerta? (Shall I open the door?)",
-        "¿Compramos la casa? (Shall we buy the house?)"
-      ],
-      "vocabulary": {
-        "al mediodía": "(at noon)",
-        "de vez en cuando": "from time to time",
-        "en lunes": "on Monday",
-        "esta semana": "this week",
-        "este mes": "this month",
-        "hoy": "today",
-        "los lunes": "on Mondays",
-        "nunca": "never",
-        "por la mañana": "in the morning",
-        "por la noche": "in the evening",
-        "por la tarde": "in the afternoon",
-        "siempre": "always",
-        "todas las semanas": "every week",
-        "todos los días": "every day",
-        "todos los meses": "every month"
-      },
-      "notes": [
-        "to describe an action happening now. Often, it is translated with the -ing form in English.",
-        "to express actions that take place regularly",
-        "to describe events that will take place in the near future.",
-        "to ask questions, especially regarding permission, opinion, or preference.",
-        "Keep in mind the auxiliary verb do in English is not translated. In Spanish, an auxiliary verb is not needed to ask a question."
-      ]
-    },
-    {
-      "title": "Other uses of the present tense",
-      "grammar": [
-        "Cinco mas quince son veinte (Five plus fifteen is twenty.)",
-        "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)",
-        "Si llega el tren, salimos (If the train arrives, we leave.)",
-        "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
-      ],
-      "notes": [
-        "to tell facts considered unquestionable or universal truths.",
-        "to describe a past event, making it more vivid (historial present)",
-        "to express hypothetical actions introduced by si.",
-        "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
-      ]
-    },
-    {
-      "title": "One More Use of the Present tense",
-      "grammar": [
-        "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
-        "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
-        "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
-        "Cuanto tiempo hace que observas las estrellas?",
-        "Desde hace cuanto tiempo observas las estrellas?",
-        "Desde cuando observas las estrellas?"
-      ],
-      "notes": [
-        "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
-        "or: (verb + hace + time expression)",
-        "or: (verb + desde hace + time expression)",
-        "Examine the following constructions of the same question:"
-      ]
-    },
-    {
-      "title": "Irregular Verbs in the Present Tense",
-      "grammar": {
-        "caber (to fit)": "quepo",
-        "cae (to fall)": "caigo",
-        "dar (to give)": "doy",
-        "estar (to be)": "estoy",
-        "hacer (to do)": "hago",
-        "poner (to put)": "pongo",
-        "saber (to know)": "sé",
-        "salir (to leave)": "salgo",
-        "traer (to bring)": "traigo",
-        "valer (to be worth)": "valgo",
-        "ver (to see)": "veo"
-      },
-      "notes": [
-        " Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
-        "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
-        "Because they follow different patterns, they are considered irregular verbs.",
-        "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns."
-      ]
-    }
-  ],
-  "exercises": [
     {
       "title": "¿Qué hacen?",
       "instructions": "Escribe la forma del presente del verbo entre paréntesis.",
@@ -215,115 +178,234 @@
       ],
       "type": "translate"
     },
+
     {
-      "title": "Y en tu caso...",
-      "instructions": "¿Es verdadero ofalso?",
-      "questions": [
-        "Desayuno a las ocho todos los días.",
-        "Miro los programas de noticias por el cable por la tarde.",
-        "Trabajo ocho horas.",
-        "Escribo mensajes electrónicos todos los días.",
-        "Preparo la cena de lunes a viernes.",
-        "Como muchas frutas yvegetales frescos."
+      "title": "When is present tense used?",
+      "grammar": [
+        "Ahora, veo a Anna (Now I see Anna)",
+        "Louis llega a la puerta (Louis is arriving at the gate)",
+        " Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)",
+        "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
+        "Este verano, viajo a Alemania (This summer I am traveling to Germany)",
+        "¿Bebes café o tê? (Do you drink coffee or tea?)",
+        "¿Abro la puerta? (Shall I open the door?)",
+        "¿Compramos la casa? (Shall we buy the house?)"
       ],
-      "type": "open-ended"
+      "vocabulary": {
+        "al mediodía": "(at noon)",
+        "de vez en cuando": "from time to time",
+        "en lunes": "on Monday",
+        "esta semana": "this week",
+        "este mes": "this month",
+        "hoy": "today",
+        "los lunes": "on Mondays",
+        "nunca": "never",
+        "por la mañana": "in the morning",
+        "por la noche": "in the evening",
+        "por la tarde": "in the afternoon",
+        "siempre": "always",
+        "todas las semanas": "every week",
+        "todos los días": "every day",
+        "todos los meses": "every month"
+      },
+      "notes": [
+        "to describe an action happening now. Often, it is translated with the -ing form in English.",
+        "to express actions that take place regularly",
+        "to describe events that will take place in the near future.",
+        "to ask questions, especially regarding permission, opinion, or preference.",
+        "Keep in mind the auxiliary verb do in English is not translated. In Spanish, an auxiliary verb is not needed to ask a question."
+      ],
+      "exercises": [
+        {
+          "title": "Y en tu caso...",
+          "instructions": "¿Es verdadero ofalso?",
+          "questions": [
+            "Desayuno a las ocho todos los días.",
+            "Miro los programas de noticias por el cable por la tarde.",
+            "Trabajo ocho horas.",
+            "Escribo mensajes electrónicos todos los días.",
+            "Preparo la cena de lunes a viernes.",
+            "Como muchas frutas yvegetales frescos."
+          ],
+          "type": "open-ended"
+        },
+        {
+          "title": "En español",
+          "instructions": "Usa el presente",
+          "questions": [
+            "Today Martha and Linus are celebrating their anniversary",
+            "Their relatives (parientes) arrive on time",
+            "Some friends are talking in the living room.",
+            "In the back yard, the children listen to Latin music.",
+            "The smell (el olor) of enchiladas circulates through the house.",
+            "The children drink lemonade."
+          ],
+          "answers": [
+            "Hoy Martha y Linus celebran su aniversario",
+            "Sus parientes llegan a tiempo",
+            "Unos amigos conversan en la sala",
+            "En el patio, los niños escuchan música latina",
+            "El olor a enchiladas circula por toda la casa",
+            "Los niños beben limonada"
+          ],
+          "type": "translate"
+        },
+        {
+          "title": "Preguntas personales",
+          "instructions": "Usa el presente",
+          "questions": [
+            "¿Vives en el campo o en una ciudad?",
+            "¿Lees novelas de misterio o de ciencia-ficción?",
+            "¿Hablas de política o de deportes con tus amigos?",
+            "¿Bebes té o café??",
+            "¿Trabajas de dia o de noche",
+            "¿Compartes tu tempo libre con tu perro o con tu gato?"
+          ],
+          "type": "open-ended"
+        }
+      ]
     },
     {
-      "title": "En español",
-      "instructions": "Usa el presente",
-      "questions": [
-        "Today Martha and Linus are celebrating their anniversary",
-        "Their relatives (parientes) arrive on time",
-        "Some friends are talking in the living room.",
-        "In the back yard, the children listen to Latin music.",
-        "The smell (el olor) of enchiladas circulates through the house.",
-        "The children drink lemonade."
+      "title": "Other uses of the present tense",
+      "grammar": [
+        "Cinco mas quince son veinte (Five plus fifteen is twenty.)",
+        "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)",
+        "Si llega el tren, salimos (If the train arrives, we leave.)",
+        "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
       ],
-      "answers": [
-        "Hoy Martha y Linus celebran su aniversario",
-        "Sus parientes llegan a tiempo",
-        "Unos amigos conversan en la sala",
-        "En el patio, los niños escuchan música latina",
-        "El olor a enchiladas circula por toda la casa",
-        "Los niños beben limonada"
+      "notes": [
+        "to tell facts considered unquestionable or universal truths.",
+        "to describe a past event, making it more vivid (historial present)",
+        "to express hypothetical actions introduced by si.",
+        "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
       ],
-      "type": "translate"
+      "exercises": [
+        {
+          "title": "Un poco de historia",
+          "instructions": "¿Verdadero o falso?",
+          "questions": [
+            "Napoleón invade España en el siglo XIX.",
+            "La mujer vota por primera vez en los Estados Unidos en 1929.",
+            "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
+            "Colon visita la Florida en 1495.",
+            "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
+          ],
+          "answers": ["V", "F", "V", "F", "V"],
+          "type": "true-false"
+        }
+      ]
     },
     {
-      "title": "Preguntas personales",
-      "instructions": "Usa el presente",
-      "questions": [
-        "¿Vives en el campo o en una ciudad?",
-        "¿Lees novelas de misterio o de ciencia-ficción?",
-        "¿Hablas de política o de deportes con tus amigos?",
-        "¿Bebes té o café??",
-        "¿Trabajas de dia o de noche",
-        "¿Compartes tu tempo libre con tu perro o con tu gato?"
+      "title": "One More Use of the Present tense",
+      "grammar": [
+        "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
+        "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
+        "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
+        "Cuanto tiempo hace que observas las estrellas?",
+        "Desde hace cuanto tiempo observas las estrellas?",
+        "Desde cuando observas las estrellas?"
       ],
-      "type": "open-ended"
+      "notes": [
+        "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
+        "or: (verb + hace + time expression)",
+        "or: (verb + desde hace + time expression)",
+        "Examine the following constructions of the same question:"
+      ],
+      "exercises": [
+        {
+          "title": "En español",
+          "instructions": "Responde a las preguntas",
+          "questions": [
+            "¿Cuanto tiempo hace que estudias español?",
+            "¿Desde hace cuanto tiempo usas la computadora?",
+            "¿Cuantos años hace que los Estados Unidos son una nación independiente?",
+            "¿Cuanto tiempo hace que usamos la Internet?",
+            "¿Desde cuando escuchas musica clasica?"
+          ],
+          "answers": [
+            "Hace...que estudio",
+            "Uso la computadora desde hace...",
+            "Hace...años que los Estados Unidos son una nación independiente",
+            "Usamos la Internet desde hace...",
+            "Escucho música clásica desde hace..."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "title": "Tu propia experiencia",
+          "instructions": "En español, completa la oración con tu información personal.",
+          "questions": [
+            "Hace una semana que ",
+            "Desde hace un año ",
+            "Hace diez dias ",
+            "Desde hace un ano, no ",
+            "Hace tres meses"
+          ],
+          "type": "open-ended"
+        },
+        {
+          "title": "¿Verdadero o falso?",
+          "questions": [
+            "Hace un siglo (century) que usamos la Internet",
+            "Los médicos usan la penicilina para curar las infecciones desde hace diez años.",
+            "Desde hace unos cincuenta años, los norteamericanos ven a Lucy en la tele.",
+            "Hace mas de doscientos años que los Estados Unidos son independientes.",
+            "Desde hace casi un siglo, los hombres conducen automoviles."
+          ],
+          "answers": ["F", "F", "V", "V", "V"],
+          "type": "true-false"
+        }
+      ]
     },
     {
-      "title": "Un poco de historia",
-      "instructions": "¿Verdadero o falso?",
-      "questions": [
-        "Napoleón invade España en el siglo XIX.",
-        "La mujer vota por primera vez en los Estados Unidos en 1929.",
-        "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
-        "Colon visita la Florida en 1495.",
-        "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
+      "title": "Irregular Verbs in the Present Tense",
+      "grammar": {
+        "caber (to fit)": "quepo",
+        "cae (to fall)": "caigo",
+        "dar (to give)": "doy",
+        "estar (to be)": "estoy",
+        "hacer (to do)": "hago",
+        "poner (to put)": "pongo",
+        "saber (to know)": "sé",
+        "salir (to leave)": "salgo",
+        "traer (to bring)": "traigo",
+        "valer (to be worth)": "valgo",
+        "ver (to see)": "veo"
+      },
+      "notes": [
+        " Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
+        "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
+        "Because they follow different patterns, they are considered irregular verbs.",
+        "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns.",
+        "The following verbs are irregular in first-person only:"
       ],
-      "answers": ["V", "F", "V", "F", "V"],
-      "type": "true-false"
-    },
-    {
-      "title": "En español",
-      "instructions": "Responde a las preguntas",
-      "questions": [
-        "¿Cuanto tiempo hace que estudias español?",
-        "¿Desde hace cuanto tiempo usas la computadora?",
-        "¿Cuantos años hace que los Estados Unidos son una nación independiente?",
-        "¿Cuanto tiempo hace que usamos la Internet?",
-        "¿Desde cuando escuchas musica clasica?"
-      ],
-      "answers": [
-        "Hace...que estudio",
-        "Uso la computadora desde hace...",
-        "Hace...años que los Estados Unidos son una nación independiente",
-        "Usamos la Internet desde hace...",
-        "Escucho música clásica desde hace..."
-      ],
-      "type": "short-answer"
-    },
-    {
-      "title": "Tu propia experiencia",
-      "instructions": "En español, completa la oración con tu información personal.",
-      "questions": [
-        "Hace una semana que ",
-        "Desde hace un año ",
-        "Hace diez dias ",
-        "Desde hace un ano, no ",
-        "Hace tres meses"
-      ],
-      "type": "open-ended"
-    },
-    {
-      "title": "¿Verdadero o falso?",
-      "questions": [
-        "Hace un siglo (century) que usamos la Internet",
-        "Los médicos usan la penicilina para curar las infecciones desde hace diez años.",
-        "Desde hace unos cincuenta años, los norteamericanos ven a Lucy en la tele.",
-        "Hace mas de doscientos años que los Estados Unidos son independientes.",
-        "Desde hace casi un siglo, los hombres conducen automoviles."
-      ],
-      "answers": ["F", "F", "V", "V", "V"],
-      "type": "true-false"
-    }
-    {
-        "title": "Practica",
-        "instructions": "Escribe en español.",
-        "questions": ["I give", "They put", "You (Uds.) see", "We fit in", "I bring", " I fall", "You do", "I get out"],
-        "answers": ["doy", "ponen", "ven", "cabemos", "traigo", "caigo", "haces", "salgo"],
-        "type": "conjugate"
+      "exercises": [
+        {
+          "title": "Practica",
+          "instructions": "Escribe en español.",
+          "questions": [
+            "I give",
+            "They put",
+            "You (Uds.) see",
+            "We fit in",
+            "I bring",
+            " I fall",
+            "You do",
+            "I get out"
+          ],
+          "answers": [
+            "doy",
+            "ponen",
+            "ven",
+            "cabemos",
+            "traigo",
+            "caigo",
+            "haces",
+            "salgo"
+          ],
+          "type": "conjugate"
+        }
+      ]
     }
   ]
 }
