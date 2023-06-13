@@ -125,6 +125,45 @@
         "to express hypothetical actions introduced by si.",
         "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
       ]
+    },
+    {
+      "title": "One More Use of the Present tense",
+      "grammar": [
+        "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
+        "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
+        "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
+        "Cuanto tiempo hace que observas las estrellas?",
+        "Desde hace cuanto tiempo observas las estrellas?",
+        "Desde cuando observas las estrellas?"
+      ],
+      "notes": [
+        "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
+        "or: (verb + hace + time expression)",
+        "or: (verb + desde hace + time expression)",
+        "Examine the following constructions of the same question:"
+      ]
+    },
+    {
+      "title": "Irregular Verbs in the Present Tense",
+      "grammar": {
+        "caber (to fit)": "quepo",
+        "cae (to fall)": "caigo",
+        "dar (to give)": "doy",
+        "estar (to be)": "estoy",
+        "hacer (to do)": "hago",
+        "poner (to put)": "pongo",
+        "saber (to know)": "sé",
+        "salir (to leave)": "salgo",
+        "traer (to bring)": "traigo",
+        "valer (to be worth)": "valgo",
+        "ver (to see)": "veo"
+      },
+      "notes": [
+        " Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
+        "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
+        "Because they follow different patterns, they are considered irregular verbs.",
+        "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns."
+      ]
     }
   ],
   "exercises": [
@@ -235,6 +274,56 @@
       ],
       "answers": ["V", "F", "V", "F", "V"],
       "type": "true-false"
+    },
+    {
+      "title": "En español",
+      "instructions": "Responde a las preguntas",
+      "questions": [
+        "¿Cuanto tiempo hace que estudias español?",
+        "¿Desde hace cuanto tiempo usas la computadora?",
+        "¿Cuantos años hace que los Estados Unidos son una nación independiente?",
+        "¿Cuanto tiempo hace que usamos la Internet?",
+        "¿Desde cuando escuchas musica clasica?"
+      ],
+      "answers": [
+        "Hace...que estudio",
+        "Uso la computadora desde hace...",
+        "Hace...años que los Estados Unidos son una nación independiente",
+        "Usamos la Internet desde hace...",
+        "Escucho música clásica desde hace..."
+      ],
+      "type": "short-answer"
+    },
+    {
+      "title": "Tu propia experiencia",
+      "instructions": "En español, completa la oración con tu información personal.",
+      "questions": [
+        "Hace una semana que ",
+        "Desde hace un año ",
+        "Hace diez dias ",
+        "Desde hace un ano, no ",
+        "Hace tres meses"
+      ],
+      "type": "open-ended"
+    },
+    {
+      "title": "¿Verdadero o falso?",
+      "questions": [
+        "Hace un siglo (century) que usamos la Internet",
+        "Los médicos usan la penicilina para curar las infecciones desde hace diez años.",
+        "Desde hace unos cincuenta años, los norteamericanos ven a Lucy en la tele.",
+        "Hace mas de doscientos años que los Estados Unidos son independientes.",
+        "Desde hace casi un siglo, los hombres conducen automoviles."
+      ],
+      "answers": ["F", "F", "V", "V", "V"],
+      "type": "true-false"
+    }
+    {
+        "title": "Practica",
+        "instructions": "Escribe en español.",
+        "questions": ["I give", "They put", "You (Uds.) see", "We fit in", "I bring", " I fall", "You do", "I get out"],
+        "answers": ["doy", "ponen", "ven", "cabemos", "traigo", "caigo", "haces", "salgo"],
+        "type": "conjugate"
     }
   ]
 }
