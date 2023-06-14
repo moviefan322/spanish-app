@@ -199,32 +199,37 @@
 
     {
       "title": "When is present tense used?",
-      "grammar": [
-        "Ahora, veo a Anna (Now I see Anna)",
-        "Louis llega a la puerta (Louis is arriving at the gate)",
-        " Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)",
-        "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
-        "Este verano, viajo a Alemania (This summer I am traveling to Germany)",
-        "¿Bebes café o tê? (Do you drink coffee or tea?)",
-        "¿Abro la puerta? (Shall I open the door?)",
-        "¿Compramos la casa? (Shall we buy the house?)"
-      ],
+      "grammar": {
+        "text": [
+          "Ahora, veo a Anna (Now I see Anna)",
+          "Louis llega a la puerta (Louis is arriving at the gate)",
+          " Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)",
+          "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
+          "Este verano, viajo a Alemania (This summer I am traveling to Germany)",
+          "¿Bebes café o tê? (Do you drink coffee or tea?)",
+          "¿Abro la puerta? (Shall I open the door?)",
+          "¿Compramos la casa? (Shall we buy the house?)"
+        ]
+      },
       "vocabulary": {
-        "al mediodía": "(at noon)",
-        "de vez en cuando": "from time to time",
-        "en lunes": "on Monday",
-        "esta semana": "this week",
-        "este mes": "this month",
-        "hoy": "today",
-        "los lunes": "on Mondays",
-        "nunca": "never",
-        "por la mañana": "in the morning",
-        "por la noche": "in the evening",
-        "por la tarde": "in the afternoon",
-        "siempre": "always",
-        "todas las semanas": "every week",
-        "todos los días": "every day",
-        "todos los meses": "every month"
+        "title": "Time expressions",
+        "list": {
+          "al mediodía": "(at noon)",
+          "de vez en cuando": "from time to time",
+          "en lunes": "on Monday",
+          "esta semana": "this week",
+          "este mes": "this month",
+          "hoy": "today",
+          "los lunes": "on Mondays",
+          "nunca": "never",
+          "por la mañana": "in the morning",
+          "por la noche": "in the evening",
+          "por la tarde": "in the afternoon",
+          "siempre": "always",
+          "todas las semanas": "every week",
+          "todos los días": "every day",
+          "todos los meses": "every month"
+        }
       },
       "notes": [
         "to describe an action happening now. Often, it is translated with the -ing form in English.",
@@ -317,20 +322,22 @@
     },
     {
       "title": "One More Use of the Present tense",
-      "grammar": [
-        "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
-        "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
-        "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
-        "Cuanto tiempo hace que observas las estrellas?",
-        "Desde hace cuanto tiempo observas las estrellas?",
-        "Desde cuando observas las estrellas?"
-      ],
-      "notes": [
-        "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
-        "or: (verb + hace + time expression)",
-        "or: (verb + desde hace + time expression)",
-        "Examine the following constructions of the same question:"
-      ],
+      "grammar": {
+        "text": [
+          "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
+          "or: (verb + hace + time expression)",
+          "or: (verb + desde hace + time expression)",
+          "Examine the following constructions of the same question:"
+        ],
+        "example": [
+          "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
+          "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
+          "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
+          "Cuanto tiempo hace que observas las estrellas?",
+          "Desde hace cuanto tiempo observas las estrellas?",
+          "Desde cuando observas las estrellas?"
+        ]
+      },
       "exercises": [
         {
           "title": "En español",
@@ -584,6 +591,112 @@
         "Permanezco callado/a."
       ],
       "type": "translate"
+    },
+    {
+      "title": "Other Frequently Used Verbs with Irregular Forms in the Present Tense",
+      "grammar": {
+        "chart": [
+          {
+            "title": "decir (to say",
+            "chart": ["digo", "dices", "dice", "decimos", "decís", "dicen"]
+          },
+          {
+            "title": "ir (to go)",
+            "chart": ["voy", "vas", "va", "vamos", "vais", "van"]
+          },
+          {
+            "title": "oir (to hear)",
+            "chart": ["oigo", "oyes", "oye", "oímos", "oís", "oyen"]
+          },
+          {
+            "title": "ser (to be)",
+            "chart": ["soy", "eres", "es", "somos", "sois", "son"]
+          },
+          {
+            "title": "tener (to have)",
+            "chart": ["tengo", "tienes", "tiene", "tenemos", "tenéis", "tienen"]
+          },
+          {
+            "title": "venir",
+            "chart": ["vengo", "vienes", "viene", "venimos", "venís", "vienen"]
+          }
+        ],
+        "text": [
+          "Note that haber is also irregular.",
+          "One meaning of haber is to have",
+          "However, in the present as well as in other tenses, haber is more frequently used as an impersonal verb in the third-person singular form.",
+          "The present tense form is hay. It means there is and there are.",
+          "Compounds of tener have the same irregular forms"
+        ],
+        "example": [
+          "Hay tres sillas en la sala (There are three chairs in the living room.)",
+          "Hay una posibilidad solamente (There is only one possibiility)"
+        ]
+      },
+      "vocabulary": {
+        "title": "Verbs like tener",
+        "chart": [
+          "contener (to contain) => contengo",
+          "detener (to detain) => detengo",
+          "mantener (to maintain) => mantengo",
+          "obtener (to obtain) => obtengo",
+          "retener (to retain) => retengo",
+          "sostener (to sustain) => sostengo"
+        ]
+      },
+      "exercises": [
+        {
+          "title": "En español",
+          "questions": [
+            "There is one person",
+            "There are ten programs",
+            "I go now",
+            "I do not hear music",
+            "Do you (Ud.) see the bus?",
+            "I tell the truth",
+            "You (Uds.) have time",
+            "They stop the car"
+          ],
+          "answers": [
+            "Hay una persona",
+            "Hay diez programas",
+            "Voy ahora",
+            "No oigo música",
+            "¿Ve Ud. el autobús?",
+            "Digo la verdad",
+            "Tienen tiempo",
+            "Detienen el coche"
+          ],
+          "type": "translate"
+        },
+        {
+          "title": "La television y la cocina",
+          "instructions": "Escribe la form correspondiente del presente",
+          "questions": [
+            "Nosotros _(estar) en un estudio de television con el Chef Horacio",
+            "El _(ser) un apasionado de la cocina y son una obra de arte",
+            "_(decir) que sus platos",
+            "_(haber) muchos aficionados que ven se programa, 'Cocina con Horacio'",
+            "_(oir) los comentarios favorables de sus adiradores.",
+            "Ellos _(venir) al estudio para ver a su estrella favorita",
+            "Luisa _(venir) para probar las creaciones exquisitas de Horacio",
+            "Los ténicios _(estar) ocupados filmando el program de hoy",
+            "Sus admiradores _(ir) al estudio muy temprano"
+          ],
+          "answers": [
+            "estamos",
+            "es",
+            "dice",
+            "hay",
+            "oyen",
+            "vienen",
+            "viene",
+            "están",
+            "van"
+          ],
+          "type": "conjugate"
+        }
+      ]
     }
   ]
 }
