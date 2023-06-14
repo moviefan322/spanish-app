@@ -7,32 +7,41 @@
           "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject.",
           "The following verbs can be used as models for all regular verbs in the present tense."
         ],
-        "chart": {
-          "comprar (to buy)": [
-            "compro (I buy)",
-            "compras (you buy)",
-            "compra (he/she/it buys)",
-            "compramos (we buy)",
-            "compráis (you all buy)",
-            "compran (they buy)"
-          ],
-          "aprender (to learn)": [
-            "aprendo (I learn)",
-            "aprendes (you learn)",
-            "aprende (he/she/it learns)",
-            "aprendemos (we learn)",
-            "aprendéis (you all learn)",
-            "aprenden (they learn)"
-          ],
-          "recibir (to receive)": [
-            "recibo (I receive)",
-            "recibes (you receive)",
-            "recibe (he/she/it receives)",
-            "recibimos (we receive)",
-            "recibís (you all receive)",
-            "reciben (they receive)"
-          ]
-        },
+        "chart": [
+          {
+            "title": "comprar (to buy)",
+            "chart": [
+              "compro (I buy)",
+              "compras (you buy)",
+              "compra (he/she/it buys)",
+              "compramos (we buy)",
+              "compráis (you all buy)",
+              "compran (they buy)"
+            ]
+          },
+          {
+            "title": "aprendar (to learn)",
+            "chart": [
+              "aprendo (I learn)",
+              "aprendes (you learn)",
+              "aprende (he/she/it learns)",
+              "aprendemos (we learn)",
+              "aprendéis (you all learn)",
+              "aprenden (they learn)"
+            ]
+          },
+          {
+            "title": "recibir (to receive)",
+            "chart": [
+              "recibo (I receive)",
+              "recibes (you receive)",
+              "recibe (he/she/it receives)",
+              "recibimos (we receive)",
+              "recibís (you all receive)",
+              "reciben (they receive)"
+            ]
+          }
+        ],
         "notes": [
           "the first-person singular yo has the same ending in all three conjugations.",
           "in the -er and -ir verb categories all three third-person singular forms have the same endings.",
@@ -41,42 +50,51 @@
       },
       "vocabulary": [
         {
-          "bajar": "to go down",
-          "cocinar": "to cook",
-          "comprar": "to buy",
-          "conversar": "to converse",
-          "cooperar": "to cooperate",
-          "dibujar": "to draw",
-          "escuchar": "to listen",
-          "limpiar": "to clean",
-          "preparar": "to prepare",
-          "sacar": "to take out",
-          "sumar": "to add",
-          "trabajar": "to work"
+          "title": "Verbs ending in -ar",
+          "list": {
+            "bajar": "to go down",
+            "cocinar": "to cook",
+            "comprar": "to buy",
+            "conversar": "to converse",
+            "cooperar": "to cooperate",
+            "dibujar": "to draw",
+            "escuchar": "to listen",
+            "limpiar": "to clean",
+            "preparar": "to prepare",
+            "sacar": "to take out",
+            "sumar": "to add",
+            "trabajar": "to work"
+          }
         },
         {
-          "beber": "to drink",
-          "comer": "to eat",
-          "comprender": "to understand",
-          "correr": "to run",
-          "creer": "to believe",
-          "leer": "to read",
-          "responder": "to respond",
-          "romper": "to break",
-          "temer": "to fear",
-          "vender": "to sell"
+          "title": "Verbs ending in -er",
+          "list": {
+            "beber": "to drink",
+            "comer": "to eat",
+            "comprender": "to understand",
+            "correr": "to run",
+            "creer": "to believe",
+            "leer": "to read",
+            "responder": "to respond",
+            "romper": "to break",
+            "temer": "to fear",
+            "vender": "to sell"
+          }
         },
         {
-          "abrir": "to open",
-          "compartir": "to share",
-          "cubrir": "to cover",
-          "decidir": "to decide",
-          "discutir": "to discuss",
-          "escribir": "to write",
-          "repartir": "to distribute",
-          "subir": "to go up",
-          "sufrir": "to suffer",
-          "vivir": "to live"
+          "title": "Verbs ending in -ir",
+          "list": {
+            "abrir": "to open",
+            "compartir": "to share",
+            "cubrir": "to cover",
+            "decidir": "to decide",
+            "discutir": "to discuss",
+            "escribir": "to write",
+            "repartir": "to distribute",
+            "subir": "to go up",
+            "sufrir": "to suffer",
+            "vivir": "to live"
+          }
         }
       ],
       "exercises": [
@@ -107,7 +125,7 @@
         },
         {
           "title": "Practica",
-          "instructions:": "Escribe en español.",
+          "instructions": "Escribe en español.",
           "questions": [
             "I prepare dinner",
             "The children climb the stairs",
@@ -267,12 +285,14 @@
     },
     {
       "title": "Other uses of the present tense",
-      "grammar": [
-        "Cinco mas quince son veinte (Five plus fifteen is twenty.)",
-        "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)",
-        "Si llega el tren, salimos (If the train arrives, we leave.)",
-        "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
-      ],
+      "grammar": {
+        "text": [
+          "Cinco mas quince son veinte (Five plus fifteen is twenty.)",
+          "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)",
+          "Si llega el tren, salimos (If the train arrives, we leave.)",
+          "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
+        ]
+      },
       "notes": [
         "to tell facts considered unquestionable or universal truths.",
         "to describe a past event, making it more vivid (historial present)",
@@ -360,17 +380,19 @@
     {
       "title": "Irregular Verbs in the Present Tense",
       "grammar": {
-        "caber (to fit)": "quepo",
-        "cae (to fall)": "caigo",
-        "dar (to give)": "doy",
-        "estar (to be)": "estoy",
-        "hacer (to do)": "hago",
-        "poner (to put)": "pongo",
-        "saber (to know)": "sé",
-        "salir (to leave)": "salgo",
-        "traer (to bring)": "traigo",
-        "valer (to be worth)": "valgo",
-        "ver (to see)": "veo"
+        "chart": [
+          "caber (to fit) => quepo",
+          "cae (to fall => caigo",
+          "dar (to give) => doy",
+          "estar (to be) => estoy",
+          "hacer (to do) => hago",
+          "poner (to put) => pongo",
+          "saber (to know) => sé",
+          "salir (to leave) => salgo",
+          "traer (to bring) => traigo",
+          "valer (to be worth) => valgo",
+          "ver (to see) => veo"
+        ]
       },
       "notes": [
         " Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
@@ -406,6 +428,162 @@
           "type": "conjugate"
         }
       ]
+    },
+    {
+      "title": "Irregular Verbs in the Present Tense con't",
+      "grammar": {
+        "text": [
+          "The compounds of these verbs are also irregular in the yo form only",
+          "they add the consonant g between the radical and the verb ending",
+          "Compounds are easy to spot because they show a preﬁx (des-, dis-, com-, con-, etc.) preceding the radical."
+        ],
+        "chart": [
+          "componer (to compose) => compongo",
+          "deshacer (to undo) => deshago",
+          "disponer (to dispose) => dispongo",
+          "distraer [se] (to distract [oneself]) => distraigo",
+          "proponer (to propose) => propongo",
+          "rehacer (to redo) => rehago",
+          "reponer (to replace) => repongo",
+          "suponer (to suppose) => supongo"
+        ]
+      },
+      "exercises": {
+        "title": "En español",
+        "questions": [
+          "I propose a break (un descanso).",
+          "You suppose the worst (lo peor).",
+          "They replace the money.",
+          "I undo the work",
+          "She composes a song",
+          "The girls distract the driver"
+        ],
+        "answers": [
+          "Yo propongo un descanso.",
+          "Tú supones lo peor.",
+          "Ellos reponen el dinero.",
+          "Yo deshago el trabajo.",
+          "Ella compone una canción.",
+          "Las chicas distraen al conductor."
+        ],
+        "type": "translate"
+      },
+      "pareados": {
+        "title": "Pareados",
+        "instructions": "Escribe la letra de la respuesta más lógica.",
+        "questions": {
+          "prompts": [
+            "Sé",
+            "Distraigo",
+            "No quepo",
+            "Compongo",
+            "Propongo",
+            "Pongo",
+            "Salgo"
+          ],
+          "answers": [
+            "a mis compañeros de trabajo.",
+            "que trabajas mucho.",
+            "música para mis canciones.",
+            "en esa trampa (trap) a menudo.",
+            "de la conferencia ahora.",
+            "una solución para tu problema.",
+            "el agua en un vaso.",
+            "en estos pantalones."
+          ]
+        },
+        "type": "matching"
+      }
+    },
+    {
+      "title": "Other Verbs with Irregular Forms in the First Person",
+      "grammar": {
+        "text": [
+          "Verbs that end in a vowel followed by -cer and -cir change 0 to zc in the ﬁrst-person singular only",
+          "They are conjugated like conocer."
+        ],
+        "example": ["Conozco muy bien a Margo", "I know Margo very well."],
+        "chart": [
+          {
+            "title": "-er verbs like conocer",
+            "chart": [
+              "agradecer (to thank) => agradezco",
+              "aparecer (to appear) => aparezco",
+              "complacer (to please) => complazco",
+              "crecer (to grow) => crezco",
+              "establecer (to establish) => establezco",
+              "mercer (to deserve) => merezco",
+              "obedecer (to obey) => obedezco",
+              "ofrecer (to offer) => ofrezco",
+              "padecer (to suffer) => padezco",
+              "paermanecar (to remain) => permanezco",
+              "pertenecer (to belong) => pertenezco",
+              "reconocer (to recognize) => reconozco"
+            ]
+          },
+          {
+            "title": "-ir verbs like conducir",
+            "chart": [
+              "conducir (to drive) => conduzco",
+              "conocer (to know) => conozco",
+              "desaparecer (to disappear) => desaparezco",
+              "desconocer (to be unfamiliar with) => desconozco",
+              "producir (to produce) => produzco",
+              "traducir (to translate) => traduzco"
+            ]
+          }
+        ]
+      },
+      "exercises": [
+        {
+          "title": "Practica",
+          "instructions": "Escribe la form correspondiente del verbo entre paréntesis.",
+          "questions": [
+            "Yo _(conducir) el coche.",
+            "Marta y tu _(salir) de casa juntos",
+            "Yo no _(conocer) a esa familia.",
+            "¿Quién _(ofrecer) mas por este cuadro?",
+            "¡Yo no _(merecer) este regalo",
+            "Las asistentes del director _(obedecer) sus órdenes.",
+            "¡Tu _(percenecer) a una familia muy famosa!",
+            "Marcia _(conocer) a los padres de Luisa"
+          ],
+          "answers": [
+            "conduzco",
+            "salís",
+            "conozco",
+            "ofrece",
+            "merezco",
+            "obedecen",
+            "perteneces",
+            "conoce"
+          ],
+          "type": "conjugate"
+        }
+      ]
+    },
+    {
+      "title": "Y yo?",
+      "instructions": "Escribe en español. Usa el presente",
+      "questions": [
+        "I deserve a raise",
+        "Do I go out now?",
+        "I am grateful for your friendship",
+        "I do not belong to this group",
+        "I translate the instructions",
+        "I seldom impose my ideas",
+        "I remain quiet (callado[a])"
+      ],
+      "answers": [
+        "Merezco un aumento de sueldo.",
+        "¿Salgo ahora?",
+        "Agradezco tu amistad.",
+        "No pertenezco a este grupo.",
+        "Traduzco las instrucciones.",
+        "Rara vez impongo mis ideas.",
+        "Permanezco callado/a."
+      ],
+      "type": "translate"
     }
   ]
 }
