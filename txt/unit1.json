@@ -697,6 +697,56 @@
           "type": "conjugate"
         }
       ]
+    },
+    {
+      "title": "Verbs with spelling Changes in the present tense",
+      "text": [
+        " In the present tense, certain verbs have spelling changes.",
+        "These are determined by Spanish rules of pronunciation to preserve the sound appearing in the inﬁnitive.",
+        "The following groups of verbs have spelling changes before the verb ending -o, in the yo form only."
+      ],
+      "grammar": {
+        "text": "Verbs ending in -ger or -gir change g to j before the -o ending",
+        "chart": [
+          {
+            "title": "coger (to catch)",
+            "chart": ["cojo", "exijo", "escojo", "protejo", "escojo", "escojo"]
+          },
+          {
+            "title": "exigir (to demand)",
+            "chart": [
+              "exijo",
+              "exiges",
+              "exige",
+              "exigimos",
+              "exigís",
+              "exigen"
+            ]
+          },
+          {
+            "title": "Verbs like coger",
+            "chart": [
+              "encoger (to shrink) => encojo",
+              "escoger (to choose) => escojo",
+              "proteger (to protect) => protejo",
+              "recoger (to pick up) => recojo"
+            ]
+          },
+          {
+            "title": "Verbs like exigir",
+            "chart": [
+              "dirigir (to direct) => dirijo",
+              "elegir (to elect) => elijo",
+              "fingir (to pretend) => finjo",
+              "proseguir (to continue) => prosigo",
+              "repetir (to repeat) => repito",
+              "seguir (to follow) => sigo",
+              "vestir (to dress) => visto"
+            ]
+          }
+        ],
+        "note": "Other -gir verbs have stem changes as well. Check the sections on stem-changing verbs in"
+      }
     }
   ]
 }
