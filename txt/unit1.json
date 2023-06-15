@@ -743,10 +743,83 @@
               "seguir (to follow) => sigo",
               "vestir (to dress) => visto"
             ]
+          },
+          {
+            "title": "distinguir (to distinguish)",
+            "chart": [
+              "distingo",
+              "distingues",
+              "distingue",
+              "distinguimos",
+              "distinguís",
+              "distinguen"
+            ]
+          },
+          {
+            "title": "verbs like distinguir",
+            "chart": [
+              "conseguir (to obtain) => consigo",
+              "extinguir (to extinguish) => extingo",
+              "perseguir (to pursue) => persigo"
+            ]
+          },
+          {
+            "text": "Verbs ending in -cer and -cir change c to z before the o- ending."
+          },
+          {
+            "title": "convencer (to convince)",
+            "chart": [
+              "convenzo",
+              "convences",
+              "convence",
+              "convencemos",
+              "convencéis",
+              "convencen"
+            ]
+          },
+          {
+            "title": "Verbs like convencer",
+            "chart": [
+              "ejercer (to exercise) => ejerzo",
+              "vencer (to defeat) => venzo"
+            ]
+          },
+          {
+            "title": "Some -cer and -cir verbs may have stem changes as well: e changes to i and o to ue",
+            "chart": [
+              "elegir (to elect) => elijo",
+              "torcer (to twist) => tuerzo"
+            ]
           }
-        ],
-        "note": "Other -gir verbs have stem changes as well. Check the sections on stem-changing verbs in"
-      }
+        ]
+      },
+      "exercises": [
+        {
+          "title": "Yo tambien",
+          "instructions": "Write the present tense of the yo form of the verb",
+          "questions": [
+            "Exige una explicacion",
+            "Escoge los colores",
+            "Extingue el fuego",
+            "Recoge los periodicos",
+            "Vence los obstaculos",
+            "Protege sus derechos",
+            "Convence a sus amigos",
+            "No finge"
+          ],
+          "answers": [
+            "exijo",
+            "escojo",
+            "extingo",
+            "recojo",
+            "venzo",
+            "protege",
+            "convenzo",
+            "finge"
+          ],
+          "type": "conjugate"
+        }
+      ]
     }
   ]
 }
