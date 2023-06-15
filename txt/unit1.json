@@ -857,6 +857,120 @@
           "type": "open-ended"
         }
       ]
+    },
+    {
+      "title": "Expressions with hacer",
+      "grammar": {
+        "chart": [
+          {
+            "title": "Hacer calor, hace fresco (to be warm, to be cool)",
+            "chart": "Hace fresco, no hace calor"
+          },
+          { "title": "hacer viento (to be windy)", "chart": "Hace viento" },
+          {
+            "title": "hacer un viaje (to take a trip)",
+            "chart": "Lina hace un viaje a las Bahamas"
+          },
+          {
+            "title": "hacer una visita (to pay a visit)",
+            "chart": "Marcus hace una visita a su abuela"
+          },
+          {
+            "title": "hacer una pregunta (to ask a question)",
+            "chart": "El profesor hace una pregunta"
+          },
+          {
+            "title": "hacer daño (to harm)",
+            "chart": "Beber much agua no te hace daño"
+          },
+          {
+            "title": "hacer caso a (to pay attention to)",
+            "chart": "Los niños no hacen caso al maestro"
+          },
+          {
+            "title": "hacer el papel de (to play the role of)",
+            "chart": "El actor hace el papel de un policia"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Expressions with Tener",
+      "grammar": {
+        "chart": [
+          {
+            "title": "tener + que + infinitive (to have to do something)",
+            "chart": "Tenemos que salir"
+          },
+          {
+            "title": "tener frio (to be cold)",
+            "chart": "Tengo frio"
+          },
+          {
+            "title": "tener hambre (to be hungry)",
+            "chart": "¿Tienes hambre?"
+          },
+          {
+            "title": "tener miedo (to be scared)",
+            "chart": "No tienen miedo a las serpientes"
+          },
+          { "title": "tener razón (to be right)", "chart": "Yo tingo razón" },
+          { "title": "tener sed (to be thirsty)", "chart": "¿Tienes sed?" },
+          {
+            "title": "tener prisa (to be in a hurry)",
+            "chart": "Mi esposo tiene prisa"
+          },
+          {
+            "title": "tener culpa (to be to blame)",
+            "chart": "El sospechoso tiene la culpa de este accidente"
+          },
+          {
+            "title": "tener lugar (to take place)",
+            "chart": "La reunion tiene lugar los domingos"
+          }
+        ]
+      },
+      "exercises": [
+        {
+          "title": "Y en tu caso...",
+          "instructions": "¿Verdadero o falso?",
+          "questions": [
+            "Tengo sed y hambre",
+            "No tenga la culpa de nada",
+            "Tengo que limpiar mi cuarto",
+            "Hace calor aqui",
+            "Tengo frio",
+            "Tengo mucho sueño",
+            "Nunca tengo prisa",
+            "Hago un viaje pronto"
+          ],
+          "type": "open-ended"
+        },
+        {
+          "title": "En español",
+          "questions": [
+            "Are you hungry?",
+            "We are thirsty.",
+            "Lori pays a visit to her cousin.",
+            "Mario hugs his friend.",
+            "They are in a hurry.",
+            "You are right this time.",
+            "I am not afraid.",
+            "Are you cold?"
+          ],
+          "answers": [
+            "¿Tienes hambre?",
+            "Tenemos sed.",
+            "Lori hace una visita a su primo.",
+            "Mario da un abrazo a su amigo.",
+            "Tienen prisa.",
+            "Tienes razón esta vez.",
+            "No tengo miedo.",
+            "¿Tienes frío?"
+          ],
+          "type": "translate"
+        }
+      ]
     }
   ]
 }
