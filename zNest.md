@@ -110,3 +110,63 @@ import { User } from './users/user.entity';
 })
 export class AppModule {}
 
+notes: repeat these steps for all modules/entities
+
+5- setting up validation
+
+Now that we are ready to write routes and dtos, we need to plug in validation to the project. In the main.ts file, add the following:
+
+import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+    }),
+  );
+  await app.listen(3000);
+}
+bootstrap();
+
+6- (for creating dtos)
+
+Dtos define what a request body should look like. For example, if we have a user entity with email, password, and userName, we can create a dto for creating a user with only email and password, and another dto for updating a user with only userName.
+
+We can also use validation in dtos to make sure that the request body is valid.
+
+To create a dto, we create a class in the dtos folder, for example:
+
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+
+export class CreateUserDto {
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+
+  @IsNotEmpty()
+  @IsString()
+  username: string;
+}
+
+7- (for creating routes)
+
+To create routes in a controller, we use the Nest.js decorators. For example, to create a route for creating a user, we can do the following:
+
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreateUserDto } from './dtos/create-user.dto';
+
+@Controller('users')
+export class UsersController {
+  @Post('/signup')
+  createUser(@Body() body: CreateUserDto) {
+    console.log(body);
+  }
+}
+
+note: Here, we use the body decorator to get the request body, and we pass in the CreateUserDto to validate the request body.

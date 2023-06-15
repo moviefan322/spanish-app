@@ -6,13 +6,15 @@ import { UsersModule } from './users/users.module';
 import { LessonsModule } from './lessons/lessons.module';
 import { StatsModule } from './stats/stats.module';
 import { User } from './users/user.entity';
+import { Stats } from './stats/stats.entity';
+import { Lesson } from './lessons/lesson.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User],
+      entities: [User, Stats, Lesson],
       synchronize: true,
     }),
     UsersModule,
