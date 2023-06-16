@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/lato": "^5.0.3",
+    "@next/font": "^13.4.6",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "cookie-session": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0"
   }
 }
