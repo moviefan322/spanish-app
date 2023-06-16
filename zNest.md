@@ -476,8 +476,8 @@ this code is kind of hectic, but the basic setup of an interceptor is to impleme
 
 Then, we can use the interceptor in the controller:
 
-users.controller.ts
-----
+## users.controller.ts
+
 @UseInterceptors(SerializeInterceptor)
 @Get('/:id')
 async findUser(@Param('id') id: string) {
@@ -491,8 +491,8 @@ return user;
 
 However, this is not the best way to handle this, because we are hard coding the DTO into the interceptor, and we want to be able to pass the DTO as a param to the interceptor. To do this, we need to create a refactor the interceptor so that it takes in a param, and then we can pass the DTO as a param to the interceptor:
 
-serialize.interceptor.ts
-----
+## serialize.interceptor.ts
+
 export class SerializeInterceptor implements NestInterceptor {
 constructor(private dto: any) {}
 intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
@@ -508,8 +508,8 @@ excludeExtraneousValues: true,
 
 Then we can implement it on the route and pass the DTO in as a param:
 
-users.controller.ts
-----
+## users.controller.ts
+
 @UseInterceptors(new SerializeInterceptor(UserDto))
 @Get('/:id')
 async findUser(@Param('id') id: string) {
@@ -523,62 +523,89 @@ return user;
 
 There is one more way to optimize this, and that is to use a decorator to pass the DTO to the interceptor. This is a little more complicated, but it is the best way to handle this:
 
-serialize.decorator.ts
-----
+## serialize.decorator.ts
+
 export function Serialize(dto: any) {
-  return UseInterceptors(new SerializeInterceptor(dto));
+return UseInterceptors(new SerializeInterceptor(dto));
 }
 
 export class SerializeInterceptor implements NestInterceptor {
-  constructor(private dto: any) {}
-  intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
-    return handler.handle().pipe(
-      map((data: any) => {
-        return plainToInstance(this.dto, data, {
-          excludeExtraneousValues: true,
-        });
-      }),
-    );
-  }
+constructor(private dto: any) {}
+intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
+return handler.handle().pipe(
+map((data: any) => {
+return plainToInstance(this.dto, data, {
+excludeExtraneousValues: true,
+});
+}),
+);
+}
 }
 
 then we can use the decorator on the route:
 
-users.controller.ts
-----
-  @Serialize(UserDto)
-  @Get('/:id')
-  async findUser(@Param('id') id: string) {
-    console.log('handler is running');
-    const user = await this.usersService.findOne(parseInt(id));
-    if (!user) {
-      throw new NotFoundException('user not found');
-    }
-    return user;
-  }
+## users.controller.ts
+
+@Serialize(UserDto)
+@Get('/:id')
+async findUser(@Param('id') id: string) {
+console.log('handler is running');
+const user = await this.usersService.findOne(parseInt(id));
+if (!user) {
+throw new NotFoundException('user not found');
+}
+return user;
+}
 
 13 - Authentication
 
 Now that all of that is out of the way, we can begin implementing authentication. Fist, we add an auth service and connect it to the user service:
 
+## auth.service.ts
 
-auth.service.ts
-----
 import { Injectable } from '@nestjs/common';
 import { UsersService } from './users.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UsersService) {}
+constructor(private usersService: UsersService) {}
 }
 
 Then we add it as a provider in the users module:
 
-users.module.ts
-----
+## users.module.ts
+
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  controllers: [UsersController],
-  providers: [UsersService, AuthService],
+imports: [TypeOrmModule.forFeature([User])],
+controllers: [UsersController],
+providers: [UsersService, AuthService],
 })
 export class UsersModule {}
+
+We can begin to implement some validation in the auth service:
+
+## auth.service.ts
+
+import { Injectable, BadRequestException } from '@nestjs/common';
+import { UsersService } from './users.service';
+
+@Injectable()
+export class AuthService {
+constructor(private usersService: UsersService) {}
+
+async signup(email: string, password: string, username: string) {
+const users = await this.usersService.find(email);
+if (users.length) {
+throw new BadRequestException('email in use');
+}
+}
+}
+
+then, we can refactor the signup method to use the create method from the user service:
+
+## auth.service.ts
+
+@Post('/signup')
+async createUser(@Body() body: CreateUserDto) {
+return this.authService.signup(body.email, body.password, body.username);
+}
