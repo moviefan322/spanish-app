@@ -9,6 +9,7 @@ function LoginForm() {
   const signupEmailInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
+  const usernameInputRef = useRef<HTMLInputElement>(null);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
@@ -32,7 +33,7 @@ function LoginForm() {
                 type="password"
                 id="password"
                 className="form-control"
-                ref={loginEmailInputRef}
+                ref={loginPasswordInputRef}
               />
             </div>
             <button type="submit" className="btn btn-primary">
@@ -58,6 +59,15 @@ function LoginForm() {
                 id="email-signup"
                 className="form-control"
                 ref={signupEmailInputRef}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="text">Username</label>
+              <input
+                type="username"
+                id="username"
+                className="form-control"
+                ref={usernameInputRef}
               />
             </div>
             <div className="form-group">
