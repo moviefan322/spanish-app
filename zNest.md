@@ -736,3 +736,48 @@ return this.usersService.findOne(session.userId);
 async signout(@Session() session: any) {
 session.userId = null;
 }
+
+we can streamline this a little bit by creating a decorator to handle the session:
+
+current-user.decorator.ts
+----
+
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+
+export const CurrentUser = createParamDecorator(
+  (data: never, context: ExecutionContext) => {
+    const request = context.switchToHttp().getRequest();
+    return request.currentUser;
+  },
+);
+
+  
+  the decorator attaches the user to the request object, then we can access it with an interceptor:
+
+  import {
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+  Injectable,
+} from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+
+@Injectable()
+export class CurrentUserInterceptor implements NestInterceptor {
+  constructor(private usersService: UsersService) {}
+
+  async intercept(context: ExecutionContext, handler: CallHandler) {
+    const request = context.switchToHttp().getRequest();
+
+    const { userId } = request.session || {};
+
+    if (userId) {
+      const user = await this.usersService.findOne(userId);
+      request.currentUser = user;
+    }
+
+    return handler.handle();
+  }
+}
+  
+  then we can add the interceptor to the app module:
