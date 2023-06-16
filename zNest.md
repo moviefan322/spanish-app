@@ -335,6 +335,9 @@ notes: you always want to create an entity before saving it, or in the case of a
 
 Also, Nest.js has a built in NotFoundException that you can use to throw an error if an entity is not found. Other Exceptions can be found here: https://docs.nestjs.com/exception-filters
 
+note about Exception errors:
+They only work with HTTP protocols, so if you are using a different protocol, you will need to create your own exceptions.
+
 Also note the params for update, we use the Partial type to make all of the fields optional with the attrs param.
 
 11 - Writing more controllers
