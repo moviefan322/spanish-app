@@ -670,42 +670,69 @@ async signin(@Body() body: CreateUserDto) {
 return this.authService.signin(body.email, body.password);
 }
 
-
 14 - Cookies
 
 Now we can implement cookies with the nest session decorator. Using the session decorator, we can set a cookie on the client side, and then we can use the session decorator to access the cookie on the server side.
 
+First, we need to install the session package:
 
-users.controller.ts
-----
-  @Post('/signup')
-  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
-    const user = await this.authService.signup(
-      body.email,
-      body.password,
-      body.username,
-    );
-    session.userId = user.id;
-    return user;
-  }
+## main.ts
 
-  @Post('/signin')
-  async signin(@Body() body: CreateUserDto, @Session() session: any) {
-    const user = await this.authService.signin(body.email, body.password);
-    session.userId = user.id;
-    return user;
-  }
+import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
+import { AppModule } from './app.module';
+const cookieSession = require('cookie-session');
+
+async function bootstrap() {
+const app = await NestFactory.create(AppModule);
+app.use(
+cookieSession({
+keys: ['poop'],
+}),
+);
+app.useGlobalPipes(
+new ValidationPipe({
+whitelist: true,
+}),
+);
+await app.listen(3000);
+}
+bootstrap();
+
+note: for the cookie-session package you need to use require instead of import
+
+Then, we can use the session decorator in the controller:
+
+## users.controller.ts
+
+@Post('/signup')
+async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+const user = await this.authService.signup(
+body.email,
+body.password,
+body.username,
+);
+session.userId = user.id;
+return user;
+}
+
+@Post('/signin')
+async signin(@Body() body: CreateUserDto, @Session() session: any) {
+const user = await this.authService.signin(body.email, body.password);
+session.userId = user.id;
+return user;
+}
 
 Now that we have cookies implemented, we can create a route to retrieve the user from the cookie, as well as a route to sign out the user:
 
-users.controller.ts
-----
-  @Get('/getme')
-  async getMe(@Session() session: any) {
-    return this.usersService.findOne(session.userId);
-  }
+## users.controller.ts
 
-  @Post('/signout')
-  async signout(@Session() session: any) {
-    session.userId = null;
-  }
+@Get('/getme')
+async getMe(@Session() session: any) {
+return this.usersService.findOne(session.userId);
+}
+
+@Post('/signout')
+async signout(@Session() session: any) {
+session.userId = null;
+}

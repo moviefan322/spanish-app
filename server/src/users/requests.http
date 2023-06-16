@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "email": "pooperhead@buttsex.com",
+    "email": "fuckser@buttsex.com",
     "password": "password",
     "username" : "poopbutt"
 }
@@ -17,6 +17,12 @@ content-type: application/json
     "password": "password",
     "username" : "poopbutt"
 }
+
+### Get a user's profile
+GET http://localhost:3000/auth/getme
+
+### Sign out a user
+POST http://localhost:3000/auth/signout
 
 ### Get all users
 GET http://localhost:3000/auth
