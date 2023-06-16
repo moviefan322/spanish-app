@@ -779,5 +779,32 @@ export class CurrentUserInterceptor implements NestInterceptor {
     return handler.handle();
   }
 }
+
+We can hook it up to our controller like this:
+
+## users.controller.ts
+----
+@Controller('auth')
+@Serialize(UserDto)
+@UseInterceptors(CurrentUserInterceptor)
+export class UsersController {
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+  ) {}
+
+  @Get('/getme')
+  async getMe(@CurrentUser() user: User) {
+    return user;
+  }
   
-  then we can add the interceptor to the app module:
+  then we can add the interceptor to the user module:
+
+  ## users.module.ts
+  ----
+  @Module({
+  imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UsersController],
+  providers: [UsersService, AuthService, CurrentUserInterceptor],
+})
+export class UsersModule {}
