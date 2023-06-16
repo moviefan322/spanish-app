@@ -1,19 +1,20 @@
 import styles from "./navbar.module.css";
+import Link from "next/link";
 
 function Navbar(): JSX.Element {
   return (
-    <nav>
+    <nav className={styles.navbar}>
       <ul>
         <li>
           <strong>Spanish Grammar</strong>
         </li>
       </ul>
-      <ul>
+      <ul className={styles.links}>
         <li>
-          <a href="#">Home</a>
+          <Link href="#">Home</Link>
         </li>
         <li>
-          <a href="#">Login</a>
+          <Link href="#">Login</Link>
         </li>
         <li>
           <a href="#" role="button">

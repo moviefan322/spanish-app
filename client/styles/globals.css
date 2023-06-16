@@ -29,6 +29,7 @@ body {
     rgb(141, 141, 243) 0%,
     rgb(208, 225, 252) 100%
   );
+  --green: rgba(0, 255, 8, 0.694);
 }
 
 .center {
@@ -43,4 +44,8 @@ a {
 button {
   font: inherit;
   cursor: pointer;
+}
+
+a {
+  color: inherit;
 }
