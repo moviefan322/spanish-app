@@ -1,8 +1,11 @@
+import Layout from "@/components/layout/layout";
 
 export default function Home() {
   return (
     <>
-      <h1>Home Page</h1>
+      <Layout>
+        <h1 className="center">Home Page</h1>
+      </Layout>
     </>
   );
 }
