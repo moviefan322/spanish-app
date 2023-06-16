@@ -808,3 +808,23 @@ export class UsersController {
   providers: [UsersService, AuthService, CurrentUserInterceptor],
 })
 export class UsersModule {}
+
+Alternatively, we can scope the interceptor to the entire users module with the APP_INTERCEPTOR token:
+
+## users.module.ts
+----
+@Module({
+  imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UsersController],
+  providers: [
+    UsersService,
+    AuthService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CurrentUserInterceptor,
+    },
+  ],
+})
+export class UsersModule {}
+
+note: If we do it this way, we no longer need to use the @UseInterceptors decorator in the controller.
