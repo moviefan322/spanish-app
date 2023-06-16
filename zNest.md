@@ -739,35 +739,33 @@ session.userId = null;
 
 we can streamline this a little bit by creating a decorator to handle the session:
 
-current-user.decorator.ts
-----
+## current-user.decorator.ts
 
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
 export const CurrentUser = createParamDecorator(
-  (data: never, context: ExecutionContext) => {
-    const request = context.switchToHttp().getRequest();
-    return request.currentUser;
-  },
+(data: never, context: ExecutionContext) => {
+const request = context.switchToHttp().getRequest();
+return request.currentUser;
+},
 );
 
-  
-  the decorator attaches the user to the request object, then we can access it with an interceptor:
+the decorator attaches the user to the request object, then we can access it with an interceptor:
 
-  import {
-  NestInterceptor,
-  ExecutionContext,
-  CallHandler,
-  Injectable,
+import {
+NestInterceptor,
+ExecutionContext,
+CallHandler,
+Injectable,
 } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
-  constructor(private usersService: UsersService) {}
+constructor(private usersService: UsersService) {}
 
-  async intercept(context: ExecutionContext, handler: CallHandler) {
-    const request = context.switchToHttp().getRequest();
+async intercept(context: ExecutionContext, handler: CallHandler) {
+const request = context.switchToHttp().getRequest();
 
     const { userId } = request.session || {};
 
@@ -777,54 +775,89 @@ export class CurrentUserInterceptor implements NestInterceptor {
     }
 
     return handler.handle();
-  }
+
+}
 }
 
 We can hook it up to our controller like this:
 
 ## users.controller.ts
-----
+
+---
+
 @Controller('auth')
 @Serialize(UserDto)
 @UseInterceptors(CurrentUserInterceptor)
 export class UsersController {
-  constructor(
-    private usersService: UsersService,
-    private authService: AuthService,
-  ) {}
+constructor(
+private usersService: UsersService,
+private authService: AuthService,
+) {}
 
-  @Get('/getme')
-  async getMe(@CurrentUser() user: User) {
-    return user;
-  }
-  
-  then we can add the interceptor to the user module:
+@Get('/getme')
+async getMe(@CurrentUser() user: User) {
+return user;
+}
 
-  ## users.module.ts
-  ----
-  @Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  controllers: [UsersController],
-  providers: [UsersService, AuthService, CurrentUserInterceptor],
+then we can add the interceptor to the user module:
+
+## users.module.ts
+
+---
+
+@Module({
+imports: [TypeOrmModule.forFeature([User])],
+controllers: [UsersController],
+providers: [UsersService, AuthService, CurrentUserInterceptor],
 })
 export class UsersModule {}
 
 Alternatively, we can scope the interceptor to the entire users module with the APP_INTERCEPTOR token:
 
 ## users.module.ts
-----
+
+---
+
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  controllers: [UsersController],
-  providers: [
-    UsersService,
-    AuthService,
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CurrentUserInterceptor,
-    },
-  ],
+imports: [TypeOrmModule.forFeature([User])],
+controllers: [UsersController],
+providers: [
+UsersService,
+AuthService,
+{
+provide: APP_INTERCEPTOR,
+useClass: CurrentUserInterceptor,
+},
+],
 })
 export class UsersModule {}
 
 note: If we do it this way, we no longer need to use the @UseInterceptors decorator in the controller.
+
+15- Guards
+
+Guards are used to protect routes. We can use guards to check if a user is logged in, or if a user has admin privileges, etc.
+
+We write a new auth guard:
+
+## auth.guard.ts
+
+import { CanActivate, ExecutionContext } from '@nestjs/common';
+
+export class AuthGuard implements CanActivate {
+canActivate(context: ExecutionContext) {
+const request = context.switchToHttp().getRequest();
+return request.session.userId;
+}
+}
+
+then, with the UseGuards decorator, we can protect routes:
+
+## users.controller.ts
+
+---
+
+@Get('/getme')
+@UseGuards(AuthGuard)
+async getMe(@CurrentUser() user: User) {
+return user;
