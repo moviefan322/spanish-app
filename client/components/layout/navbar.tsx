@@ -14,7 +14,7 @@ function Navbar(): JSX.Element {
           <Link href="#">Home</Link>
         </li>
         <li>
-          <Link href="#">Login</Link>
+          <Link href="/login">Login</Link>
         </li>
         <li>
           <a href="#" role="button">

@@ -1,0 +1,64 @@
+.login {
+  width: 70%;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.login div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  width: 100%;
+  font-weight: 700;
+}
+
+.Link {
+  background-color: var(--green);
+  padding: 1rem;
+  border-radius: 2.5rem;
+  border: 1px solid black;
+  margin: 1rem auto;
+  width: fit-content;
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.1rem;
+  background-color: rgba(157, 255, 0, 0.694);
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  width: 100%;
+  font-weight: 700;
+}
+
+.form input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+  width: 70%;
+  font-weight: 700;
+}
+
+.form button {
+  background-color: var(--green);
+  padding: 0.5rem;
+  border-radius: 2.5rem;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+  width: fit-content;
+  font-weight: 700;
+  font-size: 1.5rem;
+}

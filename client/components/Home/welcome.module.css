@@ -18,9 +18,11 @@
 }
 
 .section p {
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   background: rgb(245, 255, 238);
   border: 1px solid black;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .Link {

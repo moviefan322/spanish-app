@@ -1,12 +1,9 @@
-import Layout from "@/components/layout/layout";
-import Welcome from "@/components/Home/welcome";
+import Welcome from "@/components/home/welcome";
 
 export default function Home() {
   return (
     <>
-      <Layout>
-        <Welcome />
-      </Layout>
+      <Welcome />
     </>
   );
 }
