@@ -21,9 +21,6 @@ export class User {
   @Column()
   username: string;
 
-  @Column({ default: false })
-  isAdmin: boolean;
-
   @AfterInsert()
   logInsert() {
     console.log('Inserted User with id', this.id);
