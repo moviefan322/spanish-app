@@ -3,17 +3,17 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "email": "pooperhead@butters.com",
+    "email": "pooperhead@buttsex.com",
     "password": "password",
     "username" : "poopbutt"
 }
 
 ### Login a user
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-    "email": "pooper@butt.com",
+    "email": "pooperhead@buttsex.com",
     "password": "password",
     "username" : "poopbutt"
 }

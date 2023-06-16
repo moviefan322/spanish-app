@@ -636,11 +636,12 @@ note: the user service is still handling the signup at the end of the day, but w
 
 Then, we can create a signin method to the authservice:
 
-
 ## auth.service.ts
-----
-  async signin(email: string, password: string) {
-    const [user] = await this.usersService.find(email);
+
+---
+
+async signin(email: string, password: string) {
+const [user] = await this.usersService.find(email);
 
     if (!user) {
       throw new NotFoundException('User not found');
@@ -654,6 +655,44 @@ Then, we can create a signin method to the authservice:
       throw new BadRequestException('Invalid password');
     }
 
+    return user;
+
+}
+
+and of course we need to add it to the controller:
+
+## users.controller.ts
+
+---
+
+@Post('/signin')
+async signin(@Body() body: CreateUserDto) {
+return this.authService.signin(body.email, body.password);
+}
+
+
+14 - Cookies
+
+Now we can implement cookies with the nest session decorator. Using the session decorator, we can set a cookie on the client side, and then we can use the session decorator to access the cookie on the server side.
+
+
+users.controller.ts
+----
+  @Post('/signup')
+  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signup(
+      body.email,
+      body.password,
+      body.username,
+    );
+    session.userId = user.id;
+    return user;
+  }
+
+  @Post('/signin')
+  async signin(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signin(body.email, body.password);
+    session.userId = user.id;
     return user;
   }
 
