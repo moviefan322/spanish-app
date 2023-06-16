@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "email": "poophead@butters.com",
+    "email": "pooperhead@butters.com",
     "password": "password",
     "username" : "poopbutt"
 }
@@ -22,13 +22,13 @@ content-type: application/json
 GET http://localhost:3000/auth
 
 ### Get a user by id
-GET http://localhost:3000/auth/10
+GET http://localhost:3000/auth/12
 
 ### Delete a user
 DELETE http://localhost:3000/auth/9
 
 ### Update a user
-PATCH http://localhost:3000/auth/11
+PATCH http://localhost:3000/auth/12
 content-type: application/json
 
 {
