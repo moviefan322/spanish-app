@@ -696,3 +696,16 @@ users.controller.ts
     return user;
   }
 
+Now that we have cookies implemented, we can create a route to retrieve the user from the cookie, as well as a route to sign out the user:
+
+users.controller.ts
+----
+  @Get('/getme')
+  async getMe(@Session() session: any) {
+    return this.usersService.findOne(session.userId);
+  }
+
+  @Post('/signout')
+  async signout(@Session() session: any) {
+    session.userId = null;
+  }
