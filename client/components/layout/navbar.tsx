@@ -11,13 +11,13 @@ function Navbar(): JSX.Element {
       </ul>
       <ul className={styles.links}>
         <li>
-          <Link href="#">Home</Link>
+          <Link href="/">Home</Link>
         </li>
         <li>
           <Link href="/login">Login</Link>
         </li>
         <li>
-          <a href="#" role="button">
+          <a href="/home" role="button">
             Logout
           </a>
         </li>
