@@ -11,12 +11,33 @@ function LoginForm() {
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const enteredEmail = loginEmailInputRef.current?.value;
+    const enteredPassword = loginPasswordInputRef.current?.value;
+
+    const packageData = {
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+
+    const res = await fetch("/auth/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(packageData),
+    });
+
+    console.log(res);
+  };
+
+  const handleRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
     <>
       {isLogin ? (
         <div className={styles.login}>
-          <form onSubmit={handleFormSubmit} className={styles.form}>
+          <form onSubmit={handleLoginSubmit} className={styles.form}>
             <h1>Login</h1>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -50,7 +71,7 @@ function LoginForm() {
         </div>
       ) : (
         <div className={styles.login}>
-          <form onSubmit={handleFormSubmit} className={styles.form}>
+          <form onSubmit={handleRegisterSubmit} className={styles.form}>
             <h1>Register</h1>
             <div className="form-group">
               <label htmlFor="email">Email</label>
