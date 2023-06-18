@@ -4,12 +4,49 @@ import Link from "next/link";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState("");
   const loginEmailInputRef = useRef<HTMLInputElement>(null);
   const loginPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupEmailInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
+
+  const switchModeHandler = () => {
+    setIsLogin((prevState) => !prevState);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    if (loginEmailInputRef && loginEmailInputRef.current) {
+      loginEmailInputRef.current.value = "";
+    }
+
+    if (loginPasswordInputRef && loginPasswordInputRef.current) {
+      loginPasswordInputRef.current.value = "";
+    }
+
+    if (signupEmailInputRef && signupEmailInputRef.current) {
+      signupEmailInputRef.current.value = "";
+    }
+
+    if (signupPasswordInputRef && signupPasswordInputRef.current) {
+      signupPasswordInputRef.current.value = "";
+    }
+
+    if (
+      signupPasswordConfirmInputRef &&
+      signupPasswordConfirmInputRef.current
+    ) {
+      signupPasswordConfirmInputRef.current.value = "";
+    }
+
+    if (usernameInputRef && usernameInputRef.current) {
+      usernameInputRef.current.value = "";
+    }
+
+    setError("");
+  };
 
   const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +58,7 @@ function LoginForm() {
       password: enteredPassword,
     };
 
-    const res = await fetch("/auth/signin", {
+    const res = await fetch("http://localhost:3001/auth/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,10 +66,53 @@ function LoginForm() {
       body: JSON.stringify(packageData),
     });
 
+    if (!res.ok) {
+      const data = await res.json();
+      setError(data.message);
+      return;
+    }
+
+    resetForm();
     console.log(res);
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const enteredEmail = signupEmailInputRef.current?.value;
+    const enteredPassword = signupPasswordInputRef.current?.value;
+    const enteredPasswordConfirm = signupPasswordConfirmInputRef.current?.value;
+    const enteredUsername = usernameInputRef.current?.value;
+
+    if (enteredPassword !== enteredPasswordConfirm) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    const packageData = {
+      email: enteredEmail,
+      password: enteredPassword,
+      username: enteredUsername,
+    };
+
+    const res = await fetch("http://localhost:3001/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(packageData),
+    });
+
+    if (!res.ok) {
+      const data = await res.json();
+      setError(data.message);
+      return;
+    }
+
+    resetForm();
+    console.log(res);
+  };
+
   return (
     <>
       {isLogin ? (
@@ -64,7 +144,7 @@ function LoginForm() {
 
           <div>
             <p>Not Registered?</p>
-            <button onClick={() => setIsLogin(false)} className={styles.Link}>
+            <button onClick={switchModeHandler} className={styles.Link}>
               Click Here To Sign Up
             </button>
           </div>
@@ -110,13 +190,15 @@ function LoginForm() {
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Login
+              Register
             </button>
+
+            {error && <p className={styles.error}>{error}</p>}
           </form>
 
           <div>
             <p>Already Registered?</p>
-            <button onClick={() => setIsLogin(true)} className={styles.Link}>
+            <button onClick={switchModeHandler} className={styles.Link}>
               Click Here To Login
             </button>
           </div>

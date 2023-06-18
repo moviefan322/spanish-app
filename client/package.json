@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@picocss/pico": "^1.5.10",
     "@types/node": "20.3.0",

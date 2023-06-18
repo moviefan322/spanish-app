@@ -15,7 +15,6 @@ content-type: application/json
 {
     "email": "pooperhead@buttsex.com",
     "password": "password",
-    "username" : "poopbutt"
 }
 
 ### Get a user's profile
