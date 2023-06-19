@@ -39,3 +39,9 @@ content-type: application/json
 {
     "email": "poopbutter@fuckman.com"
 }
+
+### Get all lessons
+GET http://localhost:3001/lessons
+
+### Get one lesson
+GET http://localhost:3001/lessons/1
