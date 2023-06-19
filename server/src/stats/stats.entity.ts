@@ -1,12 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity()
 export class Stats {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  userId: number;
 
   @Column()
   lessonId: number;
@@ -16,4 +14,7 @@ export class Stats {
 
   @Column()
   score: number;
+
+  @OneToOne(() => User, (user) => user.stats)
+  user: User;
 }
