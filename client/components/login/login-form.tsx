@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import styles from "./login-form.module.css";
-import Link from "next/link";
+import { useCurrentUser } from "@/context/UserContext";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,6 +11,7 @@ function LoginForm() {
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
+  const { setCurrentUser } = useCurrentUser();
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -73,7 +74,8 @@ function LoginForm() {
     }
 
     resetForm();
-    console.log(res);
+    const user = await res.json();
+    setCurrentUser(user);
   };
 
   const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
