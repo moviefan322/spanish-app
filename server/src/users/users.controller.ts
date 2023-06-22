@@ -30,8 +30,8 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  @Get('/getme')
   @UseGuards(AuthGuard)
+  @Get('/getme')
   async getMe(@CurrentUser() user: User) {
     return user;
   }
@@ -73,11 +73,13 @@ export class UsersController {
     return this.usersService.find(email);
   }
 
+  @UseGuards(AuthGuard)
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
     return this.usersService.remove(parseInt(id));
   }
 
+  @UseGuards(AuthGuard)
   @Patch('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
