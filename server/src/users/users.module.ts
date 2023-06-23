@@ -11,12 +11,12 @@ import { CurrentUserInterceptor } from '../interceptors/current-user.interceptor
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
   providers: [
-    UsersService,
-    AuthService,
     {
       provide: APP_INTERCEPTOR,
       useClass: CurrentUserInterceptor,
     },
+    UsersService,
+    AuthService,
   ],
 })
 export class UsersModule {}

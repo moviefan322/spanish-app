@@ -11,7 +11,9 @@ import { StatsModule } from './stats/stats.module';
 import { User } from './users/user.entity';
 import { Stats } from './stats/stats.entity';
 import { Lesson } from './lessons/lesson.entity';
-const cookieSession = require('cookie-session');
+import * as session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import { Pool } from 'pg';
 
 @Module({
   imports: [
@@ -45,8 +47,10 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(
-        cookieSession({
-          keys: [this.configService.get<string>('COOKIE_KEY')],
+        session({
+          secret: 'my-secret',
+          resave: false,
+          saveUninitialized: false,
         }),
       )
       .forRoutes('*');

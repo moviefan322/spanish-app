@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import styles from "./login-form.module.css";
 import { useCurrentUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
+import User from "@/types/User";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -76,8 +77,9 @@ function LoginForm() {
     }
 
     resetForm();
-    const user = await res.json();
+    const user: User = await res.json();
     setCurrentUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
     router.push("/");
   };
 

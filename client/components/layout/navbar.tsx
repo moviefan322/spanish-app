@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
 import { useCurrentUser } from "@/context/UserContext";
 import styles from "./navbar.module.css";
 import Link from "next/link";
 
 function Navbar(): JSX.Element {
   const { currentUser } = useCurrentUser();
+
+  const logoutButtonHandler = () => {
+    localStorage.removeItem("user");
+  };
 
   console.log(currentUser);
   return (
@@ -20,14 +23,17 @@ function Navbar(): JSX.Element {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href="/login">Login</Link>
-        </li>
-        <li>
-          <a href="/home" role="button">
-            Logout
-          </a>
-        </li>
+        {!currentUser ? (
+          <li>
+            <Link href="/login">Login</Link>
+          </li>
+        ) : (
+          <li>
+            <a href="/" role="button" onClick={logoutButtonHandler}>
+              Logout
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

@@ -21,6 +21,11 @@ import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.entity';
 import { AuthGuard } from 'src/guards/auth.guard';
+import session from 'express-session';
+
+interface CustomSession extends session.Session {
+  userId: number;
+}
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -32,9 +37,9 @@ export class UsersController {
 
   @UseGuards(AuthGuard)
   @Get('/getme')
-  async getMe(@CurrentUser() user: User) {
-    console.log('recieved', user);
-    return user;
+  async getMe(@CurrentUser() user: User, @Session() session: CustomSession) {
+    console.log(session.userId);
+    return session.userId;
   }
 
   @Post('/signout')
@@ -43,7 +48,10 @@ export class UsersController {
   }
 
   @Post('/signup')
-  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+  async createUser(
+    @Body() body: CreateUserDto,
+    @Session() session: CustomSession,
+  ) {
     const user = await this.authService.signup(
       body.email,
       body.password,
@@ -54,7 +62,7 @@ export class UsersController {
   }
 
   @Post('/signin')
-  async signIn(@Body() body: SigninUserDto, @Session() session: any) {
+  async signIn(@Body() body: SigninUserDto, @Session() session: CustomSession) {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
     return user;
