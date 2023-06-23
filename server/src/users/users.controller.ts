@@ -33,6 +33,7 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Get('/getme')
   async getMe(@CurrentUser() user: User) {
+    console.log('recieved', user);
     return user;
   }
 

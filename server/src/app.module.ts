@@ -1,4 +1,7 @@
-import { Module } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { Module, ValidationPipe, MiddlewareConsumer } from '@nestjs/common';
+import { APP_PIPE } from '@nestjs/core';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -8,9 +11,14 @@ import { StatsModule } from './stats/stats.module';
 import { User } from './users/user.entity';
 import { Stats } from './stats/stats.entity';
 import { Lesson } from './lessons/lesson.entity';
+const cookieSession = require('cookie-session');
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV}`,
+    }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
@@ -22,6 +30,25 @@ import { Lesson } from './lessons/lesson.entity';
     StatsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        whitelist: true,
+      }),
+    },
+  ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private configService: ConfigService) {}
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(
+        cookieSession({
+          keys: [this.configService.get<string>('COOKIE_KEY')],
+        }),
+      )
+      .forRoutes('*');
+  }
+}

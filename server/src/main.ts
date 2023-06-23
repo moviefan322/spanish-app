@@ -1,22 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-const cookieSession = require('cookie-session');
+import * as cors from 'cors';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  app.use(
-    cookieSession({
-      keys: ['poop'],
-    }),
-  );
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-    }),
-  );
+  const app = await NestFactory.create(AppModule, { cors: true });
+  app.enableCors({
+    origin: '*',
+    methods: 'GET, PUT, POST, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+  });
+  app.use(cors());
   await app.listen(3001);
 }
 bootstrap();
