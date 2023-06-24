@@ -1,4 +1,5 @@
 {
+  "title": "The Present Tense of Regular Verbs, Irregular Verbs, and Verbs with Speling Changes",
   "lessons": [
     [
       { "type": "title", "text": "Regular Verbs in the Present Tense" },
@@ -133,7 +134,7 @@
               "conversas",
               "necesita"
             ],
-            "type": "conjugate"
+            "type": "conjugate-blank"
           },
           {
             "title": "Practica",
@@ -185,7 +186,7 @@
         "conversas",
         "necesita"
       ],
-      "type": "conjugate"
+      "type": "conjugate-blank"
     },
     {
       "title": "Practica",
@@ -446,7 +447,7 @@
             "haces",
             "salgo"
           ],
-          "type": "conjugate"
+          "type": "conjugate-plain"
         }
       ]
     },
@@ -579,7 +580,7 @@
             "perteneces",
             "conoce"
           ],
-          "type": "conjugate"
+          "type": "conjugate-blank"
         }
       ]
     },
@@ -708,7 +709,7 @@
             "están",
             "van"
           ],
-          "type": "conjugate"
+          "type": "conjugate-blank"
         }
       ]
     },
@@ -831,7 +832,7 @@
             "convenzo",
             "finge"
           ],
-          "type": "conjugate"
+          "type": "conjugate-plain"
         }
       ]
     },

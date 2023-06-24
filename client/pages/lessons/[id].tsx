@@ -26,8 +26,14 @@ function UnitPage({ id }: { id: string }) {
   return (
     <>
       {" "}
-      <h1>Welcome to Unit {id}</h1>
-      <SingleLesson lesson={unit.lessons[currentLesson]} />
+      <h2>
+        Unit {id}: {unit.title}
+      </h2>
+      <br />
+      <SingleLesson
+        lesson={unit.lessons[currentLesson]}
+        setCurrentLesson={setCurrentLesson}
+      />
     </>
   );
 }

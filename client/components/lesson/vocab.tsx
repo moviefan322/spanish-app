@@ -1,7 +1,6 @@
 import React from "react";
 
 function Vocab({ vocab }: any) {
-  console.log(vocab.list);
   return (
     <table>
       <thead>
