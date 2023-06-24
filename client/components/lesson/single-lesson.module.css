@@ -10,6 +10,18 @@
   margin: auto;
 }
 
+.buttonRed {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.694);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: 1px solid black;
+  color: black;
+  margin: auto;
+}
+
 .bottom {
   display: flex;
   justify-content: space-between;

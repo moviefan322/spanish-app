@@ -33,6 +33,7 @@ function UnitPage({ id }: { id: string }) {
       <SingleLesson
         lesson={unit.lessons[currentLesson]}
         setCurrentLesson={setCurrentLesson}
+        currentLesson={currentLesson}
       />
     </>
   );

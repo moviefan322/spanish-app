@@ -4,11 +4,12 @@ import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "./single-lesson.module.css";
 
-function SingleLesson({ lesson, setCurrentLesson }: any) {
+function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
   const [currentExercise, setCurrentExercise] = useState(0);
   const [toggleExercise, setToggleExercise] = useState(false);
   const [exerciseLength, setExerciseLength] = useState(0);
   const [inputValues, setInputValues] = useState<any>([]);
+  const [inputCorrect, setInputCorrect] = useState<any>([]);
 
   useEffect(() => {
     const getExerciseLength = async () => {
@@ -70,17 +71,17 @@ function SingleLesson({ lesson, setCurrentLesson }: any) {
     });
   };
 
+  const exercisesFilter = lesson.filter(
+    (item: any) => item.type === "exercises"
+  );
+  const exercises = exercisesFilter.map((item: any) => item.exercises);
+  const thisExercise = exercises[0][currentExercise];
+  console.log(thisExercise);
+
   const renderExercises = (
     lesson: any,
     currentExercise: number
   ): JSX.Element => {
-    const exercisesFilter = lesson.filter(
-      (item: any) => item.type === "exercises"
-    );
-    const exercises = exercisesFilter.map((item: any) => item.exercises);
-    const thisExercise = exercises[0][currentExercise];
-    console.log(thisExercise);
-
     const formatBlank = (question: string, index: number) => {
       const splitQuestion = question.split("_");
       return (
@@ -96,14 +97,55 @@ function SingleLesson({ lesson, setCurrentLesson }: any) {
       );
     };
 
+    const checkAnswers = () => {
+      inputValues.forEach((inputValue: string, index: number) => {
+        console.log(inputValue, thisExercise.answers[index]);
+        if (inputValue === thisExercise.answers[index]) {
+          setInputValues((prevInputValues: string[]) => {
+            const newInputValues = [...prevInputValues];
+            newInputValues[index] = prevInputValues[index] + " ✔️";
+            return newInputValues;
+          });
+          setInputCorrect((prevInputCorrect: boolean[]) => {
+            const newInputCorrect = [...prevInputCorrect];
+            newInputCorrect[index] = true;
+            return newInputCorrect;
+          });
+        } else {
+          setInputValues((prevInputValues: string[]) => {
+            const newInputValues = [...prevInputValues];
+            newInputValues[index] = prevInputValues[index] + " ❌";
+            return newInputValues;
+          });
+          setInputCorrect((prevInputCorrect: boolean[]) => {
+            const newInputCorrect = [...prevInputCorrect];
+            newInputCorrect[index] = false;
+            return newInputCorrect;
+          });
+        }
+      });
+    };
+
+    console.log(thisExercise);
+    console.log(inputCorrect);
     const renderQuestions = (questions: any) => {
       switch (thisExercise.type) {
         case "conjugate-blank":
-          return thisExercise.questions.map((question: any, index: number) => (
-            <li key={index}>
-              {index + 1}. {formatBlank(question, index)}
-            </li>
-          ));
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <>
+                  <li key={index}>
+                    {index + 1}. {formatBlank(question, index)}
+                  </li>
+                  <br />
+                </>
+              ))}
+              <button className={styles.buttonRed} onClick={checkAnswers}>
+                Check Answers
+              </button>
+            </>
+          );
         default:
           return <p>INVALID TYPE</p>;
       }
@@ -112,7 +154,9 @@ function SingleLesson({ lesson, setCurrentLesson }: any) {
     return (
       <>
         <h4>{thisExercise.title}</h4>
+        <br />
         {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
+        <br />
         <ol>{renderQuestions(thisExercise.questions)}</ol>
       </>
     );
@@ -146,7 +190,7 @@ function SingleLesson({ lesson, setCurrentLesson }: any) {
     // setCurrentLesson((prevCurrentLesson: number) => prevCurrentLesson + 1);
   };
 
-  console.log(inputValues);
+  console.log(inputValues, thisExercise.answers);
 
   return (
     <>
