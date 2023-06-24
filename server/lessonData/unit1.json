@@ -4,7 +4,10 @@
       { "type": "title", "text": "Regular Verbs in the Present Tense" },
       {
         "type": "grammar",
-        "text": "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject. The following verbs can be used as models for all regular verbs in the present tense."
+        "text": [
+          "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject.",
+          "The following verbs can be used as models for all regular verbs in the present tense."
+        ]
       },
       {
         "type": "chart",
@@ -57,50 +60,50 @@
         "vocabulary": [
           {
             "title": "Verbs ending in -ar",
-            "list": {
-              "bajar": "to go down",
-              "cocinar": "to cook",
-              "comprar": "to buy",
-              "conversar": "to converse",
-              "cooperar": "to cooperate",
-              "dibujar": "to draw",
-              "escuchar": "to listen",
-              "limpiar": "to clean",
-              "preparar": "to prepare",
-              "sacar": "to take out",
-              "sumar": "to add",
-              "trabajar": "to work"
-            }
+            "list": [
+              { "bajar": "to go down" },
+              { "cocinar": "to cook" },
+              { "comprar": "to buy" },
+              { "conversar": "to converse" },
+              { "cooperar": "to cooperate" },
+              { "dibujar": "to draw" },
+              { "escuchar": "to listen" },
+              { "limpiar": "to clean" },
+              { "preparar": "to prepare" },
+              { "sacar": "to take out" },
+              { "sumar": "to add" },
+              { "trabajar": "to work" }
+            ]
           },
           {
             "title": "Verbs ending in -er",
-            "list": {
-              "beber": "to drink",
-              "comer": "to eat",
-              "comprender": "to understand",
-              "correr": "to run",
-              "creer": "to believe",
-              "leer": "to read",
-              "responder": "to respond",
-              "romper": "to break",
-              "temer": "to fear",
-              "vender": "to sell"
-            }
+            "list": [
+              { "beber": "to drink" },
+              { "comer": "to eat" },
+              { "comprender": "to understand" },
+              { "correr": "to run" },
+              { "creer": "to believe" },
+              { "leer": "to read" },
+              { "responder": "to respond" },
+              { "romper": "to break" },
+              { "temer": "to fear" },
+              { "vender": "to sell" }
+            ]
           },
           {
             "title": "Verbs ending in -ir",
-            "list": {
-              "abrir": "to open",
-              "compartir": "to share",
-              "cubrir": "to cover",
-              "decidir": "to decide",
-              "discutir": "to discuss",
-              "escribir": "to write",
-              "repartir": "to distribute",
-              "subir": "to go up",
-              "sufrir": "to suffer",
-              "vivir": "to live"
-            }
+            "list": [
+              { "abrir": "to open" },
+              { "compartir": "to share" },
+              { "cubrir": "to cover" },
+              { "decidir": "to decide" },
+              { "discutir": "to discuss" },
+              { "escribir": "to write" },
+              { "repartir": "to distribute" },
+              { "subir": "to go up" },
+              { "sufrir": "to suffer" },
+              { "vivir": "to live" }
+            ]
           }
         ]
       },

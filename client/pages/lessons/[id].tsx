@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SingleLesson from "@/components/lesson/single-lesson";
 
 function UnitPage({ id }: { id: string }) {
   const [unit, setUnit] = useState<any>(null);
@@ -26,7 +27,7 @@ function UnitPage({ id }: { id: string }) {
     <>
       {" "}
       <h1>Welcome to Unit {id}</h1>
-      <h2>{unit.lessons[currentLesson][0].text}</h2>
+      <SingleLesson lesson={unit.lessons[currentLesson]} />
     </>
   );
 }
