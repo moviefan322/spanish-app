@@ -20,15 +20,13 @@ function UnitPage({ id }: { id: string }) {
     return <div>Loading...</div>;
   }
 
-  console.log(unit.lessons[0].title);
-
-  // console.log("unit", unit.lessons[currentLesson].title);
+  console.log(unit.lessons[0]);
 
   return (
     <>
       {" "}
       <h1>Welcome to Unit {id}</h1>
-      <h2>{unit.lessons[currentLesson].title}</h2>
+      <h2>{unit.lessons[currentLesson][0].text}</h2>
     </>
   );
 }
