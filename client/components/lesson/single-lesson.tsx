@@ -10,6 +10,8 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
   const [exerciseLength, setExerciseLength] = useState(0);
   const [inputValues, setInputValues] = useState<any>([]);
   const [inputCorrect, setInputCorrect] = useState<any>([]);
+  const [answerStyle, setAnswerStyle] = useState<any>([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const getExerciseLength = async () => {
@@ -21,6 +23,17 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
     };
     getExerciseLength();
   }, []);
+
+  useEffect(() => {
+    const renderScore = () => {
+      const correctAnswers = inputCorrect.filter(
+        (item: boolean) => item === true
+      );
+      const score = (correctAnswers.length / inputCorrect.length) * 100;
+      setScore(score);
+    };
+    renderScore();
+  }, [inputCorrect]);
 
   const handleInputChange = (index: number, value: string) => {
     setInputValues((prevInputValues: string[]) => {
@@ -91,6 +104,7 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
             type="text"
             value={inputValues[index]}
             onChange={(e) => handleInputChange(index, e.target.value)}
+            style={{ border: answerStyle[index] }}
           />
           {" " + splitQuestion[1]}
         </>
@@ -100,11 +114,11 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
     const checkAnswers = () => {
       inputValues.forEach((inputValue: string, index: number) => {
         console.log(inputValue, thisExercise.answers[index]);
-        if (inputValue === thisExercise.answers[index]) {
-          setInputValues((prevInputValues: string[]) => {
-            const newInputValues = [...prevInputValues];
-            newInputValues[index] = prevInputValues[index] + " ✔️";
-            return newInputValues;
+        if (inputValue === thisExercise.answers[index].trim()) {
+          setAnswerStyle((prevAnswerStyle: string[]) => {
+            const newAnswerStyle = [...prevAnswerStyle];
+            newAnswerStyle[index] = "2px solid green";
+            return newAnswerStyle;
           });
           setInputCorrect((prevInputCorrect: boolean[]) => {
             const newInputCorrect = [...prevInputCorrect];
@@ -112,10 +126,10 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
             return newInputCorrect;
           });
         } else {
-          setInputValues((prevInputValues: string[]) => {
-            const newInputValues = [...prevInputValues];
-            newInputValues[index] = prevInputValues[index] + " ❌";
-            return newInputValues;
+          setAnswerStyle((prevAnswerStyle: string[]) => {
+            const newAnswerStyle = [...prevAnswerStyle];
+            newAnswerStyle[index] = "2px solid red";
+            return newAnswerStyle;
           });
           setInputCorrect((prevInputCorrect: boolean[]) => {
             const newInputCorrect = [...prevInputCorrect];
@@ -126,8 +140,6 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
       });
     };
 
-    console.log(thisExercise);
-    console.log(inputCorrect);
     const renderQuestions = (questions: any) => {
       switch (thisExercise.type) {
         case "conjugate-blank":
@@ -144,6 +156,7 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
               <button className={styles.buttonRed} onClick={checkAnswers}>
                 Check Answers
               </button>
+              {score > -1 && <p>Your Score: {score}%</p>}
             </>
           );
         default:
@@ -163,7 +176,6 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
   };
 
   const handleExerciseToggle = () => {
-    console.log(currentExercise);
     setToggleExercise((prevToggleExercise) => !prevToggleExercise);
   };
 
@@ -189,8 +201,6 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
     }
     // setCurrentLesson((prevCurrentLesson: number) => prevCurrentLesson + 1);
   };
-
-  console.log(inputValues, thisExercise.answers);
 
   return (
     <>
