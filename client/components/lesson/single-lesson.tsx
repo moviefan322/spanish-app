@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Chart from "./chart";
 import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "./single-lesson.module.css";
 
-function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
+function SingleLesson({ lesson = [], nextLesson, unit }: any) {
   const [currentExercise, setCurrentExercise] = useState(0);
   const [toggleExercise, setToggleExercise] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [exerciseLength, setExerciseLength] = useState(0);
   const [inputValues, setInputValues] = useState<any>([]);
   const [inputCorrect, setInputCorrect] = useState<any>([]);
   const [answerStyle, setAnswerStyle] = useState<any>([]);
   const [score, setScore] = useState(0);
+  const [thisExercise, setThisExercise] = useState<any>(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setLoading(true);
+    const exercisesFilter = lesson.filter(
+      (item: any) => item.type === "exercises"
+    );
+    const exercises = exercisesFilter.map((item: any) => item.exercises);
+    setThisExercise(exercises[0][currentExercise]);
+    setLoading(false);
+  }, [currentExercise, nextLesson]);
 
   useEffect(() => {
     const getExerciseLength = async () => {
@@ -29,11 +44,19 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
       const correctAnswers = inputCorrect.filter(
         (item: boolean) => item === true
       );
-      const score = (correctAnswers.length / inputCorrect.length) * 100;
+      const score = Math.floor(
+        (correctAnswers.length / inputCorrect.length) * 100
+      );
       setScore(score);
     };
     renderScore();
   }, [inputCorrect]);
+
+  const resetInputState = () => {
+    setInputValues([]);
+    setInputCorrect([]);
+    setAnswerStyle([]);
+  };
 
   const handleInputChange = (index: number, value: string) => {
     setInputValues((prevInputValues: string[]) => {
@@ -83,13 +106,6 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
       }
     });
   };
-
-  const exercisesFilter = lesson.filter(
-    (item: any) => item.type === "exercises"
-  );
-  const exercises = exercisesFilter.map((item: any) => item.exercises);
-  const thisExercise = exercises[0][currentExercise];
-  console.log(thisExercise);
 
   const renderExercises = (
     lesson: any,
@@ -159,6 +175,28 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
               {score > -1 && <p>Your Score: {score}%</p>}
             </>
           );
+        case "translate":
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <>
+                  <li key={index}>
+                    {index + 1}. {question}
+                  </li>
+                  <textarea
+                    value={inputValues[index]}
+                    onChange={(e) => handleInputChange(index, e.target.value)}
+                    style={{ border: answerStyle[index] }}
+                  />
+                  <br />
+                </>
+              ))}
+              <button className={styles.buttonRed} onClick={checkAnswers}>
+                Check Answers
+              </button>
+              {score > -1 && <p>Your Score: {score}%</p>}
+            </>
+          );
         default:
           return <p>INVALID TYPE</p>;
       }
@@ -181,10 +219,12 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
 
   const incrementExercise = () => {
     setCurrentExercise((prevCurrentExercise) => prevCurrentExercise + 1);
+    resetInputState();
   };
 
   const decrementExercise = () => {
     setCurrentExercise((prevCurrentExercise) => prevCurrentExercise - 1);
+    resetInputState();
   };
 
   const returnButtonHandler = () => {
@@ -197,10 +237,16 @@ function SingleLesson({ lesson, setCurrentLesson, currentLesson }: any) {
 
   const nextButtonHandler = () => {
     if (currentExercise < exerciseLength - 1) {
-      incrementExercise();
+      return incrementExercise();
     }
-    // setCurrentLesson((prevCurrentLesson: number) => prevCurrentLesson + 1);
+    setToggleExercise((prevToggleExercise) => !prevToggleExercise);
+    router.push(`/lessons/${unit}-${nextLesson + 1}`);
+    console.log(`/lessons/${unit}-${nextLesson}`);
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>

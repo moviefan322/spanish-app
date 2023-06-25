@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SingleLesson from "@/components/lesson/single-lesson";
 
-function UnitPage({ id }: { id: string }) {
+function UnitPage({ id, lesson }: { id: string; lesson: string }) {
   const [unit, setUnit] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [currentLesson, setCurrentLesson] = useState<any>(0);
 
   useEffect(() => {
     const fetchUnit = async () => {
@@ -31,19 +30,23 @@ function UnitPage({ id }: { id: string }) {
       </h2>
       <br />
       <SingleLesson
-        lesson={unit.lessons[currentLesson]}
-        setCurrentLesson={setCurrentLesson}
-        currentLesson={currentLesson}
+        lesson={unit.lessons[lesson]}
+        unit={id}
+        nextLesson={lesson + 1}
       />
     </>
   );
 }
 
 export async function getServerSideProps(ctx: any) {
-  const { id } = ctx.query;
+  const { slug } = ctx.query;
+  const slugArray = slug.split("-");
+  const id = slugArray[0];
+  const lesson = slugArray[1] - 1;
   return {
     props: {
       id,
+      lesson,
     },
   };
 }
