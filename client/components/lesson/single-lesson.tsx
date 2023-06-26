@@ -257,7 +257,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                   {question}
                   <br />
                   {!revealAnswers ? (
-                    <>
+                    <React.Fragment key={`frag${index}`}>
                       {" "}
                       <input
                         type="radio"
@@ -278,7 +278,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                         onChange={() => handleInputChange(index, "F")}
                       />
                       <label htmlFor={`false${index}`}>Falso</label>
-                    </>
+                    </React.Fragment>
                   ) : (
                     <span>
                       <strong>{thisExercise.answers[index]}</strong>
@@ -443,7 +443,10 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
 
   const nextButtonHandler = () => {
     console.log(nextLesson, lessonCount);
-    if (nextLesson + 1 > lessonCount) {
+    if (
+      nextLesson + 1 > lessonCount &&
+      currentExercise === exerciseLength - 1
+    ) {
       return router.push(`/`);
     }
     if (currentExercise < exerciseLength - 1) {
