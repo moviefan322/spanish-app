@@ -227,6 +227,36 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
               ))}
             </>
           );
+        case "true-false":
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <li key={index}>
+                  {question}
+                  <br />
+                  <input
+                    type="radio"
+                    id={`true${index}`}
+                    name={`answer${index}`}
+                    value="V"
+                    checked={inputValues[index] === "true"}
+                    onChange={() => handleInputChange(index, "true")}
+                  />
+                  <label htmlFor={`true${index}`}>Verdadero</label>
+                  <input
+                    type="radio"
+                    id={`false${index}`}
+                    name={`answer${index}`}
+                    value="F"
+                    checked={inputValues[index] === "false"}
+                    onChange={() => handleInputChange(index, "false")}
+                  />
+                  <label htmlFor={`false${index}`}>Falso</label>
+                  <br />
+                </li>
+              ))}
+            </>
+          );
         case "open-ended-TF":
           return (
             <>
@@ -343,8 +373,10 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     if (currentExercise < exerciseLength - 1) {
       return incrementExercise();
     }
-    setToggleExercise((prevToggleExercise) => !prevToggleExercise);
-    router.push(`/lessons/${unit}-${nextLesson + 1}`);
+    if (currentExercise === exerciseLength - 1) {
+      setToggleExercise((prevToggleExercise) => !prevToggleExercise);
+      router.push(`/lessons/${unit}-${nextLesson + 1}`);
+    }
   };
 
   if (loading) {

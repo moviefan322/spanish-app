@@ -299,102 +299,137 @@
         ]
       }
     ],
-    {
-      "title": "Other uses of the present tense",
-      "grammar": {
-        "text": [
-          "Cinco mas quince son veinte (Five plus fifteen is twenty.)",
-          "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)",
-          "Si llega el tren, salimos (If the train arrives, we leave.)",
-          "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
+    [
+      {
+        "type": "title",
+        "text": "Other uses of the present tense"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "-to tell facts considered unquestionable or universal truths:"
+            ],
+            "examples": [
+              "Cinco mas quince son veinte (Five plus fifteen is twenty.)"
+            ]
+          },
+          {
+            "text": [
+              "-to describe a past event, making it more vivid (historial present:"
+            ],
+            "examples": [
+              "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)"
+            ]
+          },
+          {
+            "text": [
+              "-to express future actions that are part of a schedule or itinerary:"
+            ],
+            "examples": ["El tren sale a las ocho (The train leaves at eight.)"]
+          },
+          {
+            "text": ["to express hypothetical actions introduced by si."],
+            "examples": [
+              "Si llega el tren, salimos (If the train arrives, we leave.)"
+            ]
+          },
+          {
+            "text": [
+              "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
+            ],
+            "examples": [
+              "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
+            ]
+          }
         ]
       },
-      "notes": [
-        "to tell facts considered unquestionable or universal truths.",
-        "to describe a past event, making it more vivid (historial present)",
-        "to express hypothetical actions introduced by si.",
-        "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
-      ],
-      "exercises": [
-        {
-          "title": "Un poco de historia",
-          "instructions": "¿Verdadero o falso?",
-          "questions": [
-            "Napoleón invade España en el siglo XIX.",
-            "La mujer vota por primera vez en los Estados Unidos en 1929.",
-            "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
-            "Colon visita la Florida en 1495.",
-            "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
-          ],
-          "answers": ["V", "F", "V", "F", "V"],
-          "type": "true-false"
-        }
-      ]
-    },
-    {
-      "title": "One More Use of the Present tense",
-      "grammar": {
-        "text": [
-          "to express actions that began in the past and continue in the present (hace + time expression + que + verb)",
-          "or: (verb + hace + time expression)",
-          "or: (verb + desde hace + time expression)",
-          "Examine the following constructions of the same question:"
-        ],
-        "example": [
-          "Hace tres años que esperamos una respuesta (We have been waiting for an answer for three years.)",
-          "Esperamos una respuesta hace tres anõs (We have been waiting for an answer for three years.)",
-          "Esperamos una respuesta desde hace tres años (We have been waiting for an answer for three years.)",
-          "Cuanto tiempo hace que observas las estrellas?",
-          "Desde hace cuanto tiempo observas las estrellas?",
-          "Desde cuando observas las estrellas?"
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "Un poco de historia",
+            "instructions": "¿Verdadero o falso?",
+            "questions": [
+              "Napoleón invade España en el siglo XIX.",
+              "La mujer vota por primera vez en los Estados Unidos en 1929.",
+              "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
+              "Colon visita la Florida en 1495.",
+              "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
+            ],
+            "answers": ["true", "false", "true", "false", "true"],
+            "type": "true-false"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "title",
+        "text": "Other uses of the present tense"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "-to tell facts considered unquestionable or universal truths:"
+            ],
+            "examples": [
+              "Cinco mas quince son veinte (Five plus fifteen is twenty.)"
+            ]
+          },
+          {
+            "text": [
+              "-to describe a past event, making it more vivid (historial present:"
+            ],
+            "examples": [
+              "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)"
+            ]
+          },
+          {
+            "text": [
+              "-to express future actions that are part of a schedule or itinerary:"
+            ],
+            "examples": ["El tren sale a las ocho (The train leaves at eight.)"]
+          },
+          {
+            "text": ["to express hypothetical actions introduced by si."],
+            "examples": [
+              "Si llega el tren, salimos (If the train arrives, we leave.)"
+            ]
+          },
+          {
+            "text": [
+              "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
+            ],
+            "examples": [
+              "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
+            ]
+          }
         ]
       },
-      "exercises": [
-        {
-          "title": "En español",
-          "instructions": "Responde a las preguntas",
-          "questions": [
-            "¿Cuanto tiempo hace que estudias español?",
-            "¿Desde hace cuanto tiempo usas la computadora?",
-            "¿Cuantos años hace que los Estados Unidos son una nación independiente?",
-            "¿Cuanto tiempo hace que usamos la Internet?",
-            "¿Desde cuando escuchas musica clasica?"
-          ],
-          "answers": [
-            "Hace...que estudio",
-            "Uso la computadora desde hace...",
-            "Hace...años que los Estados Unidos son una nación independiente",
-            "Usamos la Internet desde hace...",
-            "Escucho música clásica desde hace..."
-          ],
-          "type": "short-answer"
-        },
-        {
-          "title": "Tu propia experiencia",
-          "instructions": "En español, completa la oración con tu información personal.",
-          "questions": [
-            "Hace una semana que ",
-            "Desde hace un año ",
-            "Hace diez dias ",
-            "Desde hace un ano, no ",
-            "Hace tres meses"
-          ],
-          "type": "open-ended"
-        },
-        {
-          "title": "¿Verdadero o falso?",
-          "questions": [
-            "Hace un siglo (century) que usamos la Internet",
-            "Los médicos usan la penicilina para curar las infecciones desde hace diez años.",
-            "Desde hace unos cincuenta años, los norteamericanos ven a Lucy en la tele.",
-            "Hace mas de doscientos años que los Estados Unidos son independientes.",
-            "Desde hace casi un siglo, los hombres conducen automoviles."
-          ],
-          "answers": ["F", "F", "V", "V", "V"],
-          "type": "true-false"
-        }
-      ]
-    },
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "Un poco de historia",
+            "instructions": "¿Verdadero o falso?",
+            "questions": [
+              "Napoleón invade España en el siglo XIX.",
+              "La mujer vota por primera vez en los Estados Unidos en 1929.",
+              "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
+              "Colon visita la Florida en 1495.",
+              "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
+            ],
+            "answers": ["V", "F", "V", "F", "V"],
+            "type": "true-false"
+          }
+        ]
+      }
+    ],
+
     {
       "title": "Irregular Verbs in the Present Tense",
       "grammar": {
@@ -412,8 +447,8 @@
           "ver (to see) => veo"
         ]
       },
-      "notes": [
-        " Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
+      "text": [
+        "Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
         "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
         "Because they follow different patterns, they are considered irregular verbs.",
         "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns.",
