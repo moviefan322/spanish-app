@@ -131,6 +131,10 @@
   margin: 0.5rem;
 }
 
+.exercises li {
+  line-height: 2rem;
+}
+
 .exercises input {
   border: black solid 2px;
 }

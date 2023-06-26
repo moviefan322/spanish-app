@@ -254,6 +254,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                     onChange={() => handleInputChange(index, "true")}
                   />
                   <label htmlFor={`true${index}`}>Verdadero</label>
+                  <br />
                   <input
                     type="radio"
                     id={`false${index}`}
@@ -285,6 +286,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                     onChange={() => handleInputChange(index, "true")}
                   />
                   <label htmlFor={`true${index}`}>Verdadero</label>
+                  <br />
                   <input
                     type="radio"
                     id={`false${index}`}
