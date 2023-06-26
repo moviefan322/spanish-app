@@ -9,11 +9,13 @@ function Chart({ chart }: any) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {chart.chart.map((item: any, index: number) => {
-            return <td key={index}>{item}</td>
-          })}
-        </tr>
+        {chart.chart.map((item: any, index: number) => {
+          return (
+            <tr key={index}>
+              <td key={index}>{item}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

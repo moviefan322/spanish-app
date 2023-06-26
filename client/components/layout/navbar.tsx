@@ -15,7 +15,7 @@ function Navbar(): JSX.Element {
     <nav className={styles.navbar}>
       <ul>
         <li>
-          <strong>Spanish Grammar</strong>
+          <strong>Españolified</strong>
         </li>
       </ul>
       {currentUser && <p>Greetings, {currentUser.username}!</p>}

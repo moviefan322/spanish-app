@@ -14,6 +14,8 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
   const [inputCorrect, setInputCorrect] = useState<any>([]);
   const [answerStyle, setAnswerStyle] = useState<any>([]);
   const [score, setScore] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [revealAnswers, setRevealAnswers] = useState(false);
   const [thisExercise, setThisExercise] = useState<any>(null);
 
   const router = useRouter();
@@ -56,6 +58,8 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     setInputValues([]);
     setInputCorrect([]);
     setAnswerStyle([]);
+    setSubmitted(false);
+    setRevealAnswers(false);
   };
 
   const handleInputChange = (index: number, value: string) => {
@@ -78,14 +82,34 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
         case "grammar":
           return (
             <div key={index}>
-              {item.text.map((textItem: string, textIndex: number) => (
-                <p key={textIndex}>{textItem}</p>
-              ))}
+              {item.grammar.map(
+                (
+                  textItem: { text: string[]; examples: string[] },
+                  textIndex: number
+                ) => (
+                  <div key={textIndex}>
+                    {textItem.text.map(
+                      (paragraph: string, paragraphIndex: number) => (
+                        <p key={paragraphIndex}>{paragraph}</p>
+                      )
+                    )}
+                    {textItem.examples.length > 0 && (
+                      <ul>
+                        {textItem.examples.map(
+                          (example: string, exampleIndex: number) => (
+                            <li key={exampleIndex}>{example}</li>
+                          )
+                        )}
+                      </ul>
+                    )}
+                  </div>
+                )
+              )}
             </div>
           );
         case "chart":
           return (
-            <div key={index}>
+            <div key={index} className={styles.chartContainer}>
               {item.chart.map((chartItem: any, chartIndex: number) => (
                 <Chart key={chartIndex} chart={chartItem} />
               ))}
@@ -107,27 +131,31 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     });
   };
 
-  const renderExercises = (
-    lesson: any,
-    currentExercise: number
-  ): JSX.Element => {
+  const renderExercises = (lesson: any, currentExercise: number) => {
     const formatBlank = (question: string, index: number) => {
       const splitQuestion = question.split("_");
       return (
         <>
           {splitQuestion[0] + " "}
-          <input
-            type="text"
-            value={inputValues[index]}
-            onChange={(e) => handleInputChange(index, e.target.value)}
-            style={{ border: answerStyle[index] }}
-          />
+          {!revealAnswers ? (
+            <input
+              type="text"
+              value={inputValues[index]}
+              onChange={(e) => handleInputChange(index, e.target.value)}
+              style={{ border: answerStyle[index] }}
+            />
+          ) : (
+            <span>
+              <strong>{thisExercise.answers[index]}</strong>
+            </span>
+          )}
           {" " + splitQuestion[1]}
         </>
       );
     };
 
     const checkAnswers = () => {
+      setSubmitted(true);
       inputValues.forEach((inputValue: string, index: number) => {
         console.log(inputValue, thisExercise.answers[index]);
         if (inputValue === thisExercise.answers[index].trim()) {
@@ -156,6 +184,10 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
       });
     };
 
+    const revealAnswersHandler = () => {
+      setRevealAnswers(true);
+    };
+
     const renderQuestions = (questions: any) => {
       switch (thisExercise.type) {
         case "conjugate-blank":
@@ -163,15 +195,34 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
             <>
               {thisExercise.questions.map((question: any, index: number) => (
                 <>
-                  <li key={index}>
-                    {index + 1}. {formatBlank(question, index)}
-                  </li>
+                  <li key={index}>{formatBlank(question, index)}</li>
+                  <hr />
                   <br />
                 </>
               ))}
-              <button className={styles.buttonRed} onClick={checkAnswers}>
-                Check Answers
-              </button>
+
+              {!submitted && !revealAnswers && (
+                <button className={styles.buttonRed} onClick={checkAnswers}>
+                  Check Answers
+                </button>
+              )}
+              {submitted && !revealAnswers && (
+                <button
+                  className={styles.buttonGray}
+                  onClick={revealAnswersHandler}
+                >
+                  Reveal Answers
+                </button>
+              )}
+              {submitted && revealAnswers && (
+                <button
+                  className={styles.buttonGreen}
+                  onClick={resetInputState}
+                >
+                  Try Again?
+                </button>
+              )}
+
               {score > -1 && <p>Your Score: {score}%</p>}
             </>
           );
@@ -180,9 +231,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
             <>
               {thisExercise.questions.map((question: any, index: number) => (
                 <>
-                  <li key={index}>
-                    {index + 1}. {question}
-                  </li>
+                  <li key={index}>{question}</li>
                   <textarea
                     value={inputValues[index]}
                     onChange={(e) => handleInputChange(index, e.target.value)}
@@ -229,8 +278,10 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
 
   const returnButtonHandler = () => {
     if (currentExercise === 0) {
+      resetInputState();
       handleExerciseToggle();
     } else {
+      resetInputState();
       decrementExercise();
     }
   };
@@ -260,7 +311,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
   return (
     <>
       {!toggleExercise && (
-        <>
+        <div className={styles.lesson}>
           {renderLesson(lesson)}
           <div className={styles.bottom}>
             <button
@@ -275,10 +326,10 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
               <FaArrowRight />
             </button>
           </div>
-        </>
+        </div>
       )}
       {toggleExercise && (
-        <>
+        <div className={styles.exercises}>
           {" "}
           {renderExercises(lesson, currentExercise)}
           <div className={styles.bottom}>
@@ -291,7 +342,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
               <FaArrowRight />
             </button>
           </div>
-        </>
+        </div>
       )}
     </>
   );

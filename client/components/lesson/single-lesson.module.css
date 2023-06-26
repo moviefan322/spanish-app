@@ -22,9 +22,102 @@
   margin: auto;
 }
 
+.buttonGray {
+  display: flex;
+  align-items: center;
+  background-color: rgba(201, 201, 201, 0.694);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: 1px solid black;
+  color: black;
+  margin: auto;
+}
+
+.buttonGreen {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 255, 8, 0.694);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: 1px solid black;
+  color: black;
+  margin: auto;
+}
+
 .bottom {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   margin: 1rem 0;
+  width: 100%;
+}
+
+.lesson {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.lesson p {
+  background-color: rgba(255, 255, 255, 0.841);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.lesson h3 {
+  border-bottom: black solid 2px;
+}
+
+.lesson table {
+  border: black solid 2px;
+  background-color: rgb(245, 255, 238);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.lesson li {
+  margin: 0rem 0 1rem 0;
+  text-align: left;
+}
+
+.lesson table thead {
+  border-bottom: black solid 2px;
+}
+
+.lesson table td {
+  padding: 0.3rem 0.2rem;
+}
+
+.chartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+.exercises ol {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+.exercises li {
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  margin: 0.5rem auto;
 }

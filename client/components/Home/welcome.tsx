@@ -11,7 +11,7 @@ function Welcome() {
           learning application of choice.
         </p>
       </section>
-      <Link href="/" className={styles.Link}>
+      <Link href="/lessons/1-1" className={styles.Link}>
         Let&apos;s get Started!
       </Link>
     </article>

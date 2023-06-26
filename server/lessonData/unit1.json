@@ -5,9 +5,14 @@
       { "type": "title", "text": "Regular Verbs in the Present Tense" },
       {
         "type": "grammar",
-        "text": [
-          "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject.",
-          "The following verbs can be used as models for all regular verbs in the present tense."
+        "grammar": [
+          {
+            "text": [
+              "To form the present tense, drop the -ar, -er, or -ir from the root (or radical) of the inﬁnitive, and add the ending that corresponds to the subject.",
+              "The following verbs can be used as models for all regular verbs in the present tense."
+            ],
+            "examples": []
+          }
         ]
       },
       {
@@ -50,10 +55,15 @@
       },
       {
         "type": "grammar",
-        "text": [
-          "the first-person singular yo has the same ending in all three conjugations.",
-          "in the -er and -ir verb categories all three third-person singular forms have the same endings.",
-          "subject pronouns are usually omitted in Spanish unless they are needed for clarification or emphasis."
+        "grammar": [
+          {
+            "text": [
+              "The first-person singular yo has the same ending in all three conjugations.",
+              "In the -er and -ir verb categories all three third-person singular forms have the same endings.",
+              "Subject pronouns are usually omitted in Spanish unless they are needed for clarification or emphasis."
+            ],
+            "examples": []
+          }
         ]
       },
       {
@@ -167,20 +177,47 @@
       { "type": "title", "text": "When is present tense used?" },
       {
         "type": "grammar",
-        "text": [
-          "to describe an action happening now. Often, it is translated with the -ing form in English:",
-          "Ahora, veo a Anna (Now I see Anna)",
-          "Louis llega a la puerta (Louis is arriving at the gate)",
-          "to express actions that take place regularly:",
-          " Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)",
-          "to describe events that will take place in the near future:",
-          "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
-          "Este verano, viajo a Alemania (This summer I am traveling to Germany)",
-          "to ask questions, especially regarding permission, opinion, or preference:",
-          "¿Bebes café o tê? (Do you drink coffee or tea?)",
-          "¿Abro la puerta? (Shall I open the door?)",
-          "¿Compramos la casa? (Shall we buy the house?)",
-          "Keep in mind the auxiliary verb do in English is not translated. In Spanish, an auxiliary verb is not needed to ask a question."
+        "grammar": [
+          {
+            "text": [
+              "-to describe an action happening now. Often, it is translated with the -ing form in English:"
+            ],
+            "examples": [
+              "Ahora, veo a Anna (Now I see Anna)",
+              "Louis llega a la puerta (Louis is arriving at the gate)"
+            ]
+          },
+          {
+            "text": ["-to express actions that take place regularly:"],
+            "examples": [
+              "Normalmente, compro las frutas en el supermercado (Usually I buyfruit at the supermarket)"
+            ]
+          },
+          {
+            "text": [
+              "-to describe events that will take place in the near future:"
+            ],
+            "examples": [
+              "Mañana discuto el plan con ustedes en la reunion (Tomorrow I will discuss the plan at the meeting)",
+              "Este verano, viajo a Alemania (This summer I am traveling to Germany)"
+            ]
+          },
+          {
+            "text": [
+              "-to ask questions, especially regarding permission, opinion, or preference:"
+            ],
+            "examples": [
+              "¿Bebes café o tê? (Do you drink coffee or tea?)",
+              "¿Abro la puerta? (Shall I open the door?)",
+              "¿Compramos la casa? (Shall we buy the house?)"
+            ]
+          },
+          {
+            "text": [
+              "Keep in mind the auxiliary verb do in English is not translated. In Spanish, an auxiliary verb is not needed to ask a question."
+            ],
+            "examples": []
+          }
         ]
       },
       {
