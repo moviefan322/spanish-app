@@ -430,66 +430,89 @@
       }
     ],
 
-    {
-      "title": "Irregular Verbs in the Present Tense",
-      "grammar": {
-        "chart": [
-          "caber (to fit) => quepo",
-          "cae (to fall => caigo",
-          "dar (to give) => doy",
-          "estar (to be) => estoy",
-          "hacer (to do) => hago",
-          "poner (to put) => pongo",
-          "saber (to know) => sé",
-          "salir (to leave) => salgo",
-          "traer (to bring) => traigo",
-          "valer (to be worth) => valgo",
-          "ver (to see) => veo"
+    [
+      { "type": "title", "text": "Irregular Verbs in the Present Tense" },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
+              "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
+              "Because they follow different patterns, they are considered irregular verbs.",
+              "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns.",
+              "The following verbs are irregular in first-person only:"
+            ],
+            "examples": []
+          },
+          {
+            "chart": [
+              "caber (to fit) => quepo",
+              "cae (to fall => caigo",
+              "dar (to give) => doy",
+              "estar (to be) => estoy",
+              "hacer (to do) => hago",
+              "poner (to put) => pongo",
+              "saber (to know) => sé",
+              "salir (to leave) => salgo",
+              "traer (to bring) => traigo",
+              "valer (to be worth) => valgo",
+              "ver (to see) => veo"
+            ]
+          }
         ]
       },
-      "text": [
-        "Many Spanish verbs do not follow the patterns of the regular verbs you have just studied.",
-        "Instead, they change the root (or radical) of the verb, the conjugation endings, or both.",
-        "Because they follow different patterns, they are considered irregular verbs.",
-        "Since irregular verbs are so commonly used, a good strategy to identify and learn them is to focus on similarities, grouping them into patterns.",
-        "The following verbs are irregular in first-person only:"
-      ],
-      "exercises": [
-        {
-          "title": "Practica",
-          "instructions": "Escribe en español.",
-          "questions": [
-            "I give",
-            "They put",
-            "You (Uds.) see",
-            "We fit in",
-            "I bring",
-            " I fall",
-            "You do",
-            "I get out"
-          ],
-          "answers": [
-            "doy",
-            "ponen",
-            "ven",
-            "cabemos",
-            "traigo",
-            "caigo",
-            "haces",
-            "salgo"
-          ],
-          "type": "conjugate-plain"
-        }
-      ]
-    },
-    {
-      "title": "Irregular Verbs in the Present Tense con't",
-      "grammar": {
-        "text": [
-          "The compounds of these verbs are also irregular in the yo form only",
-          "they add the consonant g between the radical and the verb ending",
-          "Compounds are easy to spot because they show a preﬁx (des-, dis-, com-, con-, etc.) preceding the radical."
-        ],
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "Practica",
+            "instructions": "Escribe en español.",
+            "questions": [
+              "I give",
+              "They put",
+              "You (Uds.) see",
+              "We fit in",
+              "I bring",
+              " I fall",
+              "You do",
+              "I get out"
+            ],
+            "answers": [
+              "doy",
+              "ponen",
+              "ven",
+              "cabemos",
+              "traigo",
+              "caigo",
+              "haces",
+              "salgo"
+            ],
+            "type": "conjugate-plain"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "title",
+        "text": "Irregular Verbs in the Present Tense (con't)"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "The compounds of these verbs are also irregular in the yo form only",
+              "they add the consonant g between the radical and the verb ending",
+              "Compounds are easy to spot because they show a preﬁx (des-, dis-, com-, con-, etc.) preceding the radical."
+            ],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "type": "chart",
         "chart": [
           "componer (to compose) => compongo",
           "deshacer (to undo) => deshago",
@@ -501,61 +524,78 @@
           "suponer (to suppose) => supongo"
         ]
       },
-      "exercises": {
-        "title": "En español",
-        "questions": [
-          "I propose a break (un descanso).",
-          "You suppose the worst (lo peor).",
-          "They replace the money.",
-          "I undo the work",
-          "She composes a song",
-          "The girls distract the driver"
-        ],
-        "answers": [
-          "Yo propongo un descanso.",
-          "Tú supones lo peor.",
-          "Ellos reponen el dinero.",
-          "Yo deshago el trabajo.",
-          "Ella compone una canción.",
-          "Las chicas distraen al conductor."
-        ],
-        "type": "translate"
-      },
-      "pareados": {
-        "title": "Pareados",
-        "instructions": "Escribe la letra de la respuesta más lógica.",
-        "questions": {
-          "prompts": [
-            "Sé",
-            "Distraigo",
-            "No quepo",
-            "Compongo",
-            "Propongo",
-            "Pongo",
-            "Salgo"
-          ],
-          "answers": [
-            "a mis compañeros de trabajo.",
-            "que trabajas mucho.",
-            "música para mis canciones.",
-            "en esa trampa (trap) a menudo.",
-            "de la conferencia ahora.",
-            "una solución para tu problema.",
-            "el agua en un vaso.",
-            "en estos pantalones."
-          ]
-        },
-        "type": "matching"
+
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "En español",
+            "questions": [
+              "I propose a break (un descanso).",
+              "You suppose the worst (lo peor).",
+              "They replace the money.",
+              "I undo the work",
+              "She composes a song",
+              "The girls distract the driver"
+            ],
+            "answers": [
+              "Yo propongo un descanso.",
+              "Tú supones lo peor.",
+              "Ellos reponen el dinero.",
+              "Yo deshago el trabajo.",
+              "Ella compone una canción.",
+              "Las chicas distraen al conductor."
+            ],
+            "type": "translate"
+          },
+          {
+            "title": "Pareados",
+            "instructions": "Escribe la letra de la respuesta más lógica.",
+            "questions": {
+              "prompts": [
+                "Sé",
+                "Distraigo",
+                "No quepo",
+                "Compongo",
+                "Propongo",
+                "Pongo",
+                "Salgo"
+              ],
+              "answers": [
+                "a mis compañeros de trabajo.",
+                "que trabajas mucho.",
+                "música para mis canciones.",
+                "en esa trampa (trap) a menudo.",
+                "de la conferencia ahora.",
+                "una solución para tu problema.",
+                "el agua en un vaso.",
+                "en estos pantalones."
+              ]
+            },
+            "type": "matching"
+          }
+        ]
       }
-    },
-    {
-      "title": "Other Verbs with Irregular Forms in the First Person",
-      "grammar": {
-        "text": [
-          "Verbs that end in a vowel followed by -cer and -cir change 0 to zc in the ﬁrst-person singular only",
-          "They are conjugated like conocer."
-        ],
-        "example": ["Conozco muy bien a Margo", "I know Margo very well."],
+    ],
+    [
+      {
+        "type": "title",
+        "text": "Other Verbs with Irregular Forms in the First Person"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "Verbs that end in a vowel followed by -cer and -cir change 0 to zc in the ﬁrst-person singular only",
+              "They are conjugated like conocer."
+            ],
+            "example": ["Conozco muy bien a Margo", "I know Margo very well."]
+          }
+        ]
+      },
+      {
+        "type": "chart",
         "chart": [
           {
             "title": "-er verbs like conocer",
@@ -587,60 +627,65 @@
           }
         ]
       },
-      "exercises": [
-        {
-          "title": "Practica",
-          "instructions": "Escribe la form correspondiente del verbo entre paréntesis.",
-          "questions": [
-            "Yo _(conducir) el coche.",
-            "Marta y tu _(salir) de casa juntos",
-            "Yo no _(conocer) a esa familia.",
-            "¿Quién _(ofrecer) mas por este cuadro?",
-            "¡Yo no _(merecer) este regalo",
-            "Las asistentes del director _(obedecer) sus órdenes.",
-            "¡Tu _(percenecer) a una familia muy famosa!",
-            "Marcia _(conocer) a los padres de Luisa"
-          ],
-          "answers": [
-            "conduzco",
-            "salís",
-            "conozco",
-            "ofrece",
-            "merezco",
-            "obedecen",
-            "perteneces",
-            "conoce"
-          ],
-          "type": "conjugate-blank"
-        }
-      ]
-    },
-    {
-      "title": "Y yo?",
-      "instructions": "Escribe en español. Usa el presente",
-      "questions": [
-        "I deserve a raise",
-        "Do I go out now?",
-        "I am grateful for your friendship",
-        "I do not belong to this group",
-        "I translate the instructions",
-        "I seldom impose my ideas",
-        "I remain quiet (callado[a])"
-      ],
-      "answers": [
-        "Merezco un aumento de sueldo.",
-        "¿Salgo ahora?",
-        "Agradezco tu amistad.",
-        "No pertenezco a este grupo.",
-        "Traduzco las instrucciones.",
-        "Rara vez impongo mis ideas.",
-        "Permanezco callado/a."
-      ],
-      "type": "translate"
-    },
-    {
-      "title": "Other Frequently Used Verbs with Irregular Forms in the Present Tense",
-      "grammar": {
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "Practica",
+            "instructions": "Escribe la form correspondiente del verbo entre paréntesis.",
+            "questions": [
+              "Yo _(conducir) el coche.",
+              "Marta y tu _(salir) de casa juntos",
+              "Yo no _(conocer) a esa familia.",
+              "¿Quién _(ofrecer) mas por este cuadro?",
+              "¡Yo no _(merecer) este regalo",
+              "Las asistentes del director _(obedecer) sus órdenes.",
+              "¡Tu _(percenecer) a una familia muy famosa!",
+              "Marcia _(conocer) a los padres de Luisa"
+            ],
+            "answers": [
+              "conduzco",
+              "salís",
+              "conozco",
+              "ofrece",
+              "merezco",
+              "obedecen",
+              "perteneces",
+              "conoce"
+            ],
+            "type": "conjugate-blank"
+          },
+          {
+            "title": "Y yo?",
+            "instructions": "Escribe en español. Usa el presente",
+            "questions": [
+              "I deserve a raise",
+              "Do I go out now?",
+              "I am grateful for your friendship",
+              "I do not belong to this group",
+              "I translate the instructions",
+              "I seldom impose my ideas",
+              "I remain quiet (callado[a])"
+            ],
+            "answers": [
+              "Merezco un aumento de sueldo.",
+              "¿Salgo ahora?",
+              "Agradezco tu amistad.",
+              "No pertenezco a este grupo.",
+              "Traduzco las instrucciones.",
+              "Rara vez impongo mis ideas.",
+              "Permanezco callado/a."
+            ],
+            "type": "translate"
+          }
+        ]
+      }
+    ],
+
+    [
+      {"type": "title", "text": "Other Frequently Used Verbs with Irregular Forms in the Present Tense"},
+      {"type": "grammar", "grammar": [{"text": ["Study the conjugation of the following verbs", "They have irregular forms in the present tense:"]}]},
+      {"type": "chart",
         "chart": [
           {
             "title": "decir (to say",
@@ -666,84 +711,77 @@
             "title": "venir",
             "chart": ["vengo", "vienes", "viene", "venimos", "venís", "vienen"]
           }
-        ],
-        "text": [
-          "Note that haber is also irregular.",
-          "One meaning of haber is to have",
-          "However, in the present as well as in other tenses, haber is more frequently used as an impersonal verb in the third-person singular form.",
-          "The present tense form is hay. It means there is and there are.",
-          "Compounds of tener have the same irregular forms"
-        ],
-        "example": [
-          "Hay tres sillas en la sala (There are three chairs in the living room.)",
-          "Hay una posibilidad solamente (There is only one possibiility)"
-        ]
-      },
-      "vocabulary": {
-        "title": "Verbs like tener",
-        "chart": [
-          "contener (to contain) => contengo",
-          "detener (to detain) => detengo",
-          "mantener (to maintain) => mantengo",
-          "obtener (to obtain) => obtengo",
-          "retener (to retain) => retengo",
-          "sostener (to sustain) => sostengo"
-        ]
-      },
-      "exercises": [
-        {
-          "title": "En español",
-          "questions": [
-            "There is one person",
-            "There are ten programs",
-            "I go now",
-            "I do not hear music",
-            "Do you (Ud.) see the bus?",
-            "I tell the truth",
-            "You (Uds.) have time",
-            "They stop the car"
-          ],
-          "answers": [
-            "Hay una persona",
-            "Hay diez programas",
-            "Voy ahora",
-            "No oigo música",
-            "¿Ve Ud. el autobús?",
-            "Digo la verdad",
-            "Tienen tiempo",
-            "Detienen el coche"
-          ],
-          "type": "translate"
-        },
-        {
-          "title": "La television y la cocina",
-          "instructions": "Escribe la form correspondiente del presente",
-          "questions": [
-            "Nosotros _(estar) en un estudio de television con el Chef Horacio",
-            "El _(ser) un apasionado de la cocina y son una obra de arte",
-            "_(decir) que sus platos",
-            "_(haber) muchos aficionados que ven se programa, 'Cocina con Horacio'",
-            "_(oir) los comentarios favorables de sus adiradores.",
-            "Ellos _(venir) al estudio para ver a su estrella favorita",
-            "Luisa _(venir) para probar las creaciones exquisitas de Horacio",
-            "Los ténicios _(estar) ocupados filmando el program de hoy",
-            "Sus admiradores _(ir) al estudio muy temprano"
-          ],
-          "answers": [
-            "estamos",
-            "es",
-            "dice",
-            "hay",
-            "oyen",
-            "vienen",
-            "viene",
-            "están",
-            "van"
-          ],
-          "type": "conjugate-blank"
-        }
-      ]
-    },
+        ]},
+        {"type": "grammar", "grammar": [{"text": ["Note that haber is also irregular.",
+        "One meaning of haber is to have",
+        "However, in the present as well as in other tenses, haber is more frequently used as an impersonal verb in the third-person singular form.",
+        "The present tense form is hay. It means there is and there are."], "examples": [ "Hay tres sillas en la sala (There are three chairs in the living room.)",
+        "Hay una posibilidad solamente (There is only one possibiility)"]}, {"text":["Compounds of tener have the same irregular forms"], "examples":[]}]},
+        {"type": "chart","chart": [{
+          "title": "Verbs like tener",
+          "chart": [
+            "contener (to contain) => contengo",
+            "detener (to detain) => detengo",
+            "mantener (to maintain) => mantengo",
+            "obtener (to obtain) => obtengo",
+            "retener (to retain) => retengo",
+            "sostener (to sustain) => sostengo"
+          ]
+        }]},
+        {"type": "exercises","exercises": [
+          {
+            "title": "En español",
+            "questions": [
+              "There is one person",
+              "There are ten programs",
+              "I go now",
+              "I do not hear music",
+              "Do you (Ud.) see the bus?",
+              "I tell the truth",
+              "You (Uds.) have time",
+              "They stop the car"
+            ],
+            "answers": [
+              "Hay una persona",
+              "Hay diez programas",
+              "Voy ahora",
+              "No oigo música",
+              "¿Ve Ud. el autobús?",
+              "Digo la verdad",
+              "Tienen tiempo",
+              "Detienen el coche"
+            ],
+            "type": "translate"
+          },
+          {
+            "title": "La television y la cocina",
+            "instructions": "Escribe la form correspondiente del presente",
+            "questions": [
+              "Nosotros _(estar) en un estudio de television con el Chef Horacio",
+              "El _(ser) un apasionado de la cocina y son una obra de arte",
+              "_(decir) que sus platos",
+              "_(haber) muchos aficionados que ven se programa, 'Cocina con Horacio'",
+              "_(oir) los comentarios favorables de sus adiradores.",
+              "Ellos _(venir) al estudio para ver a su estrella favorita",
+              "Luisa _(venir) para probar las creaciones exquisitas de Horacio",
+              "Los ténicios _(estar) ocupados filmando el program de hoy",
+              "Sus admiradores _(ir) al estudio muy temprano"
+            ],
+            "answers": [
+              "estamos",
+              "es",
+              "dice",
+              "hay",
+              "oyen",
+              "vienen",
+              "viene",
+              "están",
+              "van"
+            ],
+            "type": "conjugate-blank"
+          }
+        ]}
+    ],
     {
       "title": "Verbs with spelling Changes in the present tense",
       "text": [
