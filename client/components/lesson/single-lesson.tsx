@@ -26,6 +26,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
       (item: any) => item.type === "exercises"
     );
     const exercises = exercisesFilter.map((item: any) => item.exercises);
+    
     setThisExercise(exercises[0][currentExercise]);
     setLoading(false);
   }, [currentExercise, nextLesson]);
@@ -113,6 +114,8 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
               {item.chart.map((chartItem: any, chartIndex: number) => (
                 <Chart key={chartIndex} chart={chartItem} />
               ))}
+              <br />
+              <hr />
             </div>
           );
         case "vocabulary":
@@ -202,11 +205,11 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
           return (
             <>
               {thisExercise.questions.map((question: any, index: number) => (
-                <>
+                <React.Fragment key={`fragment${index}`}>
                   <li key={index}>{formatBlank(question, index)}</li>
                   <hr />
                   <br />
-                </>
+                </React.Fragment>
               ))}
             </>
           );
@@ -214,16 +217,18 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
           return (
             <>
               {thisExercise.questions.map((question: any, index: number) => (
-                <>
-                  <li key={index}>{question}</li>
+                <React.Fragment key={`frag${index}`}>
+                  <li key={`li${index}`}>{question}</li>
                   <textarea
                     value={inputValues[index]}
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     style={{ border: answerStyle[index] }}
                     key={`input${index}`}
                   />
-                  <br />
-                </>
+
+                  <br key={`br${index}`} />
+                  <hr key={`hr${index}`} />
+                </React.Fragment>
               ))}
             </>
           );
@@ -252,6 +257,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
                     onChange={() => handleInputChange(index, "false")}
                   />
                   <label htmlFor={`false${index}`}>Falso</label>
+                  <hr />
                   <br />
                 </li>
               ))}
@@ -283,6 +289,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
                   />
                   <label htmlFor={`false${index}`}>Falso</label>
                   <br />
+                  <hr />
                 </li>
               ))}
             </>
@@ -310,32 +317,39 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
       }
     };
 
-    return (
-      <>
-        <h4>{thisExercise.title}</h4>
-        <br />
-        {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
-        <br />
-        <ol>{renderQuestions(thisExercise.questions)}</ol>
-        {!submitted && thisExercise.answers && !revealAnswers && (
-          <button className={styles.buttonRed} onClick={checkAnswers}>
-            Check Answers
-          </button>
-        )}
-        {submitted && !revealAnswers && (
-          <button className={styles.buttonGray} onClick={revealAnswersHandler}>
-            Reveal Answers
-          </button>
-        )}
-        {submitted && revealAnswers && (
-          <button className={styles.buttonGreen} onClick={resetInputState}>
-            Try Again?
-          </button>
-        )}
+    try {
+      return (
+        <>
+          {thisExercise.title && <h4>{thisExercise.title}</h4>}
+          <br />
+          {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
+          <br />
+          <ol>{renderQuestions(thisExercise.questions)}</ol>
+          {!submitted && thisExercise.answers && !revealAnswers && (
+            <button className={styles.buttonRed} onClick={checkAnswers}>
+              Check Answers
+            </button>
+          )}
+          {submitted && !revealAnswers && (
+            <button
+              className={styles.buttonGray}
+              onClick={revealAnswersHandler}
+            >
+              Reveal Answers
+            </button>
+          )}
+          {submitted && revealAnswers && (
+            <button className={styles.buttonGreen} onClick={resetInputState}>
+              Try Again?
+            </button>
+          )}
 
-        {score > -1 && <p>Your Score: {score}%</p>}
-      </>
-    );
+          {score > -1 && <p>Your Score: {score}%</p>}
+        </>
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleExerciseToggle = () => {
@@ -370,10 +384,14 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
   };
 
   const nextButtonHandler = () => {
+    console.log(currentExercise, exerciseLength - 1);
     if (currentExercise < exerciseLength - 1) {
       return incrementExercise();
     }
     if (currentExercise === exerciseLength - 1) {
+      setLoading(true);
+      resetInputState();
+      setCurrentExercise(0);
       setToggleExercise((prevToggleExercise) => !prevToggleExercise);
       router.push(`/lessons/${unit}-${nextLesson + 1}`);
     }

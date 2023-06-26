@@ -358,78 +358,12 @@
               "Colon visita la Florida en 1495.",
               "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
             ],
-            "answers": ["true", "false", "true", "false", "true"],
-            "type": "true-false"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "type": "title",
-        "text": "Other uses of the present tense"
-      },
-      {
-        "type": "grammar",
-        "grammar": [
-          {
-            "text": [
-              "-to tell facts considered unquestionable or universal truths:"
-            ],
-            "examples": [
-              "Cinco mas quince son veinte (Five plus fifteen is twenty.)"
-            ]
-          },
-          {
-            "text": [
-              "-to describe a past event, making it more vivid (historial present:"
-            ],
-            "examples": [
-              "En 1969 el primer hombre llega a la luna (The first man gets to the moon in 1969.)"
-            ]
-          },
-          {
-            "text": [
-              "-to express future actions that are part of a schedule or itinerary:"
-            ],
-            "examples": ["El tren sale a las ocho (The train leaves at eight.)"]
-          },
-          {
-            "text": ["to express hypothetical actions introduced by si."],
-            "examples": [
-              "Si llega el tren, salimos (If the train arrives, we leave.)"
-            ]
-          },
-          {
-            "text": [
-              "to refer to possible consequences from an action that took place in the past with casi (almost) and por poco (nearly)"
-            ],
-            "examples": [
-              "Sacé la pistola y casi me mata (He pulled out his gun and almost killed me.)"
-            ]
-          }
-        ]
-      },
-      {
-        "type": "exercises",
-        "exercises": [
-          {
-            "title": "Un poco de historia",
-            "instructions": "¿Verdadero o falso?",
-            "questions": [
-              "Napoleón invade España en el siglo XIX.",
-              "La mujer vota por primera vez en los Estados Unidos en 1929.",
-              "Mel Fisher ﬁnalmente descubre el buque “Atocha” cerca de Key West.",
-              "Colon visita la Florida en 1495.",
-              "Los hispanos colonizan gran parte de los Estados Unidos antes que los ingleses."
-            ],
             "answers": ["V", "F", "V", "F", "V"],
             "type": "true-false"
           }
         ]
       }
     ],
-
     [
       { "type": "title", "text": "Irregular Verbs in the Present Tense" },
       {
@@ -444,8 +378,14 @@
               "The following verbs are irregular in first-person only:"
             ],
             "examples": []
-          },
+          }
+        ]
+      },
+      {
+        "type": "chart",
+        "chart": [
           {
+            "title": "First Person Irregular",
             "chart": [
               "caber (to fit) => quepo",
               "cae (to fall => caigo",
@@ -514,14 +454,19 @@
       {
         "type": "chart",
         "chart": [
-          "componer (to compose) => compongo",
-          "deshacer (to undo) => deshago",
-          "disponer (to dispose) => dispongo",
-          "distraer [se] (to distract [oneself]) => distraigo",
-          "proponer (to propose) => propongo",
-          "rehacer (to redo) => rehago",
-          "reponer (to replace) => repongo",
-          "suponer (to suppose) => supongo"
+          {
+            "title": "Irregular Compound Verbs",
+            "chart": [
+              "componer (to compose) => compongo",
+              "deshacer (to undo) => deshago",
+              "disponer (to dispose) => dispongo",
+              "distraer [se] (to distract [oneself]) => distraigo",
+              "proponer (to propose) => propongo",
+              "rehacer (to redo) => rehago",
+              "reponer (to replace) => repongo",
+              "suponer (to suppose) => supongo"
+            ]
+          }
         ]
       },
 
@@ -590,7 +535,7 @@
               "Verbs that end in a vowel followed by -cer and -cir change 0 to zc in the ﬁrst-person singular only",
               "They are conjugated like conocer."
             ],
-            "example": ["Conozco muy bien a Margo", "I know Margo very well."]
+            "examples": ["Conozco muy bien a Margo", "I know Margo very well."]
           }
         ]
       },
@@ -694,7 +639,8 @@
             "text": [
               "Study the conjugation of the following verbs",
               "They have irregular forms in the present tense:"
-            ]
+            ],
+            "examples": []
           }
         ]
       },
@@ -896,7 +842,7 @@
         "grammar": [
           {
             "text": ["Other -gir verbs have stem changes as well."],
-            "example": ["Verbs ending in -guir gu to g before the o- ending:"]
+            "examples": ["Verbs ending in -guir gu to g before the o- ending:"]
           }
         ]
       },
@@ -922,7 +868,7 @@
         "grammar": [
           {
             "text": ["Other -guir verbs have stem changes as well."],
-            "example": [
+            "examples": [
               "Verbs ending in -cer and -cir change c to z before the o- ending:"
             ]
           }

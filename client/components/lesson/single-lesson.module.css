@@ -126,6 +126,10 @@
   border: black solid 2px;
 }
 
+.exercises textarea {
+  border: black solid 2px;
+}
+
 .exerciseCard {
   display: flex;
   flex-direction: column;
