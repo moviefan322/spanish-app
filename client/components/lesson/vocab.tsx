@@ -46,7 +46,7 @@ function Vocab({ vocab }: any) {
                   onClick={() => postToFlashcards(splitItem)}
                 >
                   <FaCirclePlus />
-                </button>
+                </button>{" "}
                 <strong>{splitItem[0]}</strong>
               </td>
               <td>{splitItem[1]}</td>

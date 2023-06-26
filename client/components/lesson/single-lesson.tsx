@@ -219,12 +219,18 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
               {thisExercise.questions.map((question: any, index: number) => (
                 <React.Fragment key={`frag${index}`}>
                   <li key={`li${index}`}>{question}</li>
-                  <textarea
-                    value={inputValues[index]}
-                    onChange={(e) => handleInputChange(index, e.target.value)}
-                    style={{ border: answerStyle[index] }}
-                    key={`input${index}`}
-                  />
+                  {!revealAnswers ? (
+                    <textarea
+                      value={inputValues[index]}
+                      onChange={(e) => handleInputChange(index, e.target.value)}
+                      style={{ border: answerStyle[index] }}
+                      key={`input${index}`}
+                    />
+                  ) : (
+                    <span>
+                      <strong>{thisExercise.answers[index]}</strong>
+                    </span>
+                  )}
 
                   <br key={`br${index}`} />
                   <hr key={`hr${index}`} />
