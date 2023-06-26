@@ -235,6 +235,13 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     }
   };
 
+  const navigateToPreviousLesson = () => {
+    if (nextLesson === 1) {
+      return router.push(`/`);
+    }
+    router.push(`/lessons/${unit}-${nextLesson - 1}`);
+  };
+
   const nextButtonHandler = () => {
     if (currentExercise < exerciseLength - 1) {
       return incrementExercise();
@@ -248,13 +255,18 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     return <p>Loading...</p>;
   }
 
+  console.log(nextLesson);
+
   return (
     <>
       {!toggleExercise && (
         <>
           {renderLesson(lesson)}
           <div className={styles.bottom}>
-            <button className={styles.button}>
+            <button
+              className={styles.button}
+              onClick={navigateToPreviousLesson}
+            >
               <FaArrowLeft />
               Back
             </button>
