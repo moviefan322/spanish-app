@@ -5,7 +5,7 @@ import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "./single-lesson.module.css";
 
-function SingleLesson({ lesson = [], nextLesson, unit }: any) {
+function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [currentExercise, setCurrentExercise] = useState(0);
   const [toggleExercise, setToggleExercise] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
       (item: any) => item.type === "exercises"
     );
     const exercises = exercisesFilter.map((item: any) => item.exercises);
-    
+
     setThisExercise(exercises[0][currentExercise]);
     setLoading(false);
   }, [currentExercise, nextLesson]);
@@ -384,7 +384,10 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
   };
 
   const nextButtonHandler = () => {
-    console.log(currentExercise, exerciseLength - 1);
+    console.log(nextLesson, lessonCount);
+    if (nextLesson + 1 > lessonCount) {
+      return router.push(`/`);
+    }
     if (currentExercise < exerciseLength - 1) {
       return incrementExercise();
     }

@@ -33,6 +33,7 @@ function UnitPage({ id, lesson }: { id: string; lesson: string }) {
         lesson={unit.lessons[lesson]}
         unit={id}
         nextLesson={lesson + 1}
+        lessonCount={unit.lessons.length}
       />
     </>
   );
