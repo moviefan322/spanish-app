@@ -79,7 +79,7 @@ function LoginForm() {
     resetForm();
     const user: User = await res.json();
     setCurrentUser(user);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("spanishuser", JSON.stringify(user));
     router.push("/");
   };
 

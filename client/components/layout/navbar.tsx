@@ -7,7 +7,7 @@ function Navbar(): JSX.Element {
   const { currentUser } = useCurrentUser();
 
   const logoutButtonHandler = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("spanishuser");
   };
 
   console.log(currentUser);

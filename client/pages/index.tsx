@@ -8,7 +8,7 @@ export default function Home() {
   const { setCurrentUser } = useCurrentUser();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("spanishuser");
     if (storedUser) {
       const user: User | null = JSON.parse(storedUser);
       setCurrentUser(user);
