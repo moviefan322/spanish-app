@@ -683,9 +683,23 @@
     ],
 
     [
-      {"type": "title", "text": "Other Frequently Used Verbs with Irregular Forms in the Present Tense"},
-      {"type": "grammar", "grammar": [{"text": ["Study the conjugation of the following verbs", "They have irregular forms in the present tense:"]}]},
-      {"type": "chart",
+      {
+        "type": "title",
+        "text": "Other Frequently Used Verbs with Irregular Forms in the Present Tense"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "Study the conjugation of the following verbs",
+              "They have irregular forms in the present tense:"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "chart",
         "chart": [
           {
             "title": "decir (to say",
@@ -711,24 +725,48 @@
             "title": "venir",
             "chart": ["vengo", "vienes", "viene", "venimos", "venís", "vienen"]
           }
-        ]},
-        {"type": "grammar", "grammar": [{"text": ["Note that haber is also irregular.",
-        "One meaning of haber is to have",
-        "However, in the present as well as in other tenses, haber is more frequently used as an impersonal verb in the third-person singular form.",
-        "The present tense form is hay. It means there is and there are."], "examples": [ "Hay tres sillas en la sala (There are three chairs in the living room.)",
-        "Hay una posibilidad solamente (There is only one possibiility)"]}, {"text":["Compounds of tener have the same irregular forms"], "examples":[]}]},
-        {"type": "chart","chart": [{
-          "title": "Verbs like tener",
-          "chart": [
-            "contener (to contain) => contengo",
-            "detener (to detain) => detengo",
-            "mantener (to maintain) => mantengo",
-            "obtener (to obtain) => obtengo",
-            "retener (to retain) => retengo",
-            "sostener (to sustain) => sostengo"
-          ]
-        }]},
-        {"type": "exercises","exercises": [
+        ]
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "Note that haber is also irregular.",
+              "One meaning of haber is to have",
+              "However, in the present as well as in other tenses, haber is more frequently used as an impersonal verb in the third-person singular form.",
+              "The present tense form is hay. It means there is and there are."
+            ],
+            "examples": [
+              "Hay tres sillas en la sala (There are three chairs in the living room.)",
+              "Hay una posibilidad solamente (There is only one possibiility)"
+            ]
+          },
+          {
+            "text": ["Compounds of tener have the same irregular forms"],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "type": "chart",
+        "chart": [
+          {
+            "title": "Verbs like tener",
+            "chart": [
+              "contener (to contain) => contengo",
+              "detener (to detain) => detengo",
+              "mantener (to maintain) => mantengo",
+              "obtener (to obtain) => obtengo",
+              "retener (to retain) => retengo",
+              "sostener (to sustain) => sostengo"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "exercises",
+        "exercises": [
           {
             "title": "En español",
             "questions": [
@@ -780,17 +818,31 @@
             ],
             "type": "conjugate-blank"
           }
-        ]}
+        ]
+      }
     ],
-    {
-      "title": "Verbs with spelling Changes in the present tense",
-      "text": [
-        " In the present tense, certain verbs have spelling changes.",
-        "These are determined by Spanish rules of pronunciation to preserve the sound appearing in the inﬁnitive.",
-        "The following groups of verbs have spelling changes before the verb ending -o, in the yo form only."
-      ],
-      "grammar": {
-        "text": "Verbs ending in -ger or -gir change g to j before the -o ending",
+    [
+      {
+        "type": "title",
+        "text": "Verbs with spelling Changes in the present tense"
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              " In the present tense, certain verbs have spelling changes.",
+              "These are determined by Spanish rules of pronunciation to preserve the sound appearing in the inﬁnitive.",
+              "The following groups of verbs have spelling changes before the verb ending -o, in the yo form only."
+            ],
+            "examples": [
+              "Verbs ending in -ger or -gir change g to j before the -o ending"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "chart",
         "chart": [
           {
             "title": "coger (to catch)",
@@ -828,6 +880,30 @@
               "vestir (to dress) => visto"
             ]
           },
+
+          {
+            "title": "verbs like distinguir",
+            "chart": [
+              "conseguir (to obtain) => consigo",
+              "extinguir (to extinguish) => extingo",
+              "perseguir (to pursue) => persigo"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": ["Other -gir verbs have stem changes as well."],
+            "example": ["Verbs ending in -guir gu to g before the o- ending:"]
+          }
+        ]
+      },
+
+      {
+        "type": "chart",
+        "chart": [
           {
             "title": "distinguir (to distinguish)",
             "chart": [
@@ -838,18 +914,23 @@
               "distinguís",
               "distinguen"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "type": "grammar",
+        "grammar": [
           {
-            "title": "verbs like distinguir",
-            "chart": [
-              "conseguir (to obtain) => consigo",
-              "extinguir (to extinguish) => extingo",
-              "perseguir (to pursue) => persigo"
+            "text": ["Other -guir verbs have stem changes as well."],
+            "example": [
+              "Verbs ending in -cer and -cir change c to z before the o- ending:"
             ]
-          },
-          {
-            "text": "Verbs ending in -cer and -cir change c to z before the o- ending."
-          },
+          }
+        ]
+      },
+      {
+        "type": "chart",
+        "chart": [
           {
             "title": "convencer (to convince)",
             "chart": [
@@ -877,49 +958,62 @@
           }
         ]
       },
-      "exercises": [
-        {
-          "title": "Yo tambien",
-          "instructions": "Write the present tense of the yo form of the verb",
-          "questions": [
-            "Exige una explicacion",
-            "Escoge los colores",
-            "Extingue el fuego",
-            "Recoge los periodicos",
-            "Vence los obstaculos",
-            "Protege sus derechos",
-            "Convence a sus amigos",
-            "No finge"
-          ],
-          "answers": [
-            "exijo",
-            "escojo",
-            "extingo",
-            "recojo",
-            "venzo",
-            "protege",
-            "convenzo",
-            "finge"
-          ],
-          "type": "conjugate-plain"
-        }
-      ]
-    },
-    {
-      "title": "Note the use of the present tense in the examples with dar, haber, hacer, and tener that follow.",
-      "grammar": {
-        "chart": [
+      {
+        "type": "exercises",
+        "exercises": [
           {
-            "title": "Dar",
-            "chart": [
+            "title": "Yo tambien",
+            "instructions": "Write the present tense of the yo form of the verb",
+            "questions": [
+              "Exige una explicacion",
+              "Escoge los colores",
+              "Extingue el fuego",
+              "Recoge los periodicos",
+              "Vence los obstaculos",
+              "Protege sus derechos",
+              "Convence a sus amigos",
+              "No finge"
+            ],
+            "answers": [
+              "exijo",
+              "escojo",
+              "extingo",
+              "recojo",
+              "venzo",
+              "protege",
+              "convenzo",
+              "finge"
+            ],
+            "type": "conjugate-plain"
+          }
+        ]
+      }
+    ],
+    [
+      { "type": "title", "text": "Dar & Haber: Expressions" },
+      {
+        "type": "grammar",
+        "grammar": [
+          {
+            "text": [
+              "Dar, haber, hacer, and tener have irregular forms in the present.",
+              "They appear frequently in idiomatic expressions",
+              "Many are formed with a conjugated verb + infinitive, called formas perifrásticas or perífrasis verbales",
+              "Note the use of present tense in the examples with dar, haber, hacer, and tener that follow"
+            ],
+            "examples": []
+          },
+          {
+            "text": ["Dar"],
+            "examples": [
               "dar un abrazo (to hug) => Le da un abrazo a su amigo",
               "dar gritos (to shout) => La multitud de gritos",
               "dar la hora (to strike the hour) => El reloj da la una"
             ]
           },
           {
-            "title": "Haber",
-            "chart": [
+            "text": ["Haber"],
+            "examples": [
               "hay que + infinitive (to be necessary) => Hay que estudiar para aprendar",
               "haber sol (to be sunny => hay sol por la mañana",
               "haber neblina (to be foggy) => Hay neblina este mañana"
@@ -927,134 +1021,102 @@
           }
         ]
       },
-      "exercises": [
-        {
-          "title": "Y en tu caso...",
-          "instructions": "¿Verdadero o falso?",
-          "questions": [
-            "Ahora hay mucho sol",
-            "Mi reloj da la una y media",
-            "Generalmente, hay sol por la noche",
-            "A veces hay neblina en la carretera",
-            "Los jovenes dan gritos en los conciertos de rock"
-          ],
-          "type": "open-ended"
-        }
-      ]
-    },
-    {
-      "title": "Expressions with hacer",
-      "grammar": {
-        "chart": [
+      {
+        "type": "exercises",
+        "exercises": [
           {
-            "title": "Hacer calor, hace fresco (to be warm, to be cool)",
-            "chart": "Hace fresco, no hace calor"
-          },
-          { "title": "hacer viento (to be windy)", "chart": "Hace viento" },
-          {
-            "title": "hacer un viaje (to take a trip)",
-            "chart": "Lina hace un viaje a las Bahamas"
-          },
-          {
-            "title": "hacer una visita (to pay a visit)",
-            "chart": "Marcus hace una visita a su abuela"
-          },
-          {
-            "title": "hacer una pregunta (to ask a question)",
-            "chart": "El profesor hace una pregunta"
-          },
-          {
-            "title": "hacer daño (to harm)",
-            "chart": "Beber much agua no te hace daño"
-          },
-          {
-            "title": "hacer caso a (to pay attention to)",
-            "chart": "Los niños no hacen caso al maestro"
-          },
-          {
-            "title": "hacer el papel de (to play the role of)",
-            "chart": "El actor hace el papel de un policia"
+            "title": "Y en tu caso...",
+            "instructions": "¿Verdadero o falso?",
+            "questions": [
+              "Ahora hay mucho sol",
+              "Mi reloj da la una y media",
+              "Generalmente, hay sol por la noche",
+              "A veces hay neblina en la carretera",
+              "Los jovenes dan gritos en los conciertos de rock"
+            ],
+            "type": "open-ended"
           }
         ]
       }
-    },
-    {
-      "title": "Expressions with Tener",
-      "grammar": {
-        "chart": [
+    ],
+    [
+      { "type": "title", "text": "Hacer & Tener: Expressions" },
+      {
+        "type": "grammar",
+        "grammar": [
           {
-            "title": "tener + que + infinitive (to have to do something)",
-            "chart": "Tenemos que salir"
+            "text": ["Hacer"],
+            "examples": [
+              "Hacer calor, hace fresco (to be warm, to be cool) => Hace fresco, no hace calor",
+              "hacer viento (to be windy) => Hace viento",
+              "hacer un viaje (to take a trip) => Lina hace un viaje a las Bahamas",
+              "hacer una visita (to pay a visit) => Marcus hace una visita a su abuela",
+              "hacer una pregunta (to ask a question) => El profesor hace una pregunta",
+              "hacer daño (to harm) => Beber much agua no te hace daño",
+              "hacer caso a (to pay attention to) => Los niños no hacen caso al maestro",
+              "hacer el papel de (to play the role of) => El actor hace el papel de un policia"
+            ]
           },
           {
-            "title": "tener frio (to be cold)",
-            "chart": "Tengo frio"
-          },
-          {
-            "title": "tener hambre (to be hungry)",
-            "chart": "¿Tienes hambre?"
-          },
-          {
-            "title": "tener miedo (to be scared)",
-            "chart": "No tienen miedo a las serpientes"
-          },
-          { "title": "tener razón (to be right)", "chart": "Yo tingo razón" },
-          { "title": "tener sed (to be thirsty)", "chart": "¿Tienes sed?" },
-          {
-            "title": "tener prisa (to be in a hurry)",
-            "chart": "Mi esposo tiene prisa"
-          },
-          {
-            "title": "tener culpa (to be to blame)",
-            "chart": "El sospechoso tiene la culpa de este accidente"
-          },
-          {
-            "title": "tener lugar (to take place)",
-            "chart": "La reunion tiene lugar los domingos"
+            "text": ["Tener"],
+            "examples": [
+              "tener + que + infinitive (to have to do something) => Tenemos que salir",
+              "tener frio (to be cold) => Tengo frio",
+              "tener hambre (to be hungry) => ¿Tienes hambre?",
+              "tener miedo (to be scared) => No tienen miedo a las serpientes",
+              "tener razón (to be right) => Yo tingo razón",
+              "tener sed (to be thirsty) => ¿Tienes sed?",
+              "tener prisa (to be in a hurry) => Mi esposo tiene prisa",
+              "tener culpa (to be to blame) => El sospechoso tiene la culpa de este accidente",
+              "tener lugar (to take place) => La reunion tiene lugar los domingos"
+            ]
           }
         ]
       },
-      "exercises": [
-        {
-          "title": "Y en tu caso...",
-          "instructions": "¿Verdadero o falso?",
-          "questions": [
-            "Tengo sed y hambre",
-            "No tenga la culpa de nada",
-            "Tengo que limpiar mi cuarto",
-            "Hace calor aqui",
-            "Tengo frio",
-            "Tengo mucho sueño",
-            "Nunca tengo prisa",
-            "Hago un viaje pronto"
-          ],
-          "type": "open-ended"
-        },
-        {
-          "title": "En español",
-          "questions": [
-            "Are you hungry?",
-            "We are thirsty.",
-            "Lori pays a visit to her cousin.",
-            "Mario hugs his friend.",
-            "They are in a hurry.",
-            "You are right this time.",
-            "I am not afraid.",
-            "Are you cold?"
-          ],
-          "answers": [
-            "¿Tienes hambre?",
-            "Tenemos sed.",
-            "Lori hace una visita a su primo.",
-            "Mario da un abrazo a su amigo.",
-            "Tienen prisa.",
-            "Tienes razón esta vez.",
-            "No tengo miedo.",
-            "¿Tienes frío?"
-          ],
-          "type": "translate"
-        }
-      ]
-    }
+      {
+        "type": "exercises",
+        "exercises": [
+          {
+            "title": "Y en tu caso...",
+            "instructions": "¿Verdadero o falso?",
+            "questions": [
+              "Tengo sed y hambre",
+              "No tenga la culpa de nada",
+              "Tengo que limpiar mi cuarto",
+              "Hace calor aqui",
+              "Tengo frio",
+              "Tengo mucho sueño",
+              "Nunca tengo prisa",
+              "Hago un viaje pronto"
+            ],
+            "type": "open-ended"
+          },
+          {
+            "title": "En español",
+            "questions": [
+              "Are you hungry?",
+              "We are thirsty.",
+              "Lori pays a visit to her cousin.",
+              "Mario hugs his friend.",
+              "They are in a hurry.",
+              "You are right this time.",
+              "I am not afraid.",
+              "Are you cold?"
+            ],
+            "answers": [
+              "¿Tienes hambre?",
+              "Tenemos sed.",
+              "Lori hace una visita a su primo.",
+              "Mario da un abrazo a su amigo.",
+              "Tienen prisa.",
+              "Tienes razón esta vez.",
+              "No tengo miedo.",
+              "¿Tienes frío?"
+            ],
+            "type": "translate"
+          }
+        ]
+      }
+    ]
   ]
 }
