@@ -12,8 +12,7 @@ import { User } from './users/user.entity';
 import { Stats } from './stats/stats.entity';
 import { Lesson } from './lessons/lesson.entity';
 import * as session from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
-import { Pool } from 'pg';
+import { Flashcard } from './flashcards/flashcard.entity';
 import { FlashcardsModule } from './flashcards/flashcards.module';
 
 @Module({
@@ -25,7 +24,7 @@ import { FlashcardsModule } from './flashcards/flashcards.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Stats, Lesson],
+      entities: [User, Stats, Lesson, Flashcard],
       synchronize: true,
     }),
     UsersModule,

@@ -13,7 +13,7 @@ POST http://localhost:3001/auth/signin
 content-type: application/json
 
 {
-    "email": "pooperhead@buttsex.com",
+     "email": "fuckser@buttsex.com",
     "password": "password"
 }
 
@@ -45,3 +45,13 @@ GET http://localhost:3001/lessons
 
 ### Get one lesson
 GET http://localhost:3001/lessons/1
+
+### Post Flashcard
+POST http://localhost:3001/flashcards
+content-type: application/json
+
+{
+    "english" : "poop",
+    "spanish" : "doodoo",
+    "userId" : 1
+}

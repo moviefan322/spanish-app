@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Flashcard } from './flashcard.entity';
-import { User } from '../users/user.entity';
 import { CreateFlashcardDto } from './dtos/create-flashcard.dto';
 
 @Injectable()
@@ -12,10 +11,14 @@ export class FlashcardsService {
     private repo: Repository<Flashcard>,
   ) {}
 
-  async addFlashcard(flashcardDto: CreateFlashcardDto, user: User) {
-    const flashcard = this.repo.create(flashcardDto);
-    flashcard.user = user;
+  async addFlashcard(flashcardDto: CreateFlashcardDto) {
+    const flashcard = await this.repo.create(flashcardDto);
+    console.log(flashcard);
 
-    return this.repo.save(flashcard);
+    return JSON.stringify(flashcard);
+  }
+
+  async findFlashcards(userId: number) {
+    return this.repo.find({ where: { userId } });
   }
 }

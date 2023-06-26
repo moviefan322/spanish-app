@@ -12,6 +12,6 @@ export class Flashcard {
   @Column()
   english: string;
 
-  @ManyToOne(() => User, (user) => user.flashcards)
-  user: User;
+  @Column()
+  userId: number;
 }

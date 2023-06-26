@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsString, IsNumber } from 'class-validator';
 
 export class CreateFlashcardDto {
   @IsString()
@@ -6,4 +6,7 @@ export class CreateFlashcardDto {
 
   @IsString()
   english: string;
+
+  @IsNumber()
+  userId: number;
 }
