@@ -251,7 +251,7 @@
         "exercises": [
           {
             "title": "Y en tu caso...",
-            "instructions": "¿Es verdadero ofalso?",
+            "instructions": "¿Es verdadero o falso?",
             "questions": [
               "Desayuno a las ocho todos los días.",
               "Miro los programas de noticias por el cable por la tarde.",
@@ -260,7 +260,7 @@
               "Preparo la cena de lunes a viernes.",
               "Como muchas frutas yvegetales frescos."
             ],
-            "type": "open-ended"
+            "type": "open-ended-TF"
           },
           {
             "title": "En español",

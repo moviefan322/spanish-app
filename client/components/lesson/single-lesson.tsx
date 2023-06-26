@@ -156,8 +156,16 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
 
     const checkAnswers = () => {
       setSubmitted(true);
+
       inputValues.forEach((inputValue: string, index: number) => {
-        console.log(inputValue, thisExercise.answers[index]);
+        if (!thisExercise.answers) {
+          setInputCorrect((prevInputCorrect: boolean[]) => {
+            const newInputCorrect = [...prevInputCorrect];
+            newInputCorrect[index] = true;
+            return newInputCorrect;
+          });
+          return;
+        }
         if (inputValue === thisExercise.answers[index].trim()) {
           setAnswerStyle((prevAnswerStyle: string[]) => {
             const newAnswerStyle = [...prevAnswerStyle];
@@ -200,30 +208,6 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
                   <br />
                 </>
               ))}
-
-              {!submitted && !revealAnswers && (
-                <button className={styles.buttonRed} onClick={checkAnswers}>
-                  Check Answers
-                </button>
-              )}
-              {submitted && !revealAnswers && (
-                <button
-                  className={styles.buttonGray}
-                  onClick={revealAnswersHandler}
-                >
-                  Reveal Answers
-                </button>
-              )}
-              {submitted && revealAnswers && (
-                <button
-                  className={styles.buttonGreen}
-                  onClick={resetInputState}
-                >
-                  Try Again?
-                </button>
-              )}
-
-              {score > -1 && <p>Your Score: {score}%</p>}
             </>
           );
         case "translate":
@@ -236,16 +220,61 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
                     value={inputValues[index]}
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     style={{ border: answerStyle[index] }}
+                    key={`input${index}`}
                   />
                   <br />
                 </>
               ))}
-              <button className={styles.buttonRed} onClick={checkAnswers}>
-                Check Answers
-              </button>
-              {score > -1 && <p>Your Score: {score}%</p>}
             </>
           );
+        case "open-ended-TF":
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <li key={index}>
+                  {question}
+                  <br />
+                  <input
+                    type="radio"
+                    id={`true${index}`}
+                    name={`answer${index}`}
+                    value="true"
+                    checked={inputValues[index] === "true"}
+                    onChange={() => handleInputChange(index, "true")}
+                  />
+                  <label htmlFor={`true${index}`}>Verdadero</label>
+                  <input
+                    type="radio"
+                    id={`false${index}`}
+                    name={`answer${index}`}
+                    value="false"
+                    checked={inputValues[index] === "false"}
+                    onChange={() => handleInputChange(index, "false")}
+                  />
+                  <label htmlFor={`false${index}`}>Falso</label>
+                  <br />
+                </li>
+              ))}
+            </>
+          );
+        case "open-ended":
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <>
+                  <li key={index}>{question}</li>
+                  <textarea
+                    value={inputValues[index]}
+                    onChange={(e) => handleInputChange(index, e.target.value)}
+                    style={{ border: answerStyle[index] }}
+                    key={`input${index}`}
+                  />
+                  <br />
+                </>
+              ))}
+            </>
+          );
+
         default:
           return <p>INVALID TYPE</p>;
       }
@@ -258,6 +287,23 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
         {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
         <br />
         <ol>{renderQuestions(thisExercise.questions)}</ol>
+        {!submitted && thisExercise.answers && !revealAnswers && (
+          <button className={styles.buttonRed} onClick={checkAnswers}>
+            Check Answers
+          </button>
+        )}
+        {submitted && !revealAnswers && (
+          <button className={styles.buttonGray} onClick={revealAnswersHandler}>
+            Reveal Answers
+          </button>
+        )}
+        {submitted && revealAnswers && (
+          <button className={styles.buttonGreen} onClick={resetInputState}>
+            Try Again?
+          </button>
+        )}
+
+        {score > -1 && <p>Your Score: {score}%</p>}
       </>
     );
   };
@@ -299,14 +345,13 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
     }
     setToggleExercise((prevToggleExercise) => !prevToggleExercise);
     router.push(`/lessons/${unit}-${nextLesson + 1}`);
-    console.log(`/lessons/${unit}-${nextLesson}`);
   };
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  console.log(nextLesson);
+  console.log(thisExercise);
 
   return (
     <>
