@@ -117,7 +117,7 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
           );
         case "vocabulary":
           return (
-            <div key={index}>
+            <div key={index} className={styles.chartContainer}>
               {item.vocabulary.map((vocabItem: any, vocabIndex: number) => (
                 <Vocab key={vocabIndex} vocab={vocabItem} />
               ))}

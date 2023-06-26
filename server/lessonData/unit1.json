@@ -71,49 +71,49 @@
         "vocabulary": [
           {
             "title": "Verbs ending in -ar",
-            "list": [
-              { "bajar": "to go down" },
-              { "cocinar": "to cook" },
-              { "comprar": "to buy" },
-              { "conversar": "to converse" },
-              { "cooperar": "to cooperate" },
-              { "dibujar": "to draw" },
-              { "escuchar": "to listen" },
-              { "limpiar": "to clean" },
-              { "preparar": "to prepare" },
-              { "sacar": "to take out" },
-              { "sumar": "to add" },
-              { "trabajar": "to work" }
+            "chart": [
+              "bajar: to go down",
+              "cocinar: to cook",
+              "comprar: to buy",
+              "conversar: to converse",
+              "cooperar: to cooperate",
+              "dibujar: to draw",
+              "escuchar: to listen",
+              "limpiar: to clean",
+              "preparar: to prepare",
+              "sacar: to take out",
+              "sumar: to add",
+              "trabajar: to work"
             ]
           },
           {
             "title": "Verbs ending in -er",
-            "list": [
-              { "beber": "to drink" },
-              { "comer": "to eat" },
-              { "comprender": "to understand" },
-              { "correr": "to run" },
-              { "creer": "to believe" },
-              { "leer": "to read" },
-              { "responder": "to respond" },
-              { "romper": "to break" },
-              { "temer": "to fear" },
-              { "vender": "to sell" }
+            "chart": [
+              "beber: to drink",
+              "comer: to eat",
+              "comprender: to understand",
+              "correr: to run",
+              "creer: to believe",
+              "leer: to read",
+              "responder: to respond",
+              "romper: to break",
+              "temer: to fear",
+              "vender: to sell"
             ]
           },
           {
             "title": "Verbs ending in -ir",
-            "list": [
-              { "abrir": "to open" },
-              { "compartir": "to share" },
-              { "cubrir": "to cover" },
-              { "decidir": "to decide" },
-              { "discutir": "to discuss" },
-              { "escribir": "to write" },
-              { "repartir": "to distribute" },
-              { "subir": "to go up" },
-              { "sufrir": "to suffer" },
-              { "vivir": "to live" }
+            "chart": [
+              "abrir: to open",
+              "compartir: to share",
+              "cubrir: to cover",
+              "decidir: to decide",
+              "discutir: to discuss",
+              "escribir: to write",
+              "repartir: to distribute",
+              "subir: to go up",
+              "sufrir: to suffer",
+              "vivir: to live"
             ]
           }
         ]
@@ -225,22 +225,22 @@
         "vocabulary": [
           {
             "title": "Time expressions",
-            "list": [
-              { "al mediodía": "(at noon)" },
-              { "de vez en cuando": "from time to time" },
-              { "en lunes": "on Monday" },
-              { "esta semana": "this week" },
-              { "este mes": "this month" },
-              { "hoy": "today" },
-              { "los lunes": "on Mondays" },
-              { "nunca": "never" },
-              { "por la mañana": "in the morning" },
-              { "por la noche": "in the evening" },
-              { "por la tarde": "in the afternoon" },
-              { "siempre": "always" },
-              { "todas las semanas": "every week" },
-              { "todos los días": "every day" },
-              { "todos los meses": "every month" }
+            "chart": [
+              "al mediodía: (at noon)",
+              "de vez en cuando: from time to time",
+              "en lunes: on Monday",
+              "esta semana: this week",
+              "este mes: this month",
+              "hoy: today",
+              "los lunes: on Mondays",
+              "nunca: never",
+              "por la mañana: in the morning",
+              "por la noche: in the evening",
+              "por la tarde: in the afternoon",
+              "siempre: always",
+              "todas las semanas: every week",
+              "todos los días: every day",
+              "todos los meses: every month"
             ]
           }
         ]

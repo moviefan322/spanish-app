@@ -9,15 +9,12 @@ function Vocab({ vocab }: any) {
         </tr>
       </thead>
       <tbody>
-        {vocab.list.map((item: { [key: string]: string }, index: number) => {
+        {vocab.chart.map((item: string, index: number) => {
+          const splitItem = item.split(":")
           return (
             <tr key={index}>
-              {Object.entries(item).map(([key, value]) => (
-                <React.Fragment key={key}>
-                  <td>{key}</td>
-                  <td>{value}</td>
-                </React.Fragment>
-              ))}
+              <td><strong>{splitItem[0]}</strong></td>
+              <td>{splitItem[1]}</td>
             </tr>
           );
         })}
