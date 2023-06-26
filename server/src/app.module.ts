@@ -14,6 +14,7 @@ import { Lesson } from './lessons/lesson.entity';
 import * as session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { Pool } from 'pg';
+import { FlashcardsModule } from './flashcards/flashcards.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { Pool } from 'pg';
     UsersModule,
     LessonsModule,
     StatsModule,
+    FlashcardsModule,
   ],
   controllers: [AppController],
   providers: [

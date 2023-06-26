@@ -6,8 +6,10 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToOne,
+  OneToMany,
 } from 'typeorm';
 import { Stats } from '../stats/stats.entity';
+import { Flashcard } from '../flashcards/flashcard.entity';
 
 @Entity()
 export class User {
@@ -25,6 +27,9 @@ export class User {
 
   @OneToOne(() => Stats, (stats) => stats.user)
   stats: Stats;
+
+  @OneToMany(() => Flashcard, (flashcard) => flashcard.user)
+  flashcards: Flashcard[];
 
   @AfterInsert()
   logInsert() {
