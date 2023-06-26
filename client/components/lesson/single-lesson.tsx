@@ -17,6 +17,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [submitted, setSubmitted] = useState(false);
   const [revealAnswers, setRevealAnswers] = useState(false);
   const [thisExercise, setThisExercise] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -61,6 +62,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     setAnswerStyle([]);
     setSubmitted(false);
     setRevealAnswers(false);
+    setError(null);
   };
 
   const handleInputChange = (index: number, value: string) => {
@@ -158,7 +160,13 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     };
 
     const checkAnswers = () => {
+      if (inputValues.length !== thisExercise.answers.length) {
+        console.log("triggered");
+        setError("Please answer all questions");
+        return;
+      }
       setSubmitted(true);
+      setError(null);
 
       inputValues.forEach((inputValue: string, index: number) => {
         if (!thisExercise.answers) {
@@ -169,7 +177,10 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           });
           return;
         }
-        if (inputValue === thisExercise.answers[index].trim()) {
+        if (
+          inputValue.trim().toLowerCase() ===
+          thisExercise.answers[index].trim().toLowerCase()
+        ) {
           setAnswerStyle((prevAnswerStyle: string[]) => {
             const newAnswerStyle = [...prevAnswerStyle];
             newAnswerStyle[index] = "2px solid green";
@@ -245,25 +256,34 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                 <li key={index}>
                   {question}
                   <br />
-                  <input
-                    type="radio"
-                    id={`true${index}`}
-                    name={`answer${index}`}
-                    value="V"
-                    checked={inputValues[index] === "true"}
-                    onChange={() => handleInputChange(index, "true")}
-                  />
-                  <label htmlFor={`true${index}`}>Verdadero</label>
-                  <br />
-                  <input
-                    type="radio"
-                    id={`false${index}`}
-                    name={`answer${index}`}
-                    value="F"
-                    checked={inputValues[index] === "false"}
-                    onChange={() => handleInputChange(index, "false")}
-                  />
-                  <label htmlFor={`false${index}`}>Falso</label>
+                  {!revealAnswers ? (
+                    <>
+                      {" "}
+                      <input
+                        type="radio"
+                        id={`V${index}`}
+                        name={`answer${index}`}
+                        value="V"
+                        checked={inputValues[index] === "V"}
+                        onChange={() => handleInputChange(index, "V")}
+                      />
+                      <label htmlFor={`true${index}`}>Verdadero</label>
+                      <br />
+                      <input
+                        type="radio"
+                        id={`F${index}`}
+                        name={`answer${index}`}
+                        value="F"
+                        checked={inputValues[index] === "F"}
+                        onChange={() => handleInputChange(index, "F")}
+                      />
+                      <label htmlFor={`false${index}`}>Falso</label>
+                    </>
+                  ) : (
+                    <span>
+                      <strong>{thisExercise.answers[index]}</strong>
+                    </span>
+                  )}
                   <hr />
                   <br />
                 </li>
@@ -320,6 +340,35 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
             </>
           );
 
+        case "conjugate-plain":
+          return (
+            <>
+              {thisExercise.questions.map((question: any, index: number) => (
+                <>
+                  <li key={index}>
+                    {question} -{" "}
+                    {!revealAnswers ? (
+                      <input
+                        value={inputValues[index]}
+                        onChange={(e) =>
+                          handleInputChange(index, e.target.value)
+                        }
+                        style={{ border: answerStyle[index] }}
+                        key={`input${index}`}
+                      />
+                    ) : (
+                      <span>
+                        <strong>{thisExercise.answers[index]}</strong>
+                      </span>
+                    )}
+                  </li>
+                  <br />
+                  <hr />
+                </>
+              ))}
+            </>
+          );
+
         default:
           return <p>INVALID TYPE</p>;
       }
@@ -333,6 +382,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
           <br />
           <ol>{renderQuestions(thisExercise.questions)}</ol>
+          {error && <strong className={styles.error}>{error}</strong>}
           {!submitted && thisExercise.answers && !revealAnswers && (
             <button className={styles.buttonRed} onClick={checkAnswers}>
               Check Answers

@@ -159,6 +159,14 @@
   text-align: left;
 }
 
+.error {
+  color: black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: red 2px dashed;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
 /* media queury for desktops */
 
 @media (min-width: 1024px) {
