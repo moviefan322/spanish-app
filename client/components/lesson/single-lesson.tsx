@@ -407,8 +407,9 @@ function SingleLesson({ lesson = [], nextLesson, unit }: any) {
       )}
       {toggleExercise && (
         <div className={styles.exercises}>
-          {" "}
-          {renderExercises(lesson, currentExercise)}
+          <div className={styles.exerciseCard}>
+            {renderExercises(lesson, currentExercise)}
+          </div>
           <div className={styles.bottom}>
             <button className={styles.button} onClick={returnButtonHandler}>
               <FaArrowLeft />
