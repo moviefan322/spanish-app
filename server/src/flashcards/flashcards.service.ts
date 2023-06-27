@@ -11,11 +11,9 @@ export class FlashcardsService {
     private repo: Repository<Flashcard>,
   ) {}
 
-  async addFlashcard(flashcardDto: CreateFlashcardDto) {
-    const flashcard = await this.repo.create(flashcardDto);
-    console.log(flashcard);
-
-    return JSON.stringify(flashcard);
+  async create(flashcardDto: CreateFlashcardDto) {
+    const flashcard = this.repo.create(flashcardDto);
+    return this.repo.save(flashcard);
   }
 
   async findFlashcards(userId: number) {

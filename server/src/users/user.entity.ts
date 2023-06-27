@@ -9,7 +9,6 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Stats } from '../stats/stats.entity';
-import { Flashcard } from '../flashcards/flashcard.entity';
 
 @Entity()
 export class User {

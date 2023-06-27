@@ -51,8 +51,8 @@ POST http://localhost:3001/flashcards
 content-type: application/json
 
 {
-    "english" : "poop",
-    "spanish" : "doodoo",
+    "english" : "doors",
+    "spanish" : "portapotty",
     "userId" : 1
 }
 
