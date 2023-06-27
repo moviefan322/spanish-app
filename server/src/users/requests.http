@@ -17,6 +17,15 @@ content-type: application/json
     "password": "password"
 }
 
+### Login alt
+POST http://localhost:3001/auth/login
+content-type: application/json
+
+{
+     "email": "fuckser@buttsex.com",
+    "password": "password"
+}
+
 ### Get a user's profile
 GET http://localhost:3001/auth/getme
 
