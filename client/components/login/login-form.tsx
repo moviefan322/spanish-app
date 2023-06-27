@@ -82,7 +82,8 @@ function LoginForm() {
     dispatch(setState({ user: data.currentUser, token: data.access_token }));
 
     resetForm();
-    localStorage.setItem("spanishuser", "USER");
+    localStorage.setItem("spanishuser", JSON.stringify(data.currentUser));
+    localStorage.setItem("spanishtoken", JSON.stringify(data.access_token));
     router.push("/");
   };
 

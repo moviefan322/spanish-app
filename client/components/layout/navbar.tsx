@@ -1,14 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./navbar.module.css";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setState } from "../../store/userSlice";
 
 function Navbar(): JSX.Element {
   const { user } = useSelector((state: any) => state.user);
 
+  const dispatch = useDispatch();
+
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    console.log("Logout button clicked!");
+    localStorage.removeItem("spanishuser");
+    dispatch(setState({ user: null, token: "" }));
   };
   return (
     <nav className={styles.navbar}>
