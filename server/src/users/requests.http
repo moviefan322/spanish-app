@@ -26,6 +26,10 @@ content-type: application/json
     "password": "password"
 }
 
+### Profile
+GET http://localhost:3001/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1Y2tzZXJAYnV0dHNleC5jb20iLCJzdWIiOjIsImlhdCI6MTY4Nzg4OTU2NCwiZXhwIjoxNjg3OTc1OTY0fQ.w9bAg1_GxewyR3cWoCaiqMbAOjpXzoW-oOjVeNz6buQ
+
 ### Get a user's profile
 GET http://localhost:3001/auth/getme
 

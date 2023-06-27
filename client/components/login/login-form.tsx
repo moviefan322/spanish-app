@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import styles from "./login-form.module.css";
-import { useCurrentUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
 import User from "@/types/User";
 
@@ -13,7 +12,6 @@ function LoginForm() {
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
-  const { setCurrentUser } = useCurrentUser();
   const router = useRouter();
 
   const switchModeHandler = () => {
@@ -62,7 +60,7 @@ function LoginForm() {
       password: enteredPassword,
     };
 
-    const res = await fetch("http://localhost:3001/auth/signin", {
+    const res = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -77,9 +75,7 @@ function LoginForm() {
     }
 
     resetForm();
-    const user: User = await res.json();
-    setCurrentUser(user);
-    localStorage.setItem("spanishuser", JSON.stringify(user));
+    localStorage.setItem("spanishuser", "USER");
     router.push("/");
   };
 

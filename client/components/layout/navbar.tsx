@@ -1,16 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCurrentUser } from "@/context/UserContext";
 import styles from "./navbar.module.css";
 import Link from "next/link";
 
 function Navbar(): JSX.Element {
-  const { currentUser } = useCurrentUser();
+  const currentUser = null;
 
-  const logoutButtonHandler = () => {
-    localStorage.removeItem("spanishuser");
+  const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    console.log("Logout button clicked!");
   };
-
-  console.log(currentUser);
   return (
     <nav className={styles.navbar}>
       <ul>
@@ -18,7 +16,7 @@ function Navbar(): JSX.Element {
           <strong>Españolified</strong>
         </li>
       </ul>
-      {currentUser && <p>Greetings, {currentUser.username}!</p>}
+      {currentUser && <p>Greetings, [USER]!</p>}
       <ul className={styles.links}>
         <li>
           <Link href="/">Home</Link>
