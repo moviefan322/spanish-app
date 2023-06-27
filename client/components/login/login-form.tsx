@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
-import User from "@/types/User";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,6 +14,8 @@ function LoginForm() {
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -68,11 +71,15 @@ function LoginForm() {
       body: JSON.stringify(packageData),
     });
 
+    const data = await res.json();
+    console.log(data);
+
     if (!res.ok) {
-      const data = await res.json();
       setError(data.message);
       return;
     }
+
+    dispatch(setState({ user: data.currentUser, token: data.access_token }));
 
     resetForm();
     localStorage.setItem("spanishuser", "USER");
