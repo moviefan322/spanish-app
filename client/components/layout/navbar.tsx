@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./navbar.module.css";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 function Navbar(): JSX.Element {
-  const currentUser = null;
+  const { user } = useSelector((state: any) => state.user);
 
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -16,12 +17,12 @@ function Navbar(): JSX.Element {
           <strong>Españolified</strong>
         </li>
       </ul>
-      {currentUser && <p>Greetings, [USER]!</p>}
+      {user && <p>Greetings, {user.username}!</p>}
       <ul className={styles.links}>
         <li>
           <Link href="/">Home</Link>
         </li>
-        {!currentUser ? (
+        {!user ? (
           <li>
             <Link href="/login">Login</Link>
           </li>
