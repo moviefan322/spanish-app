@@ -1,17 +1,17 @@
 import React from "react";
 import { FaCirclePlus } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 import { User } from "../../utils/interfaces";
 import styles from "./single-lesson.module.css";
 
 function Vocab({ vocab }: any) {
-  const storedUser: string | null = localStorage.getItem("spanishuser");
-  const currentUser: User | null = storedUser ? JSON.parse(storedUser) : null;
+  const { user } = useSelector((state: any) => state.user);
 
   const postToFlashcards = async (word: string[]) => {
     const data = {
       english: word[1],
       spanish: word[0],
-      userId: Number(currentUser!.id),
+      userId: Number(user!.id),
     };
     const response = await fetch("http://localhost:3001/flashcards", {
       method: "POST",
