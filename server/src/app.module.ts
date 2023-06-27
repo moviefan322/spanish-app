@@ -14,6 +14,7 @@ import { Lesson } from './lessons/lesson.entity';
 import * as session from 'express-session';
 import { Flashcard } from './flashcards/flashcard.entity';
 import { FlashcardsModule } from './flashcards/flashcards.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { FlashcardsModule } from './flashcards/flashcards.module';
     LessonsModule,
     StatsModule,
     FlashcardsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

@@ -190,7 +190,7 @@ function LoginForm() {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
-                type="password2"
+                type="password"
                 id="password2-signup"
                 className="form-control"
                 ref={signupPasswordConfirmInputRef}
