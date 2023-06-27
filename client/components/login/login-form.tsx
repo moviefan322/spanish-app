@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
-import { useCurrentUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
-import User from "@/types/User";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,8 +13,9 @@ function LoginForm() {
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
-  const { setCurrentUser } = useCurrentUser();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -62,7 +63,7 @@ function LoginForm() {
       password: enteredPassword,
     };
 
-    const res = await fetch("http://localhost:3001/auth/signin", {
+    const res = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,16 +71,19 @@ function LoginForm() {
       body: JSON.stringify(packageData),
     });
 
+    const data = await res.json();
+    console.log(data);
+
     if (!res.ok) {
-      const data = await res.json();
       setError(data.message);
       return;
     }
 
+    dispatch(setState({ user: data.currentUser, token: data.access_token }));
+
     resetForm();
-    const user: User = await res.json();
-    setCurrentUser(user);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("spanishuser", JSON.stringify(data.currentUser));
+    localStorage.setItem("spanishtoken", JSON.stringify(data.access_token));
     router.push("/");
   };
 
@@ -190,7 +194,7 @@ function LoginForm() {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
-                type="password2"
+                type="password"
                 id="password2-signup"
                 className="form-control"
                 ref={signupPasswordConfirmInputRef}

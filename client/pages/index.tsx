@@ -1,19 +1,24 @@
 import Welcome from "@/components/home/welcome";
-import { useEffect } from "react";
-import { useCurrentUser } from "@/context/UserContext";
-import User from "../types/User";
 import Head from "next/head";
+import { useSelector, useDispatch } from "react-redux";
+import { setState } from "../store/userSlice";
 
 export default function Home() {
-  const { setCurrentUser } = useCurrentUser();
+  const user = useSelector((state: any) => state.user);
+  ``;
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const user: User | null = JSON.parse(storedUser);
-      setCurrentUser(user);
-    }
-  }, []);
+  console.log(user);
+
+  if (user.user === undefined || user.user === null) {
+    try {
+      const savedUser = JSON.parse(localStorage.getItem("spanishuser") || "");
+      const savedToken = localStorage.getItem("spanishtoken") || "";
+      if (savedUser) {
+        dispatch(setState({ user: savedUser, token: savedToken }));
+      }
+    } catch (error) {}
+  }
 
   return (
     <>

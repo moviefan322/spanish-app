@@ -13,9 +13,22 @@ POST http://localhost:3001/auth/signin
 content-type: application/json
 
 {
-    "email": "pooperhead@buttsex.com",
+     "email": "fuckser@buttsex.com",
     "password": "password"
 }
+
+### Login alt
+POST http://localhost:3001/auth/login
+content-type: application/json
+
+{
+     "email": "fuckser@buttsex.com",
+    "password": "password"
+}
+
+### Profile
+GET http://localhost:3001/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1Y2tzZXJAYnV0dHNleC5jb20iLCJzdWIiOjIsImlhdCI6MTY4Nzg4OTU2NCwiZXhwIjoxNjg3OTc1OTY0fQ.w9bAg1_GxewyR3cWoCaiqMbAOjpXzoW-oOjVeNz6buQ
 
 ### Get a user's profile
 GET http://localhost:3001/auth/getme
@@ -45,3 +58,16 @@ GET http://localhost:3001/lessons
 
 ### Get one lesson
 GET http://localhost:3001/lessons/1
+
+### Post Flashcard
+POST http://localhost:3001/flashcards
+content-type: application/json
+
+{
+    "english" : "doors",
+    "spanish" : "portapotty",
+    "userId" : 1
+}
+
+### Get flashcards by user
+GET http://localhost:3001/flashcards/1

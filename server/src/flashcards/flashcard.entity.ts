@@ -1,5 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { User } from '../users/user.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Flashcard {
@@ -12,6 +11,6 @@ export class Flashcard {
   @Column()
   english: string;
 
-  @ManyToOne(() => User, (user) => user.flashcards)
-  user: User;
+  @Column()
+  userId: number;
 }

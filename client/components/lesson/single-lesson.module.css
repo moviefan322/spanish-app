@@ -10,6 +10,15 @@
   margin: auto;
 }
 
+.noStyleButton {
+  display: inline-block;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
 .buttonRed {
   display: flex;
   align-items: center;
@@ -122,6 +131,10 @@
   margin: 0.5rem;
 }
 
+.exercises li {
+  line-height: 2rem;
+}
+
 .exercises input {
   border: black solid 2px;
 }
@@ -140,6 +153,18 @@
   border: 2px black solid;
   background-color: rgb(255, 212, 177);
   padding: 2rem 0;
+}
+
+.vocabRow {
+  text-align: left;
+}
+
+.error {
+  color: black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: red 2px dashed;
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 /* media queury for desktops */

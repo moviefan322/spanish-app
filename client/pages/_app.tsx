@@ -2,16 +2,17 @@ import React from "react";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 import Layout from "@/components/layout/layout";
-import { CurrentUserProvider } from "@/context/UserContext";
+import store from "../store/configureStore";
+import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CurrentUserProvider>
+    <Provider store={store}>
       <Layout>
         <main className="container">
           <Component {...pageProps} />
         </main>
       </Layout>
-    </CurrentUserProvider>
+    </Provider>
   );
 }

@@ -649,7 +649,7 @@
         "type": "chart",
         "chart": [
           {
-            "title": "decir (to say",
+            "title": "decir (to say)",
             "chart": ["digo", "dices", "dice", "decimos", "decís", "dicen"]
           },
           {
@@ -981,7 +981,7 @@
               "A veces hay neblina en la carretera",
               "Los jovenes dan gritos en los conciertos de rock"
             ],
-            "type": "open-ended"
+            "type": "open-ended-TF"
           }
         ]
       }
@@ -1024,21 +1024,6 @@
         "type": "exercises",
         "exercises": [
           {
-            "title": "Y en tu caso...",
-            "instructions": "¿Verdadero o falso?",
-            "questions": [
-              "Tengo sed y hambre",
-              "No tenga la culpa de nada",
-              "Tengo que limpiar mi cuarto",
-              "Hace calor aqui",
-              "Tengo frio",
-              "Tengo mucho sueño",
-              "Nunca tengo prisa",
-              "Hago un viaje pronto"
-            ],
-            "type": "open-ended"
-          },
-          {
             "title": "En español",
             "questions": [
               "Are you hungry?",
@@ -1061,6 +1046,21 @@
               "¿Tienes frío?"
             ],
             "type": "translate"
+          },
+          {
+            "title": "Y en tu caso...",
+            "instructions": "¿Verdadero o falso?",
+            "questions": [
+              "Tengo sed y hambre",
+              "No tenga la culpa de nada",
+              "Tengo que limpiar mi cuarto",
+              "Hace calor aqui",
+              "Tengo frio",
+              "Tengo mucho sueño",
+              "Nunca tengo prisa",
+              "Hago un viaje pronto"
+            ],
+            "type": "open-ended-TF"
           }
         ]
       }

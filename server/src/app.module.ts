@@ -12,26 +12,28 @@ import { User } from './users/user.entity';
 import { Stats } from './stats/stats.entity';
 import { Lesson } from './lessons/lesson.entity';
 import * as session from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
-import { Pool } from 'pg';
+import { Flashcard } from './flashcards/flashcard.entity';
 import { FlashcardsModule } from './flashcards/flashcards.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: ['.env'],
       isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV}`,
+      cache: true,
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Stats, Lesson],
+      entities: [User, Stats, Lesson, Flashcard],
       synchronize: true,
     }),
     UsersModule,
     LessonsModule,
     StatsModule,
     FlashcardsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

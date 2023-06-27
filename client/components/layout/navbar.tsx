@@ -1,16 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCurrentUser } from "@/context/UserContext";
 import styles from "./navbar.module.css";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
+import { setState } from "../../store/userSlice";
 
 function Navbar(): JSX.Element {
-  const { currentUser } = useCurrentUser();
+  const { user } = useSelector((state: any) => state.user);
 
-  const logoutButtonHandler = () => {
-    localStorage.removeItem("user");
+  const dispatch = useDispatch();
+
+  const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    localStorage.removeItem("spanishuser");
+    dispatch(setState({ user: null, token: "" }));
   };
-
-  console.log(currentUser);
   return (
     <nav className={styles.navbar}>
       <ul>
@@ -18,12 +21,12 @@ function Navbar(): JSX.Element {
           <strong>Españolified</strong>
         </li>
       </ul>
-      {currentUser && <p>Greetings, {currentUser.username}!</p>}
+      {user && <p>Greetings, {user.username}!</p>}
       <ul className={styles.links}>
         <li>
           <Link href="/">Home</Link>
         </li>
-        {!currentUser ? (
+        {!user ? (
           <li>
             <Link href="/login">Login</Link>
           </li>
