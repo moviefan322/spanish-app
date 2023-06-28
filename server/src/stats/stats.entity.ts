@@ -9,9 +9,6 @@ export class Stats {
   lessonId: number;
 
   @Column()
-  isCompleted: boolean;
-
-  @Column()
   score: number;
 
   @Column()

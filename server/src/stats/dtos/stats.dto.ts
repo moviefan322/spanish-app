@@ -10,10 +10,6 @@ export class StatsDto {
   lessonId: number;
 
   @Expose()
-  @Transform(({ value }) => value.isCompleted)
-  isCompleted: boolean;
-
-  @Expose()
   @Transform(({ value }) => value.score)
   score: number;
 
