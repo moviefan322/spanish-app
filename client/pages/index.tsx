@@ -47,7 +47,9 @@ export default function Home() {
         <title>Españolified</title>
       </Head>
       <Welcome />
+      <hr />
       <FreeAndFun />
+      <hr />
       <UserTestimonials />
     </>
   );
