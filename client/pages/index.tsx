@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../store/userSlice";
+import FreeAndFun from "@/components/home/free-and-fun";
 
 export default function Home() {
   const user = useSelector((state: any) => state.user);
@@ -45,6 +46,7 @@ export default function Home() {
         <title>Españolified</title>
       </Head>
       <Welcome />
+      <FreeAndFun />
     </>
   );
 }

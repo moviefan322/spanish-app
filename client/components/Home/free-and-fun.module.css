@@ -1,0 +1,38 @@
+.freeAndFun {
+  padding: 3rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.freeAndFun div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  margin: 1rem;
+  border: black 1px solid;
+}
+
+.freeAndFun div h2 {
+  border-bottom: black 2px solid;
+  margin-bottom: 1rem;
+  width: 100%;
+  background-color: var(--green);
+  padding: 0.5rem;
+}
+
+.freeAndFun div p {
+  padding: 1rem;
+  width: 100%;
+}
+
+.image {
+  background-color: rgba(102, 174, 255, 0.328);
+  border-radius: 100%;
+  border: black dashed 1px;
+}
