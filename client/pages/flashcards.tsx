@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import FlashcardMain from "@/components/flashcards/flashcard-main";
 
 function Flashcards() {
-  const { flashcards } = useSelector((state: any) => state.user);
   return (
     <>
-      <h1>FLASHCARDS</h1>
+      <FlashcardMain />
     </>
   );
 }

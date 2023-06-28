@@ -11,8 +11,6 @@ function Navbar(): JSX.Element {
 
   const dispatch = useDispatch();
 
-  console.log(state);
-
   useEffect(() => {
     if (!user.isLoggedIn) {
       try {
