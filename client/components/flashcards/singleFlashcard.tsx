@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "./singleFlashcard.module.css";
+import { set } from "immer/dist/internal";
 
 interface singleFlashcardProps {
   sideUp: string;
@@ -19,6 +20,7 @@ function SingleFlashcard({ sideUp, flashcards }: singleFlashcardProps) {
   const [userInput, setUserInput] = useState("");
   const [showSide, setShowSide] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [customStyle, setCustomStyle] = useState({
     backgroundColor: "rgb(23, 23, 23)",
   });
@@ -38,11 +40,13 @@ function SingleFlashcard({ sideUp, flashcards }: singleFlashcardProps) {
   };
 
   const checkAnswer = () => {
+    setIsSubmitted(true);
     if (userInput === correctAnswer) {
       setCustomStyle({ backgroundColor: "green" });
       setTimeout(() => {
         setCustomStyle({ backgroundColor: "rgb(23, 23, 23)" });
         setUserInput("");
+        setIsSubmitted(false);
         if (currentFlashcard < flashcards.length - 1) {
           setCurrentFlashcard((prev) => prev + 1);
         } else {
@@ -54,6 +58,7 @@ function SingleFlashcard({ sideUp, flashcards }: singleFlashcardProps) {
       setTimeout(() => {
         setCustomStyle({ backgroundColor: "rgb(23, 23, 23)" });
         setUserInput("");
+        setIsSubmitted(false);
         if (currentFlashcard < flashcards.length - 1) {
           setCurrentFlashcard((prev) => prev + 1);
         } else {
@@ -64,14 +69,20 @@ function SingleFlashcard({ sideUp, flashcards }: singleFlashcardProps) {
   };
 
   return (
-    <div className={styles.singleFlashcard} style={customStyle}>
+    <div className={styles.singleFlashcard}>
       <>
         <div>
           <p>{showSide}</p>
         </div>
-        <div>
-          <input type="text" value={userInput} onChange={onChangeHandler} />
-          <button onClick={checkAnswer}>Submit</button>
+        <div style={customStyle}>
+          {!isSubmitted ? (
+            <>
+              <input type="text" value={userInput} onChange={onChangeHandler} />
+              <button onClick={checkAnswer}>Submit</button>
+            </>
+          ) : (
+            <p>{correctAnswer}</p>
+          )}
         </div>
       </>
     </div>
