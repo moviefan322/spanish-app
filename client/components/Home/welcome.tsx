@@ -7,8 +7,8 @@ function Welcome() {
       <section className={styles.section}>
         <h1>Welcome to Spanish Grammar!</h1>
         <p>
-          You made a good choice choosing Españolified as your language
-          learning application of choice. <br /> <br />
+          Congratulations for choosing Españolified as your language
+          learning application of choice! <br /> <br />
           Join the hundreds of thousands of
           users who have gone from zero to fluent in Spanish with our app.
         </p>

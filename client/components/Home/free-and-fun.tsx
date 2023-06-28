@@ -6,7 +6,7 @@ function FreeAndFun() {
   return (
     <div className={styles.freeAndFun}>
       <div>
-        <h2>Espaõlified is FREE</h2>
+        <h2>Espaõlified is FREE!</h2>
         <Image
           className={styles.image}
           src="/images/welcome/save-money-trans.png"
@@ -20,7 +20,7 @@ function FreeAndFun() {
         </p>
       </div>
       <div>
-        <h2>Espaõlified is FUN</h2>
+        <h2>Espaõlified is FUN!</h2>
         <Image
           className={styles.image}
           src="/images/welcome/happy-monkey-trans.png"
@@ -30,11 +30,11 @@ function FreeAndFun() {
         />
         <p>
           With our app, not only will you build language skills at an alarming
-          pace, but you will really enjoy the experience!
+          pace, but we guarantee you will really enjoy the experience!
         </p>
       </div>
       <div>
-        <h2>...and backed by SCIENCE</h2>
+        <h2>It&apos;s SCIENCE!</h2>
         <Image
           className={styles.image}
           src="/images/welcome/panda-science-trans.png"

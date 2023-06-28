@@ -34,3 +34,8 @@
   width: fit-content;
   font-weight: 700;
 }
+
+.Link:hover {
+  background-color: yellow;
+  font-size: 1.1rem;
+}
