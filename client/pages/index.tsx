@@ -32,7 +32,12 @@ export default function Home() {
         const data = await res.json();
         console.log(data);
         dispatch(
-          setState({ user: user.user, token: user.token, flashcards: data })
+          setState({
+            user: user.user,
+            token: user.token,
+            flashcards: data,
+            isLoggedIn: true,
+          })
         );
       };
 

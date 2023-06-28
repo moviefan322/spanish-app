@@ -18,7 +18,7 @@ function UserTestimonials() {
           <h4>Sarah Fotze</h4>
           <p>
             &quot;I went from speaking no Spanish at all to being completely
-            fluent in only 15 days. Espaõlified is amazing!&quot;
+            fluent in only 15 days. Españolified is amazing!&quot;
           </p>
         </div>
         <div>
@@ -45,7 +45,7 @@ function UserTestimonials() {
           />
           <h4>Kim Blaze</h4>
           <p>
-            &quot;Espaõlified opened a lot of doors for me, I recommend it to
+            &quot;Españolified opened a lot of doors for me, I recommend it to
             anyone that wants to become fluent fast!&quot;
           </p>
         </div>

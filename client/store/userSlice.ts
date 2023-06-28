@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     token: "",
     flashcards: [],
     stats: [],
+    isLoggedIn: false,
   },
   reducers: {
     setState: (state, action) => {
@@ -14,6 +15,7 @@ export const userSlice = createSlice({
       state.token = action.payload.token;
       state.flashcards = action.payload.flashcards;
       state.stats = action.payload.stats;
+      state.isLoggedIn = action.payload.isLoggedIn;
     },
   },
 });

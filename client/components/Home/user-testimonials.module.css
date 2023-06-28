@@ -13,13 +13,11 @@
 }
 
 .userTestimonials {
+  padding: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  margin: 1rem auto;
-  width: 70%;
-  max-width: 400px;
 }
 
 .userTestimonials div {
@@ -31,11 +29,13 @@
   width: 100%;
   margin: 1rem;
   border: black 1px solid;
+  max-width: 400px;
+  height: 22rem;
 }
 
 .userImage {
   border-radius: 50%;
-  margin: 1rem auto;
+  margin: 1rem;
   border: 1px dashed rgb(0, 0, 0);
 }
 
@@ -54,6 +54,5 @@
 
   .userTestimonials div {
     margin: 1rem;
-    padding: 1rem;
   }
 }

@@ -5,7 +5,7 @@ function Welcome() {
   return (
     <article className={styles.welcome}>
       <section className={styles.section}>
-        <h1>Welcome to Spanish Grammar!</h1>
+        <h1>Welcome to Españolified!</h1>
         <p>
           Congratulations for choosing Españolified as your language
           learning application of choice! <br /> <br />

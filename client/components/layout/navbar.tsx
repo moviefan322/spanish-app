@@ -21,7 +21,6 @@ function Navbar(): JSX.Element {
           <strong>Españolified</strong>
         </li>
       </ul>
-      {user && <p>Greetings, {user.username}!</p>}
       <ul className={styles.links}>
         <li>
           <Link href="/">Home</Link>

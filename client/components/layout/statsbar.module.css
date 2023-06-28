@@ -1,0 +1,23 @@
+.statsbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.statsbar strong {
+  color: black;
+  padding: 0.2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
