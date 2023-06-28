@@ -1,4 +1,5 @@
 import Welcome from "@/components/home/welcome";
+import { useEffect } from "react";
 import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../store/userSlice";
@@ -19,6 +20,23 @@ export default function Home() {
       }
     } catch (error) {}
   }
+
+  useEffect(() => {
+    if (user.user) {
+      const getFlashcards = async () => {
+        const res = await fetch(
+          `http://localhost:3001/flashcards/${user.user.id}`
+        );
+        const data = await res.json();
+        console.log(data);
+        dispatch(
+          setState({ user: user.user, token: user.token, flashcards: data })
+        );
+      };
+
+      getFlashcards();
+    }
+  }, []);
 
   return (
     <>
