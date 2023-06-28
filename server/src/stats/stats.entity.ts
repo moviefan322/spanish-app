@@ -1,5 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
-import { User } from '../users/user.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Stats {
@@ -15,6 +14,6 @@ export class Stats {
   @Column()
   score: number;
 
-  @OneToOne(() => User, (user) => user.stats)
-  user: User;
+  @Column()
+  userId: number;
 }

@@ -5,10 +5,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
-  OneToMany,
 } from 'typeorm';
-import { Stats } from '../stats/stats.entity';
 
 @Entity()
 export class User {
@@ -23,9 +20,6 @@ export class User {
 
   @Column()
   username: string;
-
-  @OneToOne(() => Stats, (stats) => stats.user)
-  stats: Stats;
 
   @AfterInsert()
   logInsert() {
