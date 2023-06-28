@@ -21,3 +21,16 @@
   border-radius: 6px;
   font-size: 1.1rem;
 }
+
+.link {
+  background-color: rgba(0, 255, 8, 0.694);
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: 1px solid black;
+  color: black;
+}
+
+.link:hover {
+  background-color: yellow;
+}

@@ -10,10 +10,10 @@ function Statsbar() {
       {state.isLoggedIn && (
         <div className={styles.statsbar}>
           <div><strong>{state.user.username}</strong></div>
-          <div>Unit/Lesson:</div>
-          <div>Points:</div>
-          <div>%:</div>
-          <Link href="/flashcards">Flashcards</Link>
+          <div>Unit: 0/20</div>
+          <div>Points: 0/525</div>
+          <div>0%</div>
+          <Link className={styles.link} href="/flashcards">Flashcards</Link>
         </div>
       )}
     </>
