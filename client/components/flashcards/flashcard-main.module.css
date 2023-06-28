@@ -6,7 +6,7 @@
   height: 400px;
   width: 80%;
   padding: 3rem;
-  background-color: rgb(23, 23, 23);
+  background-color: rgb(130, 129, 129);
   margin: 3rem auto;
 }
 
@@ -21,4 +21,12 @@
   font-weight: 700;
   border: 1px solid black;
   color: black;
+}
+
+/* media query for desktop */
+
+@media (min-width: 768px) {
+  .cardContainer {
+    width: 50%;
+  }
 }

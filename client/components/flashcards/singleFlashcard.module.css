@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(23, 23, 23);
 }
 
 .singleFlashcard div {

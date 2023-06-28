@@ -41,7 +41,7 @@ function SingleFlashcard({ sideUp, flashcards }: singleFlashcardProps) {
 
   const checkAnswer = () => {
     setIsSubmitted(true);
-    if (userInput === correctAnswer) {
+    if (correctAnswer.toLowerCase().includes(userInput.toLowerCase())) {
       setCustomStyle({ backgroundColor: "green" });
       setTimeout(() => {
         setCustomStyle({ backgroundColor: "rgb(23, 23, 23)" });
