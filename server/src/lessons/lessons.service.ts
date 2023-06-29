@@ -12,7 +12,6 @@ const getLessons = async () => {
         reject(err);
         return;
       }
-      console.log(data);
       resolve(data);
     });
   });

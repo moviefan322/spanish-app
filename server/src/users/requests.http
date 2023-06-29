@@ -71,3 +71,28 @@ content-type: application/json
 
 ### Get flashcards by user
 GET http://localhost:3001/flashcards/1
+
+### Submit Lesson Stat
+POST http://localhost:3001/stats/
+content-type: application/json
+
+{
+  "lessonId": 102,
+  "score": 9,
+  "outOf": 10,
+  "userId": 1
+}
+
+### Get a users flashcards
+GET http://localhost:3001/stats/1
+
+### Update a score
+PUT http://localhost:3001/stats/2
+content-type: application/json
+
+{
+  "lessonId": 102,
+  "score": 10,
+  "outOf": 10,
+  "userId": 1
+}

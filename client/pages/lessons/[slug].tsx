@@ -20,8 +20,6 @@ function UnitPage({ id, lesson }: { id: string; lesson: string }) {
     return <div>Loading...</div>;
   }
 
-  console.log(unit.lessons[0]);
-
   return (
     <>
       {" "}

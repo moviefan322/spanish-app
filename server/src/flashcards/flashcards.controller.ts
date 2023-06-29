@@ -14,7 +14,6 @@ export class FlashcardsController {
   @Post()
   async create(@Body() body: CreateFlashcardDto) {
     const flashcard = await this.flashcardsService.create(body);
-    console.log(flashcard);
     return flashcard;
   }
 }

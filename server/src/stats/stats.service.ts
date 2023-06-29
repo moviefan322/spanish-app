@@ -12,11 +12,18 @@ export class StatsService {
   ) {}
 
   async create(statDto: CreateStatDto) {
+    console.log(statDto);
     const stat = this.repo.create(statDto);
     return this.repo.save(stat);
   }
 
   async findStats(userId: number) {
     return this.repo.find({ where: { userId } });
+  }
+
+  async update(id: number, statDto: CreateStatDto) {
+    const stat = await this.repo.findOne({ where: { id } });
+    this.repo.merge(stat, statDto);
+    return this.repo.save(stat);
   }
 }

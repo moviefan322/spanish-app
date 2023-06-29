@@ -38,7 +38,6 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Get('/getme')
   async getMe(@CurrentUser() user: User, @Session() session: CustomSession) {
-    console.log(session.userId);
     return session.userId;
   }
 

@@ -12,5 +12,8 @@ export class Stats {
   score: number;
 
   @Column()
+  outOf: number;
+
+  @Column()
   userId: number;
 }

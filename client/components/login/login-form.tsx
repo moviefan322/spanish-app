@@ -72,7 +72,6 @@ function LoginForm() {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (!res.ok) {
       setError(data.message);
@@ -121,7 +120,6 @@ function LoginForm() {
     }
 
     resetForm();
-    console.log(res);
   };
 
   return (
