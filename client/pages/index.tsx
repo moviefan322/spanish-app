@@ -11,15 +11,6 @@ export default function Home() {
 
   const dispatch = useDispatch<any>();
 
-  useEffect(() => {
-    console.log("useEffect");
-    const savedUser: any = localStorage.getItem("spanishuser");
-    const { id } = JSON.parse(savedUser);
-    if (savedUser) {
-      dispatch(getUserDetails(id));
-    }
-  }, []);
-
   return (
     <>
       <Head>

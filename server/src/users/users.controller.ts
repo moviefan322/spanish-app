@@ -20,7 +20,7 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from '../auth/auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.entity';
-import { AuthGuard } from 'src/guards/auth.guard';
+// import { AuthGuard } from 'src/guards/auth.guard';
 import session from 'express-session';
 
 interface CustomSession extends session.Session {
@@ -35,7 +35,7 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Get('/getme')
   async getMe(@CurrentUser() user: User, @Session() session: CustomSession) {
     return session.userId;
@@ -81,13 +81,11 @@ export class UsersController {
     return this.usersService.find(email);
   }
 
-  @UseGuards(AuthGuard)
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
     return this.usersService.remove(parseInt(id));
   }
 
-  @UseGuards(AuthGuard)
   @Patch('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
