@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 import FreeAndFun from "@/components/home/free-and-fun";
 import UserTestimonials from "@/components/home/user-testimonials";
-import { fetchUserDetails } from "@/store/userSlice";
+import { getUserDetails } from "@/store/userSlice";
 
 export default function Home() {
   const state = useSelector((state: any) => state.user);
@@ -13,10 +13,10 @@ export default function Home() {
 
   useEffect(() => {
     console.log("useEffect");
-    const savedToken = localStorage.getItem("spanishtoken");
-    console.log("savedToken", savedToken);
-    if (savedToken) {
-      dispatch(fetchUserDetails(savedToken));
+    const savedUser: any = localStorage.getItem("spanishuser");
+    const { id } = JSON.parse(savedUser);
+    if (savedUser) {
+      dispatch(getUserDetails(id));
     }
   }, []);
 

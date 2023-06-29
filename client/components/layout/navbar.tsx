@@ -4,7 +4,7 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../../store/userSlice";
-import { fetchUserDetails } from "../../store/userSlice";
+import { getUserDetails } from "../../store/userSlice";
 
 function Navbar(): JSX.Element {
   const state = useSelector((state: any) => state.user);
@@ -13,10 +13,10 @@ function Navbar(): JSX.Element {
 
   useEffect(() => {
     console.log("useEffect");
-    const savedToken = localStorage.getItem("spanishtoken");
-    console.log("savedToken", savedToken);
-    if (savedToken) {
-      dispatch(fetchUserDetails(savedToken));
+    const savedUser: any = localStorage.getItem("spanishuser");
+    const { id } = JSON.parse(savedUser);
+    if (savedUser) {
+      dispatch(getUserDetails(id));
     }
   }, []);
 

@@ -17,6 +17,15 @@ export const fetchUserDetails = createAsyncThunk(
   }
 );
 
+export const getUserDetails = createAsyncThunk(
+  "users/fetchUserDetails",
+  async (id: number) => {
+    const response = await fetch(`http://localhost:3001/${id}`);
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -40,7 +49,22 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUserDetails.fulfilled, (state, action) => {
+      // .addCase(fetchUserDetails.fulfilled, (state, action) => {
+      //   state.user = action.payload.user;
+      //   state.token, (state.flashcards = action.payload.flashcards);
+      //   state.stats = action.payload.stats;
+      //   state.isLoggedIn = true;
+      //   state.isLoading = false;
+      //   state.error = undefined;
+      // })
+      // .addCase(fetchUserDetails.pending, (state, action) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(fetchUserDetails.rejected, (state, action: any) => {
+      //   state.error = action.error.message;
+      //   state.isLoading = false;
+      // })
+      .addCase(getUserDetails.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token, (state.flashcards = action.payload.flashcards);
         state.stats = action.payload.stats;
@@ -48,10 +72,10 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.error = undefined;
       })
-      .addCase(fetchUserDetails.pending, (state, action) => {
+      .addCase(getUserDetails.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(fetchUserDetails.rejected, (state, action: any) => {
+      .addCase(getUserDetails.rejected, (state, action: any) => {
         state.error = action.error.message;
         state.isLoading = false;
       });
