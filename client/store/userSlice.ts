@@ -2,14 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUserDetails = createAsyncThunk(
   "users/fetchUserDetails",
-  async (token) => {
+  async (token: string) => {
+    console.log("fetchUserDetails-token", token);
     const response = await fetch("http://localhost:3001/profile", {
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
+    console.log(response.headers, data);
     return data;
   }
 );

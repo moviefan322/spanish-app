@@ -7,17 +7,17 @@ function Statsbar() {
   const [user, setUser] = useState<any>({});
   const state = useSelector((state: any) => state.user);
 
-  useEffect(() => {
-    if (!user.isLoggedIn || !state.isLoggedIn) {
-      try {
-        const savedUser = JSON.parse(localStorage.getItem("spanishuser") || "");
-        const savedToken = localStorage.getItem("spanishtoken") || "";
-        if (savedUser) {
-          setUser({ ...savedUser, isLoggedIn: true });
-        }
-      } catch (error) {}
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user.isLoggedIn || !state.isLoggedIn) {
+  //     try {
+  //       const savedUser = JSON.parse(localStorage.getItem("spanishuser") || "");
+  //       const savedToken = localStorage.getItem("spanishtoken") || "";
+  //       if (savedUser) {
+  //         setUser({ ...savedUser, isLoggedIn: true });
+  //       }
+  //     } catch (error) {}
+  //   }
+  // }, []);
 
   return (
     <>
