@@ -1,4 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const fetchUserDetails = createAsyncThunk(
+  "users/fetchUserDetails",
+  async (token) => {
+    const response = await fetch("http://localhost:3001/profile", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+);
 
 export const userSlice = createSlice({
   name: "user",
@@ -8,6 +22,8 @@ export const userSlice = createSlice({
     flashcards: [],
     stats: [],
     isLoggedIn: false,
+    isLoading: false,
+    error: undefined,
   },
   reducers: {
     setState: (state, action) => {
@@ -16,7 +32,26 @@ export const userSlice = createSlice({
       state.flashcards = action.payload.flashcards;
       state.stats = action.payload.stats;
       state.isLoggedIn = action.payload.isLoggedIn;
+      state.error = undefined;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserDetails.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token, (state.flashcards = action.payload.flashcards);
+        state.stats = action.payload.stats;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+        state.error = undefined;
+      })
+      .addCase(fetchUserDetails.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserDetails.rejected, (state, action: any) => {
+        state.error = action.error.message;
+        state.isLoading = false;
+      });
   },
 });
 
