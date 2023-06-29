@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Chart from "./chart";
 import Vocab from "./vocab";
@@ -18,6 +19,12 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [revealAnswers, setRevealAnswers] = useState(false);
   const [thisExercise, setThisExercise] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const state = useSelector((state: any) => state.user);
+  let userId: number | null = null;
+  if (state.isLoggedIn) {
+    userId = state.user.id;
+  }
 
   const router = useRouter();
 
@@ -71,6 +78,45 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       newInputValues[index] = value;
       return newInputValues;
     });
+  };
+
+  console.log(unit, nextLesson, currentExercise);
+
+  const submitScore = async () => {
+    "submitting";
+    // get total correct answers
+    const score = inputValues.filter(
+      (item: string, index: number) =>
+        item.trim().toLowerCase() ===
+        thisExercise.answers[index].trim().toLowerCase()
+    ).length;
+
+    //get max score
+    const outOf = thisExercise.answers.length;
+    const formatExerciseId = (currentExercise: number) => {
+      return parseInt(`${unit}${nextLesson}${currentExercise}`);
+    };
+    const lessonId = formatExerciseId(currentExercise);
+
+    const res = await fetch("http://localhost:3001/stats", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        lessonId,
+        score,
+        outOf,
+        userId,
+      }),
+    });
+
+    if (!res.ok) {
+      setError("Error submitting score. Please try again later.");
+    }
+
+    const data = await res.json();
+    console.log(data);
   };
 
   const renderLesson = (lesson: any) => {
@@ -374,6 +420,13 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       }
     };
 
+    const handleCheckAnswers = () => {
+      if (state.isLoggedIn) {
+        submitScore();
+      }
+      checkAnswers();
+    };
+
     try {
       return (
         <>
@@ -384,7 +437,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           <ol>{renderQuestions(thisExercise.questions)}</ol>
           {error && <strong className={styles.error}>{error}</strong>}
           {!submitted && thisExercise.answers && !revealAnswers && (
-            <button className={styles.buttonRed} onClick={checkAnswers}>
+            <button className={styles.buttonRed} onClick={handleCheckAnswers}>
               Check Answers
             </button>
           )}
@@ -464,8 +517,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   if (loading) {
     return <p>Loading...</p>;
   }
-
-  console.log(thisExercise);
 
   return (
     <>

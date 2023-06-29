@@ -2,7 +2,7 @@ import { IsNumber, Min, Max } from 'class-validator';
 
 export class CreateStatDto {
   @IsNumber()
-  @Min(100)
+  @Min(0)
   @Max(999999)
   lessonId: number;
 
