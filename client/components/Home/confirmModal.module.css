@@ -1,0 +1,30 @@
+.link {
+  background-color: var(--green);
+  padding: 0.5rem;
+  border-radius: 2.5rem;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+  width: fit-content;
+  font-weight: 700;
+}
+
+.link2 {
+  background-color: red;
+  padding: 0.5rem;
+  border-radius: 2.5rem;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+  width: fit-content;
+  font-weight: 700;
+}
+
+.link:hover {
+  background-color: yellow;
+  font-size: 1.1rem;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
