@@ -8,11 +8,12 @@ import { setState } from "../../store/userSlice";
 function Navbar(): JSX.Element {
   const state = useSelector((state: any) => state.user);
   const [user, setUser] = useState<any>({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user.isLoggedIn) {
+    if (!isLoggedIn || !state.isLoggedIn) {
       try {
         const savedUser = JSON.parse(localStorage.getItem("spanishuser") || "");
         const savedToken = localStorage.getItem("spanishtoken") || "";
@@ -21,15 +22,35 @@ function Navbar(): JSX.Element {
             setState({ user: savedUser, token: savedToken, isLoggedIn: true })
           );
           setUser({ ...savedUser, isLoggedIn: true });
+          setIsLoggedIn(true);
+          const getFlashcards = async () => {
+            const res = await fetch(
+              `http://localhost:3001/flashcards/${savedUser.id}`
+            );
+            const data = await res.json();
+            console.log(data);
+            dispatch(
+              setState({
+                user: state.user,
+                token: state.token,
+                flashcards: data,
+                isLoggedIn: true,
+              })
+            );
+          };
+
+          getFlashcards();
         }
       } catch (error) {}
     }
-  }, []);
+  }, [isLoggedIn, state.isLoggedIn]);
 
   useEffect(() => {
-    if (user.isLoggedIn) {
+    if (state.isLoggedIn) {
       const getFlashcards = async () => {
-        const res = await fetch(`http://localhost:3001/flashcards/${user.id}`);
+        const res = await fetch(
+          `http://localhost:3001/flashcards/${state.user.id}`
+        );
         const data = await res.json();
         console.log(data);
         dispatch(
@@ -44,15 +65,17 @@ function Navbar(): JSX.Element {
 
       getFlashcards();
     }
-  }, [user]);
+  }, []);
 
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     localStorage.removeItem("spanishuser");
     dispatch(setState({ user: null, token: "" }));
+    setIsLoggedIn(false);
   };
 
-  console.log(user);
+  console.log(state);
+
   return (
     <nav className={styles.navbar}>
       <ul>
@@ -64,7 +87,7 @@ function Navbar(): JSX.Element {
         <li>
           <Link href="/">Home</Link>
         </li>
-        {!user.isLoggedIn ? (
+        {!state.isLoggedIn ? (
           <li>
             <Link href="/login">Login</Link>
           </li>

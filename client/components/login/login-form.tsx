@@ -78,7 +78,13 @@ function LoginForm() {
       return;
     }
 
-    dispatch(setState({ user: data.currentUser, token: data.access_token }));
+    dispatch(
+      setState({
+        user: data.currentUser,
+        token: data.access_token,
+        isLoggedIn: true,
+      })
+    );
 
     resetForm();
     localStorage.setItem("spanishuser", JSON.stringify(data.currentUser));
