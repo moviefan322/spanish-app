@@ -28,7 +28,8 @@ content-type: application/json
 
 ### Profile
 GET http://localhost:3001/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1Y2tzZXJAYnV0dHNleC5jb20iLCJzdWIiOjIsImlhdCI6MTY4Nzg4OTU2NCwiZXhwIjoxNjg3OTc1OTY0fQ.w9bAg1_GxewyR3cWoCaiqMbAOjpXzoW-oOjVeNz6buQ
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1Y2tzZXJAYnV0dHNleC5jb20iLCJzdWIiOjIsImlhdCI6MTY4ODA0Nzk4NCwiZXhwIjoxNjg4MTM0Mzg0fQ.04k5AANMQtMb8AFBwu6ngarSoKBEqWBNmuCWQR_Zh00
 
 ### Get a user's profile
 GET http://localhost:3001/auth/getme

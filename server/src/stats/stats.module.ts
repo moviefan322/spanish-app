@@ -8,5 +8,6 @@ import { Stats } from './stats.entity';
   imports: [TypeOrmModule.forFeature([Stats])],
   controllers: [StatsController],
   providers: [StatsService],
+  exports: [StatsService],
 })
 export class StatsModule {}

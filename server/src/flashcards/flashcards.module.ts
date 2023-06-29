@@ -8,5 +8,6 @@ import { Flashcard } from './flashcard.entity';
   imports: [TypeOrmModule.forFeature([Flashcard])],
   controllers: [FlashcardsController],
   providers: [FlashcardsService],
+  exports: [FlashcardsService],
 })
 export class FlashcardsModule {}
