@@ -125,6 +125,12 @@ function LoginForm() {
       return;
     }
 
+    const data = await res.json();
+    console.log(data);
+    dispatch(setState({ user: data, isLoggedIn: true }));
+    localStorage.setItem("spanishuser", JSON.stringify(data));
+    router.push("/");
+
     resetForm();
   };
 
