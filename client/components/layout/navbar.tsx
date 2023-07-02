@@ -1,18 +1,19 @@
 import styles from "./navbar.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useGetUserDetailsQuery } from "@/services/auth/authService";
 import { setCredentials, logout } from "../../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../spinner/spinner";
 import { useEffect } from "react";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
 function Navbar(): JSX.Element {
   const state = useSelector((state: any) => state.auth);
   const dispatch = useDispatch<any>();
+  const router = useRouter();
 
   // automatically authenticate user if token is found
-  const { data, isFetching } = useGetUserDetailsQuery("userDetails", {
-    // perform a refetch every 15mins
+  const { data, error } = useGetUserDetailsQuery("userDetails", {
     pollingInterval: 60000,
   });
 
@@ -20,16 +21,19 @@ function Navbar(): JSX.Element {
     if (data) dispatch(setCredentials(data));
   }, [data, dispatch]);
 
+  useEffect(() => {
+    if (error) {
+      console.error("No token found");
+    }
+  }, [error]);
+
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(logout());
+    router.push("/");
   };
 
-  console.log(data);
-
-  if (isFetching || !data) {
-    return <Spinner />;
-  }
+  console.log(state);
 
   return (
     <nav className={styles.navbar}>
