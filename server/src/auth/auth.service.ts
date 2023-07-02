@@ -60,7 +60,10 @@ export class AuthService {
       throw new BadRequestException('Invalid password');
     }
 
-    return user;
+    return {
+      user,
+      access_token: this.jwtService.sign({ email: user.email, sub: user.id }),
+    };
   }
 
   async login(user: any) {

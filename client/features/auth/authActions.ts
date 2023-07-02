@@ -1,13 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import RegistrationData from "@/types/RegistrationData";
-import User from "@/types/User";
+import RegisterRes from "@/types/RegisterRes";
 import LoginData from "@/types/LoginData";
 import LoginRes from "@/types/LoginRes";
 
 const backendUrl = "http://localhost:3001";
 
-export const registerUser = createAsyncThunk<User, RegistrationData>(
+export const registerUser = createAsyncThunk<RegisterRes, RegistrationData>(
   "auth/registerUser",
   async ({ username, email, password }, { rejectWithValue }) => {
     console.log("registerUser action", username, email, password);
