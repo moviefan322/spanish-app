@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
@@ -27,6 +27,12 @@ function LoginForm() {
 
   const router = useRouter();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (success) {
+      router.push("/");
+    }
+  }, [success, router]);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
