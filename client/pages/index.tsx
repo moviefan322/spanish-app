@@ -7,9 +7,11 @@ import UserTestimonials from "@/components/home/user-testimonials";
 import { getUserDetails } from "@/store/userSlice";
 
 export default function Home() {
-  const state = useSelector((state: any) => state.user);
+  const state = useSelector((state: any) => state.auth);
 
   const dispatch = useDispatch<any>();
+
+  console.log(state);
 
   return (
     <>

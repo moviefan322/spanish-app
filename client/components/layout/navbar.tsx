@@ -7,7 +7,7 @@ import { setState } from "../../store/userSlice";
 import { getUserDetails } from "../../store/userSlice";
 
 function Navbar(): JSX.Element {
-  const state = useSelector((state: any) => state.user);
+  const state = useSelector((state: any) => state.auth);
 
   const dispatch = useDispatch<any>();
 

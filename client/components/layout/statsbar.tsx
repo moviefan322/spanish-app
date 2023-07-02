@@ -10,7 +10,7 @@ interface Stat {
 }
 
 function Statsbar() {
-  const state = useSelector((state: any) => state.user);
+  const state = useSelector((state: any) => state.auth);
 
   const stats: Stat[] = state.stats;
 
