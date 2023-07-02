@@ -15,7 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
     FlashcardsModule,
     StatsModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'poop',
+      secret: 'poop',
       signOptions: { expiresIn: '1d' },
     }),
   ],

@@ -20,7 +20,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [thisExercise, setThisExercise] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const state = useSelector((state: any) => state.user);
+  const state = useSelector((state: any) => state.auth);
   let userId: number | null = null;
   if (state.isLoggedIn) {
     userId = state.user.id;

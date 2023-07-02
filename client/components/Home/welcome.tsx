@@ -5,7 +5,7 @@ import styles from "./welcome.module.css";
 import ConfirmModal from "./confirmModal";
 
 function Welcome() {
-  const { user } = useSelector((state: any) => state.user);
+  const { user } = useSelector((state: any) => state.auth);
 
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);

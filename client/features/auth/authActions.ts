@@ -1,13 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import RegistrationData from "@/types/RegistrationData";
-import RegisterRes from "@/types/RegisterRes";
+import User from "@/types/User";
 import LoginData from "@/types/LoginData";
 import LoginRes from "@/types/LoginRes";
 
 const backendUrl = "http://localhost:3001";
 
-export const registerUser = createAsyncThunk<RegisterRes, RegistrationData>(
+export const registerUser = createAsyncThunk<User, RegistrationData>(
   "auth/registerUser",
   async ({ username, email, password }, { rejectWithValue }) => {
     console.log("registerUser action", username, email, password);
@@ -45,7 +45,7 @@ export const loginUser = createAsyncThunk<LoginRes, LoginData>(
         },
       };
       const response = await axios.post(
-        "auth/login",
+        `${backendUrl}/auth/login`,
         { email, password },
         config
       );
@@ -53,7 +53,9 @@ export const loginUser = createAsyncThunk<LoginRes, LoginData>(
       const { data } = response;
       localStorage.setItem("spanishtoken", data.access_token);
 
-      return data; // Return the data property directly
+      console.log(data);
+
+      return data;
     } catch (error: any) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);

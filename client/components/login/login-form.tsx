@@ -5,8 +5,9 @@ import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
 import Spinner from "../spinner/spinner";
-import { registerUser } from "@/features/auth/authActions";
+import { registerUser, loginUser } from "@/features/auth/authActions";
 import RegistrationData from "@/types/RegistrationData";
+import LoginData from "@/types/LoginData";
 import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "@/store/configureStore";
 
@@ -28,6 +29,7 @@ function LoginForm() {
 
   const router = useRouter();
   const dispatch = useDispatch();
+  const dispatchTyped = dispatch as ThunkDispatch<RootState, null, AnyAction>;
 
   useEffect(() => {
     if (success) {
@@ -82,39 +84,19 @@ function LoginForm() {
     const enteredEmail = loginEmailInputRef.current?.value;
     const enteredPassword = loginPasswordInputRef.current?.value;
 
-    const packageData = {
-      email: enteredEmail,
-      password: enteredPassword,
-    };
+    if (enteredEmail && enteredPassword) {
+      const packageData: LoginData = {
+        email: enteredEmail,
+        password: enteredPassword,
+      };
 
-    const res = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(packageData),
-    });
+      dispatchTyped(loginUser(packageData));
 
-    const data = await res.json();
-    console.log(data);
-
-    if (!res.ok) {
-      setError(data.message);
-      return;
+      resetForm();
+      router.push("/");
+    } else {
+      setError("Invalid login credentials");
     }
-
-    dispatch(
-      setState({
-        user: data.currentUser,
-        token: data.access_token,
-        isLoggedIn: true,
-      })
-    );
-
-    resetForm();
-    localStorage.setItem("spanishuser", JSON.stringify(data.currentUser));
-    localStorage.setItem("spanishtoken", JSON.stringify(data.access_token));
-    router.push("/");
   };
 
   const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -136,7 +118,6 @@ function LoginForm() {
       username: enteredUsername,
     };
 
-    const dispatchTyped = dispatch as ThunkDispatch<RootState, null, AnyAction>;
     dispatchTyped(registerUser(packageData));
 
     resetForm();
