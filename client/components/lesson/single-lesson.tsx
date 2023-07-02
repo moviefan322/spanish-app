@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Chart from "./chart";
 import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Stats from "@/types/Stats";
+import { setNewData } from "@/features/auth/authSlice";
 import styles from "./single-lesson.module.css";
 
 function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
@@ -28,6 +29,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   }
 
   const router = useRouter();
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     setLoading(true);
@@ -118,18 +120,12 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
         }),
       });
 
-      console.log({
-        lessonId,
-        score,
-        outOf,
-        userId,
-      });
-
       if (!res.ok) {
         setError("Error submitting score. Please try again later.");
       }
 
       const data = await res.json();
+      dispatch(setNewData(true));
       console.log(data);
     } else {
       const res = await fetch("http://localhost:3001/stats", {
@@ -150,6 +146,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       }
 
       const data = await res.json();
+      dispatch(setNewData(true));
       console.log(data);
     }
   };

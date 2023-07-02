@@ -2,24 +2,36 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useGetUserDetailsQuery } from "@/services/auth/authService";
-import { setCredentials, logout } from "../../features/auth/authSlice";
+import {
+  setCredentials,
+  logout,
+  setNewData,
+} from "../../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
 function Navbar(): JSX.Element {
   const state = useSelector((state: any) => state.auth);
+  const isNewData = useSelector((state: any) => state.auth.isNewData);
   const dispatch = useDispatch<any>();
   const router = useRouter();
 
-  // automatically authenticate user if token is found
-  const { data, error } = useGetUserDetailsQuery("userDetails", {
-    pollingInterval: 60000,
+  const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
+    pollingInterval: isNewData ? 0 : 60000, // Refetch immediately if isNewData is true
   });
 
   useEffect(() => {
-    if (data) dispatch(setCredentials(data));
-  }, [data, dispatch]);
+    if (data) {
+      dispatch(setCredentials(data));
+      dispatch(setNewData(false));
+    }
+  }, [data, dispatch, state]);
+
+  useEffect(() => {
+    if (isNewData) {
+      refetch(); // Trigger a refetch immediately if isNewData is true
+    }
+  }, [isNewData, refetch]);
 
   useEffect(() => {
     if (error) {

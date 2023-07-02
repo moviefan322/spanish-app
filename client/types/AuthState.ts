@@ -11,4 +11,5 @@ export default interface AuthState {
   error: string | null | unknown;
   success: boolean;
   isLoggedIn: boolean;
+  isNewData: boolean;
 }

@@ -17,6 +17,7 @@ const initialState: AuthState = {
   error: null,
   success: false,
   isLoggedIn: false,
+  isNewData: false,
 };
 
 const authSlice = createSlice({
@@ -38,6 +39,9 @@ const authSlice = createSlice({
       state.flashcards = payload.flashcards;
       state.stats = payload.stats;
       state.isLoggedIn = true;
+    },
+    setNewData: (state, { payload }) => {
+      state.isNewData = payload;
     },
   },
   extraReducers: (builder) => {
@@ -77,5 +81,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setCredentials } = authSlice.actions;
+export const { logout, setCredentials, setNewData } = authSlice.actions;
 export default authSlice.reducer;
