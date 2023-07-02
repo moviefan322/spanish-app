@@ -1,18 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { registerUser, loginUser } from "@/features/auth/authActions";
 import User from "@/types/User";
-import Flashcard from "@/types/Flashcard";
-import Stats from "@/types/Stats";
+import AuthState from "@/types/AuthState";
 
-interface AuthState {
-  loading: boolean;
-  user: User | null;
-  flashcards: Flashcard[] | null;
-  stats: Stats[] | null;
-  token: string | null;
-  error: string | null | unknown;
-  success: boolean;
-  isLoggedIn: boolean;
+let token;
+if (typeof localStorage !== "undefined") {
+  token = localStorage.getItem("spanishtoken") ?? null;
 }
 
 const initialState: AuthState = {
@@ -20,7 +13,7 @@ const initialState: AuthState = {
   user: null,
   flashcards: null,
   stats: null,
-  token: null,
+  token,
   error: null,
   success: false,
   isLoggedIn: false,
@@ -29,7 +22,17 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      // ...logout reducer
+    },
+    setCredentials: (state, { payload }) => {
+      state.user = payload.user;
+      state.flashcards = payload.flashcards;
+      state.stats = payload.stats;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -67,4 +70,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { logout, setCredentials } = authSlice.actions;
 export default authSlice.reducer;

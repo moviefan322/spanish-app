@@ -7,7 +7,7 @@ export default interface AuthState {
   user: User | null;
   flashcards: Flashcard[] | null;
   stats: Stats[] | null;
-  token: string | null;
+  token: string | null | undefined;
   error: string | null | unknown;
   success: boolean;
   isLoggedIn: boolean;

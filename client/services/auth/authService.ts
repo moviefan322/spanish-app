@@ -7,8 +7,13 @@ export const authApi = createApi({
     prepareHeaders: (headers, { getState }: { getState: any }) => {
       const token = getState().auth.token;
       if (token) {
-        headers.set("authorization", `Bearer ${token}`);
+        headers = new Headers({
+          ...headers,
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        });
       }
+      console.log(headers);
       return headers;
     },
   }),
