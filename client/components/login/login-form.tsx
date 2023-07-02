@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../../store/userSlice";
@@ -33,6 +34,12 @@ function LoginForm() {
       router.push("/");
     }
   }, [success, router]);
+
+  useEffect(() => {
+    if (stateError) {
+      setError(error);
+    }
+  }, [stateError]);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -89,6 +96,7 @@ function LoginForm() {
     });
 
     const data = await res.json();
+    console.log(data);
 
     if (!res.ok) {
       setError(data.message);
@@ -133,6 +141,10 @@ function LoginForm() {
 
     resetForm();
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>
