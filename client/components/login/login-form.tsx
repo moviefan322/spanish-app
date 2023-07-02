@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
+import Spinner from "../spinner/spinner";
+import { registerUser } from "@/features/auth/authActions";
+import RegistrationData from "@/types/RegistrationData";
+import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/configureStore";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,9 +18,15 @@ function LoginForm() {
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
+  const {
+    loading,
+    user,
+    error: stateError,
+    success,
+  } = useSelector((state: any) => state.auth);
+
   const router = useRouter();
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -105,31 +116,14 @@ function LoginForm() {
       return;
     }
 
-    const packageData = {
+    const packageData: RegistrationData = {
       email: enteredEmail,
       password: enteredPassword,
       username: enteredUsername,
     };
 
-    const res = await fetch("http://localhost:3001/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(packageData),
-    });
-
-    if (!res.ok) {
-      const data = await res.json();
-      setError(data.message);
-      return;
-    }
-
-    const data = await res.json();
-    console.log(data);
-    dispatch(setState({ user: data, isLoggedIn: true }));
-    localStorage.setItem("spanishuser", JSON.stringify(data));
-    router.push("/");
+    const dispatchTyped = dispatch as ThunkDispatch<RootState, null, AnyAction>;
+    dispatchTyped(registerUser(packageData));
 
     resetForm();
   };
