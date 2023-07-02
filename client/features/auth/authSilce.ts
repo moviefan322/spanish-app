@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { registerUser } from "@/features/auth/authActions";
+import { registerUser, loginUser } from "@/features/auth/authActions";
 import User from "@/types/User";
 import Flashcard from "@/types/Flashcard";
 import Stats from "@/types/Stats";
@@ -49,7 +49,21 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      });
+      })
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.success = true;
+        state.user = payload.currentUser;
+        state.flashcards = payload.flashcards;
+        state.stats = payload.stats;
+        state.userToken = payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(loginUser.rejected, (state, { payload }) => {});
   },
 });
 

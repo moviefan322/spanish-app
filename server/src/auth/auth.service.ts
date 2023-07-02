@@ -4,6 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
+import { FlashcardsService } from 'src/flashcards/flashcards.service';
+import { StatsService } from 'src/stats/stats.service';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
 import { JwtService } from '@nestjs/jwt';
@@ -15,6 +17,8 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    private flashcardsService: FlashcardsService,
+    private statsService: StatsService,
   ) {}
 
   async signup(email: string, password: string, username: string) {
@@ -70,6 +74,8 @@ export class AuthService {
     return {
       currentUser,
       access_token: this.jwtService.sign(payload),
+      flashcards: await this.flashcardsService.findFlashcards(currentUser.id),
+      stats: await this.statsService.findStats(currentUser.id),
     };
   }
 
