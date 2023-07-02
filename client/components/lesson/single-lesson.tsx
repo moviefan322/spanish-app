@@ -13,7 +13,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [toggleExercise, setToggleExercise] = useState(false);
   const [loading, setLoading] = useState(true);
   const [exerciseLength, setExerciseLength] = useState(0);
-  const [inputValues, setInputValues] = useState<any>([]);
+  const [inputValues, setInputValues] = useState<string[]>([]);
   const [inputCorrect, setInputCorrect] = useState<any>([]);
   const [answerStyle, setAnswerStyle] = useState<any>([]);
   const [score, setScore] = useState(0);
@@ -83,8 +83,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     });
   };
 
-  console.log(unit, nextLesson, currentExercise);
-
   const submitScore = async () => {
     "submitting";
     // get total correct answers
@@ -105,7 +103,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       const { id } = state.stats.filter(
         (stat: Stats) => stat.lessonId === lessonId
       )[0];
-      console.log(id);
       const res = await fetch(`http://localhost:3001/stats/${id}`, {
         method: "PUT",
         headers: {
@@ -124,9 +121,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
         setError("Error submitting score. Please try again later.");
       }
 
-      const data = await res.json();
       dispatch(setNewData(true));
-      console.log(data);
     } else {
       const res = await fetch("http://localhost:3001/stats", {
         method: "POST",
@@ -145,9 +140,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
         setError("Error submitting score. Please try again later.");
       }
 
-      const data = await res.json();
       dispatch(setNewData(true));
-      console.log(data);
     }
   };
 
@@ -217,13 +210,15 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const renderExercises = (lesson: any, currentExercise: number) => {
     const formatBlank = (question: string, index: number) => {
       const splitQuestion = question.split("_");
+      const inputValue = inputValues[index] || ""; // Add a conditional check for undefined value
+
       return (
         <>
           {splitQuestion[0] + " "}
           {!revealAnswers ? (
             <input
               type="text"
-              value={inputValues[index]}
+              value={inputValue}
               onChange={(e) => handleInputChange(index, e.target.value)}
               style={{ border: answerStyle[index] }}
             />
@@ -239,7 +234,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
 
     const checkAnswers = () => {
       if (inputValues.length !== thisExercise.answers.length) {
-        console.log("triggered");
         setError("Please answer all questions");
         return;
       }
@@ -490,8 +484,8 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           {score > -1 && <p>Your Score: {score}%</p>}
         </>
       );
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      setError(error);
     }
   };
 
@@ -527,7 +521,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   };
 
   const nextButtonHandler = () => {
-    console.log(nextLesson, lessonCount);
     if (
       nextLesson + 1 > lessonCount &&
       currentExercise === exerciseLength - 1
