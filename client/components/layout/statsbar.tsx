@@ -2,10 +2,6 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./statsbar.module.css";
 
-interface Stats {
-  stats: Stat[];
-}
-
 interface Stat {
   lessonId: number;
   score: number;
@@ -19,45 +15,57 @@ function Statsbar() {
   const stats: Stat[] = state.stats;
 
   const renderCurrentLesson = (stats: Stat[]) => {
-    const highestLessonIdObject = stats.reduce(
-      (maxObj: Stat, currentObj: Stat) => {
-        if (currentObj.lessonId > maxObj.lessonId) {
-          return currentObj;
-        }
-        return maxObj;
-      }
-    );
-    return highestLessonIdObject;
-  };
-
-  const formatCurrentLesson = (stats: Stat[]) => {
-    const stringId = renderCurrentLesson(stats).lessonId.toString();
-    if (stringId[0] === "0") {
-      return stringId[1];
+    if (!stats) {
+      return 0;
     } else {
-      return stringId[0];
+      const highestLessonIdObject = stats.reduce(
+        (maxObj: Stat, currentObj: Stat) => {
+          if (currentObj.lessonId > maxObj.lessonId) {
+            return currentObj;
+          }
+          return maxObj;
+        }
+      );
+      const stringId = highestLessonIdObject.lessonId.toString();
+      if (stringId[0] === "0") {
+        return stringId[1];
+      } else {
+        return stringId[0];
+      }
     }
   };
 
   const renderPoints = (stats: Stat[]) => {
-    const pointsEarned = stats.reduce((total: number, currentObj: Stat) => {
-      return total + currentObj.score;
-    }, 0);
-    return pointsEarned;
+    if (!stats) {
+      return 0;
+    } else {
+      const pointsEarned = stats.reduce((total: number, currentObj: Stat) => {
+        return total + currentObj.score;
+      }, 0);
+      return pointsEarned;
+    }
   };
 
   const renderOutOfs = (stats: Stat[]) => {
-    const pointsPossible = stats.reduce((total: number, currentObj: Stat) => {
-      return total + currentObj.outOf;
-    }, 0);
-    return pointsPossible;
+    if (!stats) {
+      return 0;
+    } else {
+      const pointsPossible = stats.reduce((total: number, currentObj: Stat) => {
+        return total + currentObj.outOf;
+      }, 0);
+      return pointsPossible;
+    }
   };
 
   const getPct = () => {
-    const pointsEarned = renderPoints(stats);
-    const pointsPossible = renderOutOfs(stats);
-    const pct = ((pointsEarned / pointsPossible) * 100).toFixed(1);
-    return pct;
+    if (!stats) {
+      return 0;
+    } else {
+      const pointsEarned = renderPoints(stats);
+      const pointsPossible = renderOutOfs(stats);
+      const pct = ((pointsEarned / pointsPossible) * 100).toFixed(1);
+      return pct;
+    }
   };
 
   console.log(stats);
@@ -69,7 +77,7 @@ function Statsbar() {
           <div>
             <strong>{state.user.username}</strong>
           </div>
-          <div>Unit: {formatCurrentLesson(stats)}/20</div>
+          <div>Unit: {renderCurrentLesson(stats)}/20</div>
           <div>
             Points: {renderPoints(stats)}/{renderOutOfs(stats)}
           </div>
