@@ -1,9 +1,8 @@
 import styles from "./navbar.module.css";
 import Link from "next/link";
 import { useGetUserDetailsQuery } from "@/services/auth/authService";
-import { setCredentials } from "../../features/auth/authSlice";
+import { setCredentials, logout } from "../../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { setState } from "../../store/userSlice";
 import Spinner from "../spinner/spinner";
 import { useEffect } from "react";
 
@@ -23,16 +22,7 @@ function Navbar(): JSX.Element {
 
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    localStorage.removeItem("spanishuser");
-    dispatch(
-      setState({
-        user: null,
-        token: "",
-        isLoggedIn: false,
-        flashcards: [],
-        stats: [],
-      })
-    );
+    dispatch(logout());
   };
 
   console.log(data);

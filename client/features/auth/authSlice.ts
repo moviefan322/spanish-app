@@ -24,7 +24,14 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      // ...logout reducer
+      localStorage.removeItem("spanishtoken");
+      state.loading = false;
+      state.user = null;
+      state.token = null;
+      state.error = null;
+      state.stats = null;
+      state.flashcards = null;
+      state.isLoggedIn = false;
     },
     setCredentials: (state, { payload }) => {
       state.user = payload.user;
