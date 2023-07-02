@@ -51,7 +51,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       setExerciseLength(exercises[0].length);
     };
     getExerciseLength();
-  }, []);
+  }, [lesson]);
 
   useEffect(() => {
     const renderScore = () => {
@@ -442,6 +442,8 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
               ))}
             </>
           );
+        case "matching":
+          return <h1>DO SOMETHING FUCK</h1>;
 
         default:
           return <p>INVALID TYPE</p>;
@@ -455,40 +457,33 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       checkAnswers();
     };
 
-    try {
-      return (
-        <>
-          {thisExercise.title && <h4>{thisExercise.title}</h4>}
-          <br />
-          {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
-          <br />
-          <ol>{renderQuestions(thisExercise.questions)}</ol>
-          {error && <strong className={styles.error}>{error}</strong>}
-          {!submitted && thisExercise.answers && !revealAnswers && (
-            <button className={styles.buttonRed} onClick={handleCheckAnswers}>
-              Check Answers
-            </button>
-          )}
-          {submitted && !revealAnswers && (
-            <button
-              className={styles.buttonGray}
-              onClick={revealAnswersHandler}
-            >
-              Reveal Answers
-            </button>
-          )}
-          {submitted && revealAnswers && (
-            <button className={styles.buttonGreen} onClick={resetInputState}>
-              Try Again?
-            </button>
-          )}
+    return (
+      <>
+        {thisExercise.title && <h4>{thisExercise.title}</h4>}
+        <br />
+        {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
+        <br />
+        <ol>{renderQuestions(thisExercise.questions)}</ol>
+        {error && <strong className={styles.error}>{error}</strong>}
+        {!submitted && thisExercise.answers && !revealAnswers && (
+          <button className={styles.buttonRed} onClick={handleCheckAnswers}>
+            Check Answers
+          </button>
+        )}
+        {submitted && !revealAnswers && (
+          <button className={styles.buttonGray} onClick={revealAnswersHandler}>
+            Reveal Answers
+          </button>
+        )}
+        {submitted && revealAnswers && (
+          <button className={styles.buttonGreen} onClick={resetInputState}>
+            Try Again?
+          </button>
+        )}
 
-          {score > -1 && <p>Your Score: {score}%</p>}
-        </>
-      );
-    } catch (error: any) {
-      setError(error);
-    }
+        {score > -1 && <p>Your Score: {score}%</p>}
+      </>
+    );
   };
 
   const handleExerciseToggle = () => {
