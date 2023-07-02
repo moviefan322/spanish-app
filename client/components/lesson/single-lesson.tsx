@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Chart from "./chart";
 import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Stats from "@/types/Stats";
+import { setNewData } from "@/features/auth/authSlice";
+import Spinner from "../spinner/spinner";
 import styles from "./single-lesson.module.css";
 
 function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
@@ -11,7 +14,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [toggleExercise, setToggleExercise] = useState(false);
   const [loading, setLoading] = useState(true);
   const [exerciseLength, setExerciseLength] = useState(0);
-  const [inputValues, setInputValues] = useState<any>([]);
+  const [inputValues, setInputValues] = useState<string[]>([]);
   const [inputCorrect, setInputCorrect] = useState<any>([]);
   const [answerStyle, setAnswerStyle] = useState<any>([]);
   const [score, setScore] = useState(0);
@@ -20,13 +23,14 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   const [thisExercise, setThisExercise] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const state = useSelector((state: any) => state.user);
+  const state = useSelector((state: any) => state.auth);
   let userId: number | null = null;
   if (state.isLoggedIn) {
     userId = state.user.id;
   }
 
   const router = useRouter();
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     setLoading(true);
@@ -48,7 +52,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       setExerciseLength(exercises[0].length);
     };
     getExerciseLength();
-  }, []);
+  }, [lesson]);
 
   useEffect(() => {
     const renderScore = () => {
@@ -80,8 +84,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     });
   };
 
-  console.log(unit, nextLesson, currentExercise);
-
   const submitScore = async () => {
     "submitting";
     // get total correct answers
@@ -98,25 +100,49 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     };
     const lessonId = formatExerciseId(currentExercise);
 
-    const res = await fetch("http://localhost:3001/stats", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        lessonId,
-        score,
-        outOf,
-        userId,
-      }),
-    });
+    if (state.stats.some((stat: Stats) => stat.lessonId === lessonId)) {
+      const { id } = state.stats.filter(
+        (stat: Stats) => stat.lessonId === lessonId
+      )[0];
+      const res = await fetch(`http://localhost:3001/stats/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          lessonId,
+          score,
+          outOf,
+          userId,
+        }),
+      });
 
-    if (!res.ok) {
-      setError("Error submitting score. Please try again later.");
+      if (!res.ok) {
+        setError("Error submitting score. Please try again later.");
+      }
+
+      dispatch(setNewData(true));
+    } else {
+      const res = await fetch("http://localhost:3001/stats", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lessonId,
+          score,
+          outOf,
+          userId,
+        }),
+      });
+
+      if (!res.ok) {
+        setError("Error submitting score. Please try again later.");
+      }
+
+      dispatch(setNewData(true));
     }
-
-    const data = await res.json();
-    console.log(data);
   };
 
   const renderLesson = (lesson: any) => {
@@ -182,243 +208,262 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     });
   };
 
-  const renderExercises = (lesson: any, currentExercise: number) => {
-    const formatBlank = (question: string, index: number) => {
-      const splitQuestion = question.split("_");
-      return (
-        <>
-          {splitQuestion[0] + " "}
-          {!revealAnswers ? (
-            <input
-              type="text"
-              value={inputValues[index]}
-              onChange={(e) => handleInputChange(index, e.target.value)}
-              style={{ border: answerStyle[index] }}
-            />
-          ) : (
-            <span>
-              <strong>{thisExercise.answers[index]}</strong>
-            </span>
-          )}
-          {" " + splitQuestion[1]}
-        </>
-      );
-    };
+  const formatBlank = (question: string, index: number) => {
+    const splitQuestion = question.split("_");
+    const inputValue = inputValues[index] || ""; // Add a conditional check for undefined value
 
-    const checkAnswers = () => {
-      if (inputValues.length !== thisExercise.answers.length) {
-        console.log("triggered");
-        setError("Please answer all questions");
+    return (
+      <>
+        {splitQuestion[0] + " "}
+        {!revealAnswers ? (
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            style={{ border: answerStyle[index] }}
+          />
+        ) : (
+          <span>
+            <strong>{thisExercise.answers[index]}</strong>
+          </span>
+        )}
+        {" " + splitQuestion[1]}
+      </>
+    );
+  };
+
+  const checkAnswers = () => {
+    if (inputValues.length !== thisExercise.answers.length) {
+      setError("Please answer all questions");
+      return;
+    }
+    setSubmitted(true);
+    setError(null);
+
+    inputValues.forEach((inputValue: string, index: number) => {
+      if (!thisExercise.answers) {
+        setInputCorrect((prevInputCorrect: boolean[]) => {
+          const newInputCorrect = [...prevInputCorrect];
+          newInputCorrect[index] = true;
+          return newInputCorrect;
+        });
         return;
       }
-      setSubmitted(true);
-      setError(null);
+      if (
+        inputValue.trim().toLowerCase() ===
+        thisExercise.answers[index].trim().toLowerCase()
+      ) {
+        setAnswerStyle((prevAnswerStyle: string[]) => {
+          const newAnswerStyle = [...prevAnswerStyle];
+          newAnswerStyle[index] = "2px solid green";
+          return newAnswerStyle;
+        });
+        setInputCorrect((prevInputCorrect: boolean[]) => {
+          const newInputCorrect = [...prevInputCorrect];
+          newInputCorrect[index] = true;
+          return newInputCorrect;
+        });
+      } else {
+        setAnswerStyle((prevAnswerStyle: string[]) => {
+          const newAnswerStyle = [...prevAnswerStyle];
+          newAnswerStyle[index] = "2px solid red";
+          return newAnswerStyle;
+        });
+        setInputCorrect((prevInputCorrect: boolean[]) => {
+          const newInputCorrect = [...prevInputCorrect];
+          newInputCorrect[index] = false;
+          return newInputCorrect;
+        });
+      }
+    });
+  };
 
-      inputValues.forEach((inputValue: string, index: number) => {
-        if (!thisExercise.answers) {
-          setInputCorrect((prevInputCorrect: boolean[]) => {
-            const newInputCorrect = [...prevInputCorrect];
-            newInputCorrect[index] = true;
-            return newInputCorrect;
-          });
-          return;
-        }
-        if (
-          inputValue.trim().toLowerCase() ===
-          thisExercise.answers[index].trim().toLowerCase()
-        ) {
-          setAnswerStyle((prevAnswerStyle: string[]) => {
-            const newAnswerStyle = [...prevAnswerStyle];
-            newAnswerStyle[index] = "2px solid green";
-            return newAnswerStyle;
-          });
-          setInputCorrect((prevInputCorrect: boolean[]) => {
-            const newInputCorrect = [...prevInputCorrect];
-            newInputCorrect[index] = true;
-            return newInputCorrect;
-          });
-        } else {
-          setAnswerStyle((prevAnswerStyle: string[]) => {
-            const newAnswerStyle = [...prevAnswerStyle];
-            newAnswerStyle[index] = "2px solid red";
-            return newAnswerStyle;
-          });
-          setInputCorrect((prevInputCorrect: boolean[]) => {
-            const newInputCorrect = [...prevInputCorrect];
-            newInputCorrect[index] = false;
-            return newInputCorrect;
-          });
-        }
-      });
-    };
-
-    const revealAnswersHandler = () => {
-      setRevealAnswers(true);
-    };
-
-    const renderQuestions = (questions: any) => {
-      switch (thisExercise.type) {
-        case "conjugate-blank":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <React.Fragment key={`fragment${index}`}>
-                  <li key={index}>{formatBlank(question, index)}</li>
-                  <hr />
-                  <br />
-                </React.Fragment>
-              ))}
-            </>
-          );
-        case "translate":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <React.Fragment key={`frag${index}`}>
-                  <li key={`li${index}`}>{question}</li>
-                  {!revealAnswers ? (
-                    <textarea
-                      value={inputValues[index]}
-                      onChange={(e) => handleInputChange(index, e.target.value)}
-                      style={{ border: answerStyle[index] }}
-                      key={`input${index}`}
-                    />
-                  ) : (
-                    <span>
-                      <strong>{thisExercise.answers[index]}</strong>
-                    </span>
-                  )}
-
-                  <br key={`br${index}`} />
-                  <hr key={`hr${index}`} />
-                </React.Fragment>
-              ))}
-            </>
-          );
-        case "true-false":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <li key={index}>
-                  {question}
-                  <br />
-                  {!revealAnswers ? (
-                    <React.Fragment key={`frag${index}`}>
-                      {" "}
-                      <input
-                        type="radio"
-                        id={`V${index}`}
-                        name={`answer${index}`}
-                        value="V"
-                        checked={inputValues[index] === "V"}
-                        onChange={() => handleInputChange(index, "V")}
-                      />
-                      <label htmlFor={`true${index}`}>Verdadero</label>
-                      <br />
-                      <input
-                        type="radio"
-                        id={`F${index}`}
-                        name={`answer${index}`}
-                        value="F"
-                        checked={inputValues[index] === "F"}
-                        onChange={() => handleInputChange(index, "F")}
-                      />
-                      <label htmlFor={`false${index}`}>Falso</label>
-                    </React.Fragment>
-                  ) : (
-                    <span>
-                      <strong>{thisExercise.answers[index]}</strong>
-                    </span>
-                  )}
-                  <hr />
-                  <br />
-                </li>
-              ))}
-            </>
-          );
-        case "open-ended-TF":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <li key={index}>
-                  {question}
-                  <br />
-                  <input
-                    type="radio"
-                    id={`true${index}`}
-                    name={`answer${index}`}
-                    value="true"
-                    checked={inputValues[index] === "true"}
-                    onChange={() => handleInputChange(index, "true")}
-                  />
-                  <label htmlFor={`true${index}`}>Verdadero</label>
-                  <br />
-                  <input
-                    type="radio"
-                    id={`false${index}`}
-                    name={`answer${index}`}
-                    value="false"
-                    checked={inputValues[index] === "false"}
-                    onChange={() => handleInputChange(index, "false")}
-                  />
-                  <label htmlFor={`false${index}`}>Falso</label>
-                  <br />
-                  <hr />
-                </li>
-              ))}
-            </>
-          );
-        case "open-ended":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <>
-                  <li key={index}>{question}</li>
+  const renderQuestions = (questions: any) => {
+    switch (thisExercise.type) {
+      case "conjugate-blank":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <React.Fragment key={`fragment${index}`}>
+                <li key={`li${index}`}>{formatBlank(question, index)}</li>
+                <hr key={`hr${index}`} />
+                <br key={`br${index}`} />
+              </React.Fragment>
+            ))}
+          </>
+        );
+      case "translate":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <React.Fragment key={`frag${index}`}>
+                <li key={`li${index}`}>{question}</li>
+                {!revealAnswers ? (
                   <textarea
                     value={inputValues[index]}
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     style={{ border: answerStyle[index] }}
                     key={`input${index}`}
                   />
-                  <br />
-                </>
-              ))}
-            </>
-          );
+                ) : (
+                  <span>
+                    <strong>{thisExercise.answers[index]}</strong>
+                  </span>
+                )}
 
-        case "conjugate-plain":
-          return (
-            <>
-              {thisExercise.questions.map((question: any, index: number) => (
-                <>
-                  <li key={index}>
-                    {question} -{" "}
-                    {!revealAnswers ? (
-                      <input
-                        value={inputValues[index]}
-                        onChange={(e) =>
-                          handleInputChange(index, e.target.value)
-                        }
-                        style={{ border: answerStyle[index] }}
-                        key={`input${index}`}
-                      />
-                    ) : (
-                      <span>
-                        <strong>{thisExercise.answers[index]}</strong>
-                      </span>
-                    )}
-                  </li>
-                  <br />
-                  <hr />
-                </>
-              ))}
-            </>
-          );
+                <br key={`br${index}`} />
+                <hr key={`hr${index}`} />
+              </React.Fragment>
+            ))}
+          </>
+        );
+      case "true-false":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <li key={index}>
+                {question}
+                <br />
+                {!revealAnswers ? (
+                  <React.Fragment key={`frag${index}`}>
+                    {" "}
+                    <input
+                      type="radio"
+                      id={`V${index}`}
+                      name={`answer${index}`}
+                      value="V"
+                      checked={inputValues[index] === "V"}
+                      onChange={() => handleInputChange(index, "V")}
+                      key={`VV${index}`}
+                    />
+                    <label key={`Vlabel${index}`} htmlFor={`true${index}`}>
+                      Verdadero
+                    </label>
+                    <br />
+                    <input
+                      type="radio"
+                      id={`F${index}`}
+                      name={`answer${index}`}
+                      value="F"
+                      checked={inputValues[index] === "F"}
+                      onChange={() => handleInputChange(index, "F")}
+                      key={`FF${index}`}
+                    />
+                    <label key={`Flabel${index}`} htmlFor={`false${index}`}>
+                      Falso
+                    </label>
+                  </React.Fragment>
+                ) : (
+                  <span key={`span${index}`}>
+                    <strong key={`strong${index}`}>
+                      {thisExercise.answers[index]}
+                    </strong>
+                  </span>
+                )}
+                <hr key={`hr${index}`} />
+                <br key={`br${index}`} />
+              </li>
+            ))}
+          </>
+        );
+      case "open-ended-TF":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <li key={`li${index}`}>
+                {question}
+                <br key={`br${index}`} />
+                <input
+                  type="radio"
+                  id={`true${index}`}
+                  name={`answer${index}`}
+                  value="true"
+                  checked={inputValues[index] === "true"}
+                  onChange={() => handleInputChange(index, "true")}
+                  key={`input${index}`}
+                />
+                <label htmlFor={`true${index}`}>Verdadero</label>
+                <br key={`br2${index}`} />
+                <input
+                  type="radio"
+                  id={`false${index}`}
+                  name={`answer${index}`}
+                  value="false"
+                  checked={inputValues[index] === "false"}
+                  onChange={() => handleInputChange(index, "false")}
+                  key={`inpu2t${index}`}
+                />
+                <label key={`label2${index}`} htmlFor={`false${index}`}>
+                  Falso
+                </label>
+                <br key={`brr${index}`} />
+                <hr key={`hr${index}`} />
+              </li>
+            ))}
+          </>
+        );
+      case "open-ended":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <>
+                <li key={index}>{question}</li>
+                <textarea
+                  value={inputValues[index]}
+                  onChange={(e) => handleInputChange(index, e.target.value)}
+                  style={{ border: answerStyle[index] }}
+                  key={`input${index}`}
+                />
+                <br />
+              </>
+            ))}
+          </>
+        );
 
-        default:
-          return <p>INVALID TYPE</p>;
-      }
-    };
+      case "conjugate-plain":
+        return (
+          <>
+            {thisExercise.questions.map((question: any, index: number) => (
+              <React.Fragment key={index}>
+                <li key={`li${index}`}>
+                  {question} -{" "}
+                  {!revealAnswers ? (
+                    <input
+                      value={inputValues[index]}
+                      onChange={(e) => handleInputChange(index, e.target.value)}
+                      style={{ border: answerStyle[index] }}
+                      key={`input${index}`}
+                    />
+                  ) : (
+                    <span key={`span${index}`}>
+                      <strong key={`strong${index}`}>
+                        {thisExercise.answers[index]}
+                      </strong>
+                    </span>
+                  )}
+                </li>
+                <br key={`br${index}`} />
+                <hr key={`hr${index}`} />
+              </React.Fragment>
+            ))}
+          </>
+        );
+      case "matching":
+        return <h1>DO SOMETHING FUCK</h1>;
+
+      default:
+        return <p>INVALID TYPE</p>;
+    }
+  };
+
+  const revealAnswersHandler = () => {
+    setRevealAnswers(true);
+  };
+
+  const renderExercises = (lesson: any, currentExercise: number) => {
+    if (!thisExercise) {
+      return <Spinner />;
+    }
 
     const handleCheckAnswers = () => {
       if (state.isLoggedIn) {
@@ -427,40 +472,33 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
       checkAnswers();
     };
 
-    try {
-      return (
-        <>
-          {thisExercise.title && <h4>{thisExercise.title}</h4>}
-          <br />
-          {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
-          <br />
-          <ol>{renderQuestions(thisExercise.questions)}</ol>
-          {error && <strong className={styles.error}>{error}</strong>}
-          {!submitted && thisExercise.answers && !revealAnswers && (
-            <button className={styles.buttonRed} onClick={handleCheckAnswers}>
-              Check Answers
-            </button>
-          )}
-          {submitted && !revealAnswers && (
-            <button
-              className={styles.buttonGray}
-              onClick={revealAnswersHandler}
-            >
-              Reveal Answers
-            </button>
-          )}
-          {submitted && revealAnswers && (
-            <button className={styles.buttonGreen} onClick={resetInputState}>
-              Try Again?
-            </button>
-          )}
+    return (
+      <>
+        {thisExercise.title && <h4>{thisExercise.title}</h4>}
+        <br />
+        {thisExercise.instructions && <h5>{thisExercise.instructions}</h5>}
+        <br />
+        <ol>{renderQuestions(thisExercise.questions)}</ol>
+        {error && <strong className={styles.error}>{error}</strong>}
+        {!submitted && thisExercise.answers && !revealAnswers && (
+          <button className={styles.buttonRed} onClick={handleCheckAnswers}>
+            Check Answers
+          </button>
+        )}
+        {submitted && !revealAnswers && (
+          <button className={styles.buttonGray} onClick={revealAnswersHandler}>
+            Reveal Answers
+          </button>
+        )}
+        {submitted && revealAnswers && (
+          <button className={styles.buttonGreen} onClick={resetInputState}>
+            Try Again?
+          </button>
+        )}
 
-          {score > -1 && <p>Your Score: {score}%</p>}
-        </>
-      );
-    } catch (error) {
-      console.log(error);
-    }
+        {score > -1 && <p>Your Score: {score}%</p>}
+      </>
+    );
   };
 
   const handleExerciseToggle = () => {
@@ -495,7 +533,6 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   };
 
   const nextButtonHandler = () => {
-    console.log(nextLesson, lessonCount);
     if (
       nextLesson + 1 > lessonCount &&
       currentExercise === exerciseLength - 1

@@ -1,8 +1,15 @@
-import { useState, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
+import Spinner from "../spinner/spinner";
+import { registerUser, loginUser } from "@/features/auth/authActions";
+import RegistrationData from "@/types/RegistrationData";
+import LoginData from "@/types/LoginData";
+import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/configureStore";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,9 +20,28 @@ function LoginForm() {
   const signupPasswordInputRef = useRef<HTMLInputElement>(null);
   const signupPasswordConfirmInputRef = useRef<HTMLInputElement>(null);
   const usernameInputRef = useRef<HTMLInputElement>(null);
+  const {
+    loading,
+    user,
+    error: stateError,
+    success,
+  } = useSelector((state: any) => state.auth);
+
   const router = useRouter();
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user);
+  const dispatchTyped = dispatch as ThunkDispatch<RootState, null, AnyAction>;
+
+  useEffect(() => {
+    if (success) {
+      router.push("/");
+    }
+  }, [success, router]);
+
+  useEffect(() => {
+    if (stateError) {
+      setError(error);
+    }
+  }, [stateError]);
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -58,38 +84,19 @@ function LoginForm() {
     const enteredEmail = loginEmailInputRef.current?.value;
     const enteredPassword = loginPasswordInputRef.current?.value;
 
-    const packageData = {
-      email: enteredEmail,
-      password: enteredPassword,
-    };
+    if (enteredEmail && enteredPassword) {
+      const packageData: LoginData = {
+        email: enteredEmail,
+        password: enteredPassword,
+      };
 
-    const res = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(packageData),
-    });
+      dispatchTyped(loginUser(packageData));
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.message);
-      return;
+      resetForm();
+      router.push("/");
+    } else {
+      setError("Invalid login credentials");
     }
-
-    dispatch(
-      setState({
-        user: data.currentUser,
-        token: data.access_token,
-        isLoggedIn: true,
-      })
-    );
-
-    resetForm();
-    localStorage.setItem("spanishuser", JSON.stringify(data.currentUser));
-    localStorage.setItem("spanishtoken", JSON.stringify(data.access_token));
-    router.push("/");
   };
 
   const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,34 +112,20 @@ function LoginForm() {
       return;
     }
 
-    const packageData = {
+    const packageData: RegistrationData = {
       email: enteredEmail,
       password: enteredPassword,
       username: enteredUsername,
     };
 
-    const res = await fetch("http://localhost:3001/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(packageData),
-    });
-
-    if (!res.ok) {
-      const data = await res.json();
-      setError(data.message);
-      return;
-    }
-
-    const data = await res.json();
-    console.log(data);
-    dispatch(setState({ user: data, isLoggedIn: true }));
-    localStorage.setItem("spanishuser", JSON.stringify(data));
-    router.push("/");
+    dispatchTyped(registerUser(packageData));
 
     resetForm();
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>

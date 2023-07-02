@@ -7,7 +7,7 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const { isLoggedIn } = useSelector((state: any) => state.user);
+  const { isLoggedIn } = useSelector((state: any) => state.auth);
 
   return (
     <>

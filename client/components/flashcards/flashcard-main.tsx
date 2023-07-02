@@ -5,7 +5,7 @@ import styles from "./flashcard-main.module.css";
 import SingleFlashcard from "./singleFlashcard";
 
 function FlashcardMain() {
-  const { flashcards } = useSelector((state: any) => state.user);
+  const { flashcards } = useSelector((state: any) => state.auth);
   const [showFlashcards, setShowFlashcards] = useState(false);
   const [sideUp, setSideUp] = useState("");
 

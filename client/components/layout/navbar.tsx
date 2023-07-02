@@ -1,35 +1,51 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useGetUserDetailsQuery } from "@/services/auth/authService";
+import {
+  setCredentials,
+  logout,
+  setNewData,
+} from "../../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { setState } from "../../store/userSlice";
-import { getUserDetails } from "../../store/userSlice";
+import { useEffect } from "react";
 
 function Navbar(): JSX.Element {
-  const state = useSelector((state: any) => state.user);
-
+  const state = useSelector((state: any) => state.auth);
+  const isNewData = useSelector((state: any) => state.auth.isNewData);
   const dispatch = useDispatch<any>();
+  const router = useRouter();
+
+  const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
+    pollingInterval: isNewData ? 0 : 60000, // Refetch immediately if isNewData is true
+  });
 
   useEffect(() => {
-    const userIdFromStorage: any = localStorage.getItem("spanishuser");
-    const userId = JSON.parse(userIdFromStorage);
-    dispatch(getUserDetails(userId.id));
-  }, []);
+    if (data) {
+      dispatch(setCredentials(data));
+      dispatch(setNewData(false));
+    }
+  }, [data, dispatch, state]);
+
+  useEffect(() => {
+    if (isNewData) {
+      refetch(); // Trigger a refetch immediately if isNewData is true
+    }
+  }, [isNewData, refetch]);
+
+  useEffect(() => {
+    if (error) {
+      console.error("No token found");
+    }
+  }, [error]);
 
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    localStorage.removeItem("spanishuser");
-    dispatch(
-      setState({
-        user: null,
-        token: "",
-        isLoggedIn: false,
-        flashcards: [],
-        stats: [],
-      })
-    );
+    dispatch(logout());
+    router.push("/");
   };
+
+  console.log(state);
 
   return (
     <nav className={styles.navbar}>

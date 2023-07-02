@@ -5,7 +5,7 @@ import { User } from "../../utils/interfaces";
 import styles from "./single-lesson.module.css";
 
 function Vocab({ vocab }: any) {
-  const { user } = useSelector((state: any) => state.user);
+  const { user } = useSelector((state: any) => state.auth);
 
   const postToFlashcards = async (word: string[]) => {
     const data = {
