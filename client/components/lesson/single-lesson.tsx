@@ -290,8 +290,8 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
               {thisExercise.questions.map((question: any, index: number) => (
                 <React.Fragment key={`fragment${index}`}>
                   <li key={index}>{formatBlank(question, index)}</li>
-                  <hr />
-                  <br />
+                  <hr key={index} />
+                  <br key={index} />
                 </React.Fragment>
               ))}
             </>
@@ -416,8 +416,8 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           return (
             <>
               {thisExercise.questions.map((question: any, index: number) => (
-                <>
-                  <li key={index}>
+                <React.Fragment key={index}>
+                  <li key={`li${index}`}>
                     {question} -{" "}
                     {!revealAnswers ? (
                       <input
@@ -429,14 +429,16 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                         key={`input${index}`}
                       />
                     ) : (
-                      <span>
-                        <strong>{thisExercise.answers[index]}</strong>
+                      <span key={`span${index}`}>
+                        <strong key={`strong${index}`}>
+                          {thisExercise.answers[index]}
+                        </strong>
                       </span>
                     )}
                   </li>
-                  <br />
-                  <hr />
-                </>
+                  <br key={`br${index}`} />
+                  <hr key={`hr${index}`} />
+                </React.Fragment>
               ))}
             </>
           );
