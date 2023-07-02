@@ -4,12 +4,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { AuthService } from '../auth/auth.service';
+import { FlashcardsModule } from '../flashcards/flashcards.module';
+import { StatsModule } from '../stats/stats.module';
 import { JwtService } from '@nestjs/jwt';
 import { User } from './user.entity';
 import { CurrentUserInterceptor } from '../interceptors/current-user.interceptor';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User]), FlashcardsModule, StatsModule],
   controllers: [UsersController],
   providers: [
     {
