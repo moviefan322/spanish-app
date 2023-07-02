@@ -8,8 +8,27 @@ import Stats from "@/types/Stats";
 import { setNewData } from "@/features/auth/authSlice";
 import Spinner from "../spinner/spinner";
 import styles from "./single-lesson.module.css";
+import {
+  Lesson,
+  Exercise,
+  Chart as ChartType,
+  Vocabulary,
+  Grammar,
+} from "@/types/Unit";
 
-function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
+interface SingleLessonProps {
+  lesson: Lesson[];
+  nextLesson: number;
+  unit: number;
+  lessonCount: number;
+}
+
+function SingleLesson({
+  lesson = [],
+  nextLesson,
+  unit,
+  lessonCount,
+}: SingleLessonProps): JSX.Element {
   const [currentExercise, setCurrentExercise] = useState(0);
   const [toggleExercise, setToggleExercise] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -145,7 +164,7 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
     }
   };
 
-  const renderLesson = (lesson: any) => {
+  const renderLesson = (lesson: Lesson[]) => {
     return lesson.map((item: any, index: number) => {
       switch (item.type) {
         case "title":
