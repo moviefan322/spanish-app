@@ -289,9 +289,9 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
             <>
               {thisExercise.questions.map((question: any, index: number) => (
                 <React.Fragment key={`fragment${index}`}>
-                  <li key={index}>{formatBlank(question, index)}</li>
-                  <hr key={index} />
-                  <br key={index} />
+                  <li key={`li${index}`}>{formatBlank(question, index)}</li>
+                  <hr key={`hr${index}`} />
+                  <br key={`br${index}`} />
                 </React.Fragment>
               ))}
             </>
