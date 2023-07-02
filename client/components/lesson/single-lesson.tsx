@@ -6,6 +6,7 @@ import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Stats from "@/types/Stats";
 import { setNewData } from "@/features/auth/authSlice";
+import Spinner from "../spinner/spinner";
 import styles from "./single-lesson.module.css";
 
 function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
@@ -208,6 +209,9 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
   };
 
   const renderExercises = (lesson: any, currentExercise: number) => {
+    if (!thisExercise) {
+      return <Spinner />;
+    }
     const formatBlank = (question: string, index: number) => {
       const splitQuestion = question.split("_");
       const inputValue = inputValues[index] || ""; // Add a conditional check for undefined value
@@ -366,9 +370,9 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
           return (
             <>
               {thisExercise.questions.map((question: any, index: number) => (
-                <li key={index}>
+                <li key={`li${index}`}>
                   {question}
-                  <br />
+                  <br key={`br${index}`} />
                   <input
                     type="radio"
                     id={`true${index}`}
@@ -376,9 +380,10 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                     value="true"
                     checked={inputValues[index] === "true"}
                     onChange={() => handleInputChange(index, "true")}
+                    key={`input${index}`}
                   />
                   <label htmlFor={`true${index}`}>Verdadero</label>
-                  <br />
+                  <br key={`br2${index}`} />
                   <input
                     type="radio"
                     id={`false${index}`}
@@ -386,10 +391,13 @@ function SingleLesson({ lesson = [], nextLesson, unit, lessonCount }: any) {
                     value="false"
                     checked={inputValues[index] === "false"}
                     onChange={() => handleInputChange(index, "false")}
+                    key={`inpu2t${index}`}
                   />
-                  <label htmlFor={`false${index}`}>Falso</label>
-                  <br />
-                  <hr />
+                  <label key={`label2${index}`} htmlFor={`false${index}`}>
+                    Falso
+                  </label>
+                  <br key={`brr${index}`} />
+                  <hr key={`hr${index}`} />
                 </li>
               ))}
             </>
