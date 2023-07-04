@@ -127,6 +127,14 @@ function SingleLesson({
       const { id } = state.stats.filter(
         (stat: Stats) => stat.lessonId === lessonId
       )[0];
+
+      const updateScoreData = {
+        id,
+        lessonId,
+        score,
+        outOf,
+        userId,
+      }
       const res = await fetch(`http://localhost:3001/stats/${id}`, {
         method: "PUT",
         headers: {
@@ -141,11 +149,7 @@ function SingleLesson({
         }),
       });
 
-      if (!res.ok) {
-        setError("Error submitting score. Please try again later.");
-      }
 
-      dispatch(setNewData(true));
     } else {
       console.log("outgoingpackage", { lessonId, score, outOf, userId });
       const res = await fetch("http://localhost:3001/stats", {

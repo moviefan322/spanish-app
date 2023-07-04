@@ -4,6 +4,7 @@ import RegistrationData from "@/types/RegistrationData";
 import User from "@/types/User";
 import LoginData from "@/types/LoginData";
 import LoginRes from "@/types/LoginRes";
+import UpdateScoreData from "@/types/UpdateScoreData";
 
 const backendUrl = "http://localhost:3001";
 
@@ -84,5 +85,25 @@ const loginReq = async (email: string, password: string) => {
 
   const { data } = response;
   localStorage.setItem("spanishtoken", data.access_token);
+  return data;
+};
+
+const updateScore = async (updateScoreData: UpdateScoreData) => {
+  const { id, score, lessonId, outOf, userId } = updateScoreData;
+  const res = await axios.post(`${backendUrl}/stats/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+      lessonId,
+      score,
+      outOf,
+      userId,
+    }),
+  });
+  
+  const { data } = res;
   return data;
 };
