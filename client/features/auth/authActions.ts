@@ -5,6 +5,7 @@ import User from "@/types/User";
 import LoginData from "@/types/LoginData";
 import LoginRes from "@/types/LoginRes";
 import UpdateScoreData from "@/types/UpdateScoreData";
+import PostScoreData from "@/types/PostScoreData";
 
 const backendUrl = "http://localhost:3001";
 const config = {
@@ -67,12 +68,33 @@ export const loginUser = createAsyncThunk<LoginRes, LoginData>(
 export const updateScore = createAsyncThunk(
   "auth/updateScore",
   async (updateScoreData: UpdateScoreData, { rejectWithValue }) => {
-    console.log("updateScoreData", updateScoreData);
     try {
       const { id, score, lessonId, outOf, userId } = updateScoreData;
       const res = await axios.put(
         `${backendUrl}/stats/${id}`,
         { id, score, lessonId, outOf, userId },
+        config
+      );
+
+      const { data } = res;
+      return data;
+    } catch (error: any) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const postScore = createAsyncThunk(
+  "auth/postScore",
+  async (postScoreData: PostScoreData, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        `${backendUrl}/stats`,
+        postScoreData,
         config
       );
 

@@ -6,7 +6,7 @@ import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Stats from "@/types/Stats";
 import { setNewData } from "@/features/auth/authSlice";
-import { updateScore } from "@/features/auth/authActions";
+import { updateScore, postScore } from "@/features/auth/authActions";
 import Spinner from "../spinner/spinner";
 import styles from "./single-lesson.module.css";
 import {
@@ -140,26 +140,14 @@ function SingleLesson({
       dispatch(updateScore(updateScoreData));
       dispatch(setNewData(true));
     } else {
-      console.log("outgoingpackage", { lessonId, score, outOf, userId });
-      const res = await fetch("http://localhost:3001/stats", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          lessonId,
-          score,
-          outOf,
-          userId,
-        }),
-      });
+      const postScoreData = {
+        lessonId: Number(lessonId),
+        score: Number(score),
+        outOf: Number(outOf),
+        userId: Number(userId),
+      };
 
-      console.log(res);
-
-      if (!res.ok) {
-        setError("Error submitting score. Please try again later.");
-      }
-
+      dispatch(postScore(postScoreData));
       dispatch(setNewData(true));
     }
   };
