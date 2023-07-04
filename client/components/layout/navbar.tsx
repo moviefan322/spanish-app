@@ -19,21 +19,23 @@ function Navbar(): JSX.Element {
   const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
 
   const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
+    refetchOnMountOrArgChange: true, // Refetch when mounted or query arguments change
+    skip: !isLoggedIn, // Skip the query when isLoggedIn is false
     pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
   });
 
   useEffect(() => {
-    if (data) {
+    if (data && isLoggedIn) {
       dispatch(setCredentials(data));
       dispatch(setNewData(false));
     }
-  }, [data, dispatch, state]);
+  }, [data, dispatch, state, isLoggedIn]);
 
   useEffect(() => {
-    if (isNewData) {
+    if (isNewData && isLoggedIn) {
       refetch(); // Trigger a refetch immediately if isNewData is true
     }
-  }, [isNewData, refetch]);
+  }, [isNewData, refetch, isLoggedIn]);
 
   useEffect(() => {
     if (error) {
@@ -41,10 +43,18 @@ function Navbar(): JSX.Element {
     }
   }, [error]);
 
+  useEffect(() => {
+    console.log("isLoggedIn changed:", isLoggedIn);
+  }, [isLoggedIn]);
+
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    dispatch(logout());
+    localStorage.removeItem("spanishtoken");
+    setTimeout(() => {
+      dispatch(logout());
+    }, 10);
+
     router.push("/");
+    console.log(isLoggedIn);
   };
 
   console.log(state);
@@ -60,7 +70,7 @@ function Navbar(): JSX.Element {
         <li>
           <Link href="/">Home</Link>
         </li>
-        {!state.isLoggedIn ? (
+        {!isLoggedIn ? (
           <li>
             <Link href="/login">Login</Link>
           </li>

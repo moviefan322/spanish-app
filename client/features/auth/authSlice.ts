@@ -43,10 +43,13 @@ const authSlice = createSlice({
       state.isNewData = true;
     },
     setCredentials: (state, { payload }) => {
-      state.user = payload.user;
-      state.flashcards = payload.flashcards;
-      state.stats = payload.stats;
-      state.isLoggedIn = true;
+      console.log("setcredent", payload);
+      if (payload) {
+        state.user = payload.user;
+        state.flashcards = payload.flashcards;
+        state.stats = payload.stats;
+        state.isLoggedIn = true;
+      }
     },
     setNewData: (state, { payload }) => {
       state.isNewData = payload;

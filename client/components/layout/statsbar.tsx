@@ -17,22 +17,22 @@ function Statsbar() {
   const isNewData = useSelector((state: any) => state.auth.isNewData);
   const dispatch = useDispatch<any>();
 
-  const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
-    pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
-  });
+  // const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
+  //   pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
+  // });
 
-  useEffect(() => {
-    if (data) {
-      dispatch(setCredentials(data));
-      dispatch(setNewData(false));
-    }
-  }, [data, dispatch, state]);
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch(setCredentials(data));
+  //     dispatch(setNewData(false));
+  //   }
+  // }, [data, dispatch, state]);
 
-  useEffect(() => {
-    if (isNewData) {
-      refetch(); // Trigger a refetch immediately if isNewData is true
-    }
-  }, [isNewData, refetch]);
+  // useEffect(() => {
+  //   if (isNewData) {
+  //     refetch(); // Trigger a refetch immediately if isNewData is true
+  //   }
+  // }, [isNewData, refetch]);
 
   const stats: Stat[] = useSelector(
     (state: any) => state.auth.stats,
