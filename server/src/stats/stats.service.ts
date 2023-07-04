@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Stats } from './stats.entity';
 import { CreateStatDto } from './dtos/create-stat.dto';
+import { UpdateStatDto } from './dtos/update-stat.dto';
 
 @Injectable()
 export class StatsService {
@@ -21,7 +22,7 @@ export class StatsService {
     return this.repo.find({ where: { userId } });
   }
 
-  async update(id: number, statDto: CreateStatDto) {
+  async update(id: number, statDto: UpdateStatDto) {
     const stat = await this.repo.findOne({ where: { id } });
     this.repo.merge(stat, statDto);
     return this.repo.save(stat);

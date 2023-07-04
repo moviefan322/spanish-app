@@ -7,17 +7,16 @@ import LoginRes from "@/types/LoginRes";
 import UpdateScoreData from "@/types/UpdateScoreData";
 
 const backendUrl = "http://localhost:3001";
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 export const registerUser = createAsyncThunk<User, RegistrationData>(
   "auth/registerUser",
   async ({ username, email, password }, { rejectWithValue }) => {
-    console.log("registerUser action", username, email, password);
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
       const res = await axios.post(
         `${backendUrl}/auth/signup`,
         { username, email, password },
@@ -42,13 +41,7 @@ export const registerUser = createAsyncThunk<User, RegistrationData>(
 export const loginUser = createAsyncThunk<LoginRes, LoginData>(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
-    "triggered";
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
       const response = await axios.post(
         `${backendUrl}/auth/login`,
         { email, password },
@@ -60,6 +53,30 @@ export const loginUser = createAsyncThunk<LoginRes, LoginData>(
 
       console.log(data);
 
+      return data;
+    } catch (error: any) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const updateScore = createAsyncThunk(
+  "auth/updateScore",
+  async (updateScoreData: UpdateScoreData, { rejectWithValue }) => {
+    console.log("updateScoreData", updateScoreData);
+    try {
+      const { id, score, lessonId, outOf, userId } = updateScoreData;
+      const res = await axios.put(
+        `${backendUrl}/stats/${id}`,
+        { id, score, lessonId, outOf, userId },
+        config
+      );
+
+      const { data } = res;
       return data;
     } catch (error: any) {
       if (error.response && error.response.data.message) {
@@ -85,25 +102,5 @@ const loginReq = async (email: string, password: string) => {
 
   const { data } = response;
   localStorage.setItem("spanishtoken", data.access_token);
-  return data;
-};
-
-const updateScore = async (updateScoreData: UpdateScoreData) => {
-  const { id, score, lessonId, outOf, userId } = updateScoreData;
-  const res = await axios.post(`${backendUrl}/stats/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id,
-      lessonId,
-      score,
-      outOf,
-      userId,
-    }),
-  });
-  
-  const { data } = res;
   return data;
 };

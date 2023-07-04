@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { registerUser, loginUser } from "@/features/auth/authActions";
+import {
+  registerUser,
+  loginUser,
+  updateScore,
+} from "@/features/auth/authActions";
 import User from "@/types/User";
 import AuthState from "@/types/AuthState";
 
@@ -87,7 +91,23 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = payload;
         state.success = false;
-      });
+      })
+      .addCase(updateScore.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+      })
+      .addCase(updateScore.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.success = true;
+        state.isNewData = true;
+        state.error = null;
+      })
+      .addCase(updateScore.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+        state.success = false;
+      })
   },
 });
 

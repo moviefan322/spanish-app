@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import Link from "next/link";
 import styles from "./statsbar.module.css";
 
@@ -12,7 +12,10 @@ interface Stat {
 function Statsbar() {
   const state = useSelector((state: any) => state.auth);
 
-  const stats: Stat[] = state.stats;
+  const stats: Stat[] = useSelector(
+    (state: any) => state.auth.stats,
+    shallowEqual
+  );
 
   const renderCurrentLesson = (stats: Stat[]) => {
     if (!stats || stats.length === 0) {

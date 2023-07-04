@@ -6,6 +6,7 @@ import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Stats from "@/types/Stats";
 import { setNewData } from "@/features/auth/authSlice";
+import { updateScore } from "@/features/auth/authActions";
 import Spinner from "../spinner/spinner";
 import styles from "./single-lesson.module.css";
 import {
@@ -129,27 +130,15 @@ function SingleLesson({
       )[0];
 
       const updateScoreData = {
-        id,
-        lessonId,
-        score,
-        outOf,
-        userId,
-      }
-      const res = await fetch(`http://localhost:3001/stats/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id,
-          lessonId,
-          score,
-          outOf,
-          userId,
-        }),
-      });
+        id: Number(id),
+        lessonId: Number(lessonId),
+        score: Number(score),
+        outOf: Number(outOf),
+        userId: Number(userId),
+      };
 
-
+      dispatch(updateScore(updateScoreData));
+      dispatch(setNewData(true));
     } else {
       console.log("outgoingpackage", { lessonId, score, outOf, userId });
       const res = await fetch("http://localhost:3001/stats", {

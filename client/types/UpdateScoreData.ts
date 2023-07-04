@@ -3,5 +3,5 @@ export default interface UpdateScoreData {
   score: number;
   lessonId: number;
   outOf: number;
-  userId: number;
+  userId: number | null;
 }
