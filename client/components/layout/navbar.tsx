@@ -17,7 +17,7 @@ function Navbar(): JSX.Element {
   const router = useRouter();
 
   const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
-    pollingInterval: isNewData ? 0 : 60000, // Refetch immediately if isNewData is true
+    pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
   });
 
   useEffect(() => {
@@ -42,6 +42,7 @@ function Navbar(): JSX.Element {
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(logout());
+    dispatch(setNewData(true));
     router.push("/");
   };
 

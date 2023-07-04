@@ -17,14 +17,17 @@ export const registerUser = createAsyncThunk<User, RegistrationData>(
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post(
+      const res = await axios.post(
         `${backendUrl}/auth/signup`,
         { username, email, password },
         config
       );
 
-      console.log("data", data);
-      return data;
+      if (res.status === 201 && email && password) {
+        const data = await loginReq(email, password);
+        console.log("data", data);
+        return data;
+      }
     } catch (error: any) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -38,6 +41,7 @@ export const registerUser = createAsyncThunk<User, RegistrationData>(
 export const loginUser = createAsyncThunk<LoginRes, LoginData>(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
+    "triggered";
     try {
       const config = {
         headers: {
@@ -65,3 +69,20 @@ export const loginUser = createAsyncThunk<LoginRes, LoginData>(
     }
   }
 );
+
+const loginReq = async (email: string, password: string) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await axios.post(
+    `${backendUrl}/auth/login`,
+    { email, password },
+    config
+  );
+
+  const { data } = response;
+  localStorage.setItem("spanishtoken", data.access_token);
+  return data;
+};

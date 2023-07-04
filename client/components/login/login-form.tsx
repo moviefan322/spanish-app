@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setState } from "../../store/userSlice";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
 import Spinner from "../spinner/spinner";
@@ -30,12 +29,6 @@ function LoginForm() {
   const router = useRouter();
   const dispatch = useDispatch();
   const dispatchTyped = dispatch as ThunkDispatch<RootState, null, AnyAction>;
-
-  useEffect(() => {
-    if (success) {
-      router.push("/");
-    }
-  }, [success, router]);
 
   useEffect(() => {
     if (stateError) {
@@ -118,9 +111,15 @@ function LoginForm() {
       username: enteredUsername,
     };
 
-    dispatchTyped(registerUser(packageData));
-
-    resetForm();
+    try {
+      dispatchTyped(registerUser(packageData));
+      if (success) {
+        resetForm();
+        router.push("/");
+      }
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   if (loading) {

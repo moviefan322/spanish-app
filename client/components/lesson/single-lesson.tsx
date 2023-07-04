@@ -119,7 +119,11 @@ function SingleLesson({
     };
     const lessonId = formatExerciseId(currentExercise);
 
-    if (state.stats.some((stat: Stats) => stat.lessonId === lessonId)) {
+    if (
+      state.stats &&
+      state.stats.some((stat: Stats) => stat.lessonId === lessonId)
+    ) {
+      console.log("updating");
       const { id } = state.stats.filter(
         (stat: Stats) => stat.lessonId === lessonId
       )[0];
@@ -143,6 +147,7 @@ function SingleLesson({
 
       dispatch(setNewData(true));
     } else {
+      console.log("outgoingpackage", { lessonId, score, outOf, userId });
       const res = await fetch("http://localhost:3001/stats", {
         method: "POST",
         headers: {
@@ -155,6 +160,8 @@ function SingleLesson({
           userId,
         }),
       });
+
+      console.log(res);
 
       if (!res.ok) {
         setError("Error submitting score. Please try again later.");

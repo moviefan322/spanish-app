@@ -25,6 +25,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      console.log("logging out");
       localStorage.removeItem("spanishtoken");
       state.loading = false;
       state.user = null;
@@ -49,24 +50,29 @@ const authSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.success = false;
       })
       .addCase(
         registerUser.fulfilled,
-        (state, { payload }: PayloadAction<User>) => {
-          console.log("payload", payload);
+        (state, { payload }: PayloadAction<any>) => {
           state.loading = false;
           state.success = true;
-          state.user = payload;
+          state.user = payload.currentUser;
+          state.flashcards = payload.flashcards;
+          state.stats = payload.stats;
+          state.token = payload.access_token;
           state.isLoggedIn = true;
         }
       )
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
+        state.success = false;
       })
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.success = false;
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.loading = false;
@@ -77,7 +83,11 @@ const authSlice = createSlice({
         state.token = payload.access_token;
         state.isLoggedIn = true;
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {});
+      .addCase(loginUser.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+        state.success = false;
+      });
   },
 });
 
