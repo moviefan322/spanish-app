@@ -3,6 +3,8 @@ import {
   registerUser,
   loginUser,
   updateScore,
+  postScore,
+  createFlashcard,
 } from "@/features/auth/authActions";
 import User from "@/types/User";
 import AuthState from "@/types/AuthState";
@@ -38,6 +40,7 @@ const authSlice = createSlice({
       state.stats = null;
       state.flashcards = null;
       state.isLoggedIn = false;
+      state.isNewData = true;
     },
     setCredentials: (state, { payload }) => {
       state.user = payload.user;
@@ -108,6 +111,38 @@ const authSlice = createSlice({
         state.error = payload;
         state.success = false;
       })
+      .addCase(postScore.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+      })
+      .addCase(postScore.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.success = true;
+        state.isNewData = true;
+        state.error = null;
+      })
+      .addCase(postScore.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+        state.success = false;
+      })
+      .addCase(createFlashcard.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+      })
+      .addCase(createFlashcard.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.success = true;
+        state.isNewData = true;
+        state.error = null;
+      })
+      .addCase(createFlashcard.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+        state.success = false;
+      });
   },
 });
 

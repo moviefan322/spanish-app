@@ -6,6 +6,7 @@ import LoginData from "@/types/LoginData";
 import LoginRes from "@/types/LoginRes";
 import UpdateScoreData from "@/types/UpdateScoreData";
 import PostScoreData from "@/types/PostScoreData";
+import PostFlashcard from "@/types/PostFlashcard";
 
 const backendUrl = "http://localhost:3001";
 const config = {
@@ -95,6 +96,28 @@ export const postScore = createAsyncThunk(
       const res = await axios.post(
         `${backendUrl}/stats`,
         postScoreData,
+        config
+      );
+
+      const { data } = res;
+      return data;
+    } catch (error: any) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const createFlashcard = createAsyncThunk(
+  "auth/createFlashcard",
+  async (flashcard: PostFlashcard, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/flashcards",
+        flashcard,
         config
       );
 

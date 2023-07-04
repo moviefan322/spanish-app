@@ -9,8 +9,6 @@ function FlashcardMain() {
   const [showFlashcards, setShowFlashcards] = useState(false);
   const [sideUp, setSideUp] = useState("");
 
-  console.log(flashcards);
-
   const setSpanishUpHandler = () => {
     setSideUp("spanish");
     setShowFlashcards(true);

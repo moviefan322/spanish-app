@@ -16,6 +16,8 @@ function Navbar(): JSX.Element {
   const dispatch = useDispatch<any>();
   const router = useRouter();
 
+  const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+
   const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
     pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
   });
@@ -42,7 +44,6 @@ function Navbar(): JSX.Element {
   const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(logout());
-    dispatch(setNewData(true));
     router.push("/");
   };
 
