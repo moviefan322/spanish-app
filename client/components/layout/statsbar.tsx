@@ -17,6 +17,11 @@ function Statsbar() {
     shallowEqual
   );
 
+  const flashcards = useSelector(
+    (state: any) => state.auth.flashcards,
+    shallowEqual
+  );
+
   const renderCurrentLesson = (stats: Stat[]) => {
     if (!stats || stats.length === 0) {
       return 0;
@@ -82,9 +87,11 @@ function Statsbar() {
           Points: {renderPoints(stats)}/{renderOutOfs(stats)}
         </div>
         <div>{getPct()}%</div>
-        <Link className={styles.link} href="/flashcards">
-          Flashcards
-        </Link>
+        {flashcards.length > 0 && (
+          <Link className={styles.link} href="/flashcards">
+            Flashcards
+          </Link>
+        )}
       </div>
     </>
   );

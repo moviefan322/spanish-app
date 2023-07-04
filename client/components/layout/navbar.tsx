@@ -7,11 +7,11 @@ import {
   logout,
   setNewData,
 } from "../../features/auth/authSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";
 
 function Navbar(): JSX.Element {
-  const state = useSelector((state: any) => state.auth);
+  const state = useSelector((state: any) => state.auth, shallowEqual);
   const isNewData = useSelector((state: any) => state.auth.isNewData);
   const dispatch = useDispatch<any>();
   const router = useRouter();
