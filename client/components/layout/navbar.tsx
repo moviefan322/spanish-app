@@ -45,7 +45,7 @@ function Navbar(): JSX.Element {
   }, [data, dispatch, isLoggedIn]);
 
   useEffect(() => {
-    if (isNewData) {
+    if (isNewData && isLoggedIn) {
       refetch();
       dispatch(setCredentials(data));
       dispatch(setNewData(false));
