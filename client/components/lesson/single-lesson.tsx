@@ -249,6 +249,10 @@ function SingleLesson({
     setSubmitted(true);
     setError(null);
 
+    if(thisExercise.type === "matching"){
+      
+    }
+
     inputValues.forEach((inputValue: string, index: number) => {
       if (!thisExercise.answers) {
         setInputCorrect((prevInputCorrect: boolean[]) => {
@@ -496,7 +500,7 @@ function SingleLesson({
         {error && <strong className={styles.error}>{error}</strong>}
         {!submitted && thisExercise.answers && !revealAnswers && (
           <button className={styles.buttonRed} onClick={handleCheckAnswers}>
-            Check Answers
+            Submit Answers
           </button>
         )}
         {submitted && !revealAnswers && (

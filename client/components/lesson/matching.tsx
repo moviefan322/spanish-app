@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styles from "./matching.module.css";
 
-function MatchingExercise({ thisExercise, revealAnswers }: any) {
+interface MatchingExerciseProps {
+  thisExercise: {
+    title: string;
+    instructions: string;
+    questions: string[];
+    choices: string[];
+    answers: number[];
+    type: string;
+  };
+  revealAnswers: boolean;
+}
+
+function MatchingExercise({
+  thisExercise,
+  revealAnswers,
+}: MatchingExerciseProps) {
   console.log(thisExercise);
   const [dropSpots, setDropSpots] = useState<number[]>([]);
   const [updatedExercise, setUpdatedExercise] = useState<any>(thisExercise);
@@ -11,7 +26,7 @@ function MatchingExercise({ thisExercise, revealAnswers }: any) {
   }, []);
 
   const initializeDropSpots = () => {
-    const count = thisExercise.questions.prompts.length;
+    const count = thisExercise.questions.length;
     const spots = Array(count).fill(-1);
     setDropSpots(spots);
   };
@@ -41,25 +56,22 @@ function MatchingExercise({ thisExercise, revealAnswers }: any) {
     updatedDropSpots[index] = draggedIndex;
     setDropSpots(updatedDropSpots);
 
-    const updatedChoices = [...updatedExercise.questions.choices];
+    const updatedChoices = [...updatedExercise.choices];
     const draggedChoice = updatedChoices[draggedIndex];
     updatedChoices[draggedIndex] = updatedChoices[index];
     updatedChoices[index] = draggedChoice;
 
     const updatedQuestions = {
-      ...updatedExercise.questions,
+      ...updatedExercise,
       choices: updatedChoices,
     };
 
-    setUpdatedExercise({
-      ...updatedExercise,
-      questions: updatedQuestions,
-    });
+    setUpdatedExercise(updatedQuestions);
   };
 
   return (
     <>
-      {thisExercise.questions.prompts.map((question: any, index: number) => (
+      {thisExercise.questions.map((question: string, index: number) => (
         <React.Fragment key={index}>
           <li key={`li${index}`} className={styles.matching}>
             <p>{question}</p>
@@ -71,17 +83,15 @@ function MatchingExercise({ thisExercise, revealAnswers }: any) {
                 onDragOver={(event) => handleDragOver(event, index)}
                 onDrop={(event) => handleDrop(event, index)}
               >
-                {updatedExercise.questions.choices[index]}
+                {updatedExercise.choices[index]}
               </p>
             ) : (
               <span key={`span${index}`}>
-                {updatedExercise.answers.map(
-                  (answer: any, answerIndex: number) => (
-                    <p key={`answer${answerIndex}`}>
-                      {updatedExercise.choices[answer]}
-                    </p>
-                  )
-                )}
+                {updatedExercise.answers.map((answerIndex: number) => (
+                  <p key={`answer${answerIndex}`}>
+                    {updatedExercise.choices[answerIndex]}
+                  </p>
+                ))}
               </span>
             )}
           </li>

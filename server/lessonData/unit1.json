@@ -497,28 +497,26 @@
           {
             "title": "Pareados",
             "instructions": "Escribe la letra de la respuesta más lógica.",
-            "questions": {
-              "prompts": [
-                "Sé",
-                "Distraigo",
-                "No quepo",
-                "Compongo",
-                "Propongo",
-                "Pongo",
-                "Salgo"
-              ],
-              "choices": [
-                "a mis compañeros de trabajo.",
-                "que trabajas mucho.",
-                "música para mis canciones.",
-                "en esa trampa (trap) a menudo.",
-                "de la conferencia ahora.",
-                "una solución para tu problema.",
-                "el agua en un vaso.",
-                "en estos pantalones."
-              ],
-              "answers": [1, 0, 7, 2, 5, 6, 4, 3]
-            },
+            "questions": [
+              "Sé",
+              "Distraigo",
+              "No quepo",
+              "Compongo",
+              "Propongo",
+              "Pongo",
+              "Salgo"
+            ],
+            "choices": [
+              "a mis compañeros de trabajo.",
+              "que trabajas mucho.",
+              "música para mis canciones.",
+              "en esa trampa (trap) a menudo.",
+              "de la conferencia ahora.",
+              "una solución para tu problema.",
+              "el agua en un vaso.",
+              "en estos pantalones."
+            ],
+            "answers": [1, 0, 7, 2, 5, 6, 4, 3],
             "type": "matching"
           }
         ]
