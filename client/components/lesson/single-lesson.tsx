@@ -107,14 +107,20 @@ function SingleLesson({
   };
 
   const submitScore = async () => {
-    "submitting";
+    console.log("submitting");
     // get total correct answers
-    const score = inputValues.filter(
-      (item: string, index: number) =>
-        item.trim().toLowerCase() ===
-        thisExercise.answers[index].trim().toLowerCase()
-    ).length;
-
+    let score;
+    if (thisExercise.type === "matching") {
+      score = matchingInput.filter(
+        (item: string, index: number) => item === thisExercise.answers[index]
+      ).length;
+    } else {
+      score = inputValues.filter(
+        (item: string, index: number) =>
+          item.trim().toLowerCase() ===
+          thisExercise.answers[index].trim().toLowerCase()
+      ).length;
+    }
     //get max score
     const outOf = thisExercise.answers.length;
     const formatExerciseId = (currentExercise: number) => {
@@ -139,6 +145,8 @@ function SingleLesson({
         userId: Number(userId),
       };
 
+      console.log(updateScoreData);
+
       dispatch(updateScore(updateScoreData));
       dispatch(setNewData(true));
     } else {
@@ -148,6 +156,8 @@ function SingleLesson({
         outOf: Number(outOf),
         userId: Number(userId),
       };
+
+      console.log(postScoreData);
 
       dispatch(postScore(postScoreData));
       dispatch(setNewData(true));
