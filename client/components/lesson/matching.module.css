@@ -6,3 +6,15 @@
   padding: 0 2rem;
   justify-content: space-between;
 }
+
+.choices {
+  border: 2px black solid;
+  background-color: rgb(218, 255, 223);
+  padding: 0 2rem;
+  border-radius: 1rem;
+}
+
+.hovered {
+  background-color: #f0f0f0;
+}
+

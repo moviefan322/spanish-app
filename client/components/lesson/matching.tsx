@@ -19,7 +19,10 @@ function MatchingExercise({
 }: MatchingExerciseProps) {
   console.log(thisExercise);
   const [dropSpots, setDropSpots] = useState<number[]>([]);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [updatedExercise, setUpdatedExercise] = useState<any>(thisExercise);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [displacedIndex, setDisplacedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     initializeDropSpots();
@@ -36,6 +39,7 @@ function MatchingExercise({
     index: number
   ) => {
     event.dataTransfer.setData("text/plain", index.toString());
+    setDraggedIndex(index);
   };
 
   const handleDragOver = (
@@ -43,6 +47,8 @@ function MatchingExercise({
     index: number
   ) => {
     event.preventDefault();
+    setHoveredIndex(index);
+    setDisplacedIndex(hoveredIndex !== index ? draggedIndex : null);
   };
 
   const handleDrop = (
@@ -67,7 +73,11 @@ function MatchingExercise({
     };
 
     setUpdatedExercise(updatedQuestions);
+    setHoveredIndex(null);
+    setDisplacedIndex(draggedIndex); // Set displacedIndex to draggedIndex
   };
+
+  console.log(draggedIndex);
 
   return (
     <>
@@ -78,12 +88,23 @@ function MatchingExercise({
             {!revealAnswers ? (
               <p
                 key={`pchoice${index}`}
+                className={`${styles.choices} ${
+                  hoveredIndex === index ? styles.hovered : ""
+                } ${displacedIndex === index ? styles.displaced : ""}`}
                 draggable={true}
                 onDragStart={(event) => handleDragStart(event, index)}
                 onDragOver={(event) => handleDragOver(event, index)}
+                onDragLeave={() => {
+                  setHoveredIndex(null);
+                  setDisplacedIndex(null);
+                }}
                 onDrop={(event) => handleDrop(event, index)}
               >
-                {updatedExercise.choices[index]}
+                {hoveredIndex === index && draggedIndex !== null ? (
+                  <span className={styles.placeholder}>Drop Here</span>
+                ) : (
+                  updatedExercise.choices[index]
+                )}
               </p>
             ) : (
               <span key={`span${index}`}>
