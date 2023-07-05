@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "./singleFlashcard.module.css";
-import { set } from "immer/dist/internal";
 
 interface singleFlashcardProps {
   sideUp: string;
