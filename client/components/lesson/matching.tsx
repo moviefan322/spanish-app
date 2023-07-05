@@ -27,6 +27,8 @@ function MatchingExercise({
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [displacedIndex, setDisplacedIndex] = useState<number | null>(null);
 
+  console.log(answerStyle);
+
   useEffect(() => {
     initializeDropSpots();
   }, []);
