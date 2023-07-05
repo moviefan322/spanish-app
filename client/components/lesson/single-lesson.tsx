@@ -255,12 +255,22 @@ function SingleLesson({
     if (thisExercise.type === "matching") {
       matchingInput.forEach((input: string, index: number) => {
         if (input === thisExercise.answers[index]) {
+          setAnswerStyle((prevAnswerStyle: string[]) => {
+            const newAnswerStyle = [...prevAnswerStyle];
+            newAnswerStyle[index] = "2px solid green";
+            return newAnswerStyle;
+          });
           setInputCorrect((prevInputCorrect: boolean[]) => {
             const newInputCorrect = [...prevInputCorrect];
             newInputCorrect[index] = true;
             return newInputCorrect;
           });
         } else {
+          setAnswerStyle((prevAnswerStyle: string[]) => {
+            const newAnswerStyle = [...prevAnswerStyle];
+            newAnswerStyle[index] = "2px solid red";
+            return newAnswerStyle;
+          });
           setInputCorrect((prevInputCorrect: boolean[]) => {
             const newInputCorrect = [...prevInputCorrect];
             newInputCorrect[index] = false;
@@ -494,6 +504,7 @@ function SingleLesson({
             thisExercise={thisExercise}
             revealAnswers={revealAnswers}
             setMatchingInput={setMatchingInput}
+            answerStyle={answerStyle}
           />
         );
 

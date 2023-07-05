@@ -7,17 +7,19 @@ interface MatchingExerciseProps {
     instructions: string;
     questions: string[];
     choices: string[];
-    answers: number[];
+    answers: string[];
     type: string;
   };
   revealAnswers: boolean;
   setMatchingInput: (input: string[]) => void;
+  answerStyle: string[];
 }
 
 function MatchingExercise({
   thisExercise,
   revealAnswers,
   setMatchingInput,
+  answerStyle,
 }: MatchingExerciseProps) {
   const [dropSpots, setDropSpots] = useState<number[]>([]);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
@@ -90,6 +92,7 @@ function MatchingExercise({
             {!revealAnswers ? (
               <p
                 key={`pchoice${index}`}
+                style={{ border: answerStyle[index] }}
                 className={`${styles.choices} ${
                   hoveredIndex === index ? styles.hovered : ""
                 } ${displacedIndex === index ? styles.displaced : ""}`}
@@ -110,11 +113,11 @@ function MatchingExercise({
               </p>
             ) : (
               <span key={`span${index}`}>
-                {updatedExercise.answers.map((answerIndex: number) => (
-                  <p key={`answer${answerIndex}`}>
-                    {updatedExercise.choices[answerIndex]}
+                {
+                  <p className={styles.choices} key={`answer${index}`}>
+                    {thisExercise.answers[index]}
                   </p>
-                ))}
+                }
               </span>
             )}
           </li>
