@@ -45,6 +45,14 @@ function Navbar(): JSX.Element {
   }, [data, dispatch, isLoggedIn]);
 
   useEffect(() => {
+    if (isNewData) {
+      refetch();
+      dispatch(setCredentials(data));
+      dispatch(setNewData(false));
+    }
+  }, [isNewData, refetch, data, dispatch]);
+
+  useEffect(() => {
     console.log("isLoggedIn changed:", isLoggedIn);
   }, [isLoggedIn]);
 
