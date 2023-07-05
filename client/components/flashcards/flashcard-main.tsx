@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./flashcard-main.module.css";
 import SingleFlashcard from "./singleFlashcard";
+import { shuffle } from "@/utils/shuffle";
 
 function FlashcardMain() {
   const { flashcards } = useSelector((state: any) => state.auth);
   const [showFlashcards, setShowFlashcards] = useState(false);
+  const [shuffledFlashcards, setShuffledFlashcards] = useState<any[]>([]);
   const [sideUp, setSideUp] = useState("");
+
+  useEffect(() => {
+    setShuffledFlashcards(shuffle(flashcards));
+  }, [flashcards]);
 
   const setSpanishUpHandler = () => {
     setSideUp("spanish");
