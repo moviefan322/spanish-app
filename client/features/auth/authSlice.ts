@@ -45,6 +45,7 @@ const authSlice = createSlice({
     setCredentials: (state, { payload }) => {
       console.log("setcredent", payload);
       if (payload) {
+        state.loading = false;
         state.user = payload.user;
         state.flashcards = payload.flashcards;
         state.stats = payload.stats;
@@ -53,6 +54,11 @@ const authSlice = createSlice({
     },
     setNewData: (state, { payload }) => {
       state.isNewData = payload;
+    },
+    isToken: (state) => {
+      if (state.token) {
+        state.isLoggedIn = true;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -149,5 +155,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setCredentials, setNewData } = authSlice.actions;
+export const { logout, setCredentials, setNewData, isToken } = authSlice.actions;
 export default authSlice.reducer;

@@ -517,7 +517,16 @@
               "g. el agua en un vaso.",
               "h. en estos pantalones."
             ],
-            "answers": ["b", "a", "h", "c", "f", "g", "e", "d"],
+            "answers": [
+              "b. que trabajas mucho.",
+              "a. a mis compañeros de trabajo.",
+              "h. en estos pantalones.",
+              "c. música para mis canciones.",
+              "f. una solución para tu problema.",
+              "g. el agua en un vaso.",
+              "e. de la conferencia ahora.",
+              "d. en esa trampa a menudo."
+            ],
             "type": "matching"
           }
         ]

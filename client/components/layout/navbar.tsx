@@ -6,6 +6,7 @@ import {
   setCredentials,
   logout,
   setNewData,
+  isToken,
 } from "../../features/auth/authSlice";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";
@@ -19,29 +20,30 @@ function Navbar(): JSX.Element {
   const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
 
   const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
-    refetchOnMountOrArgChange: true, // Refetch when mounted or query arguments change
-    skip: !isLoggedIn, // Skip the query when isLoggedIn is false
-    pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
+    refetchOnMountOrArgChange: true,
+    skip: !state.token,
+    pollingInterval: isNewData ? 0 : 600000,
   });
+
+  useEffect(() => {
+    if (state.token && data) {
+      dispatch(setCredentials(data));
+      dispatch(setNewData(false));
+    }
+  }, [state.token, data, dispatch]);
+
+  useEffect(() => {
+    if (state.token && isLoggedIn) {
+      refetch(); // Fetch user details using the stored token
+    }
+  }, [state.token, isLoggedIn, refetch]);
 
   useEffect(() => {
     if (data && isLoggedIn) {
       dispatch(setCredentials(data));
       dispatch(setNewData(false));
     }
-  }, [data, dispatch, state, isLoggedIn]);
-
-  useEffect(() => {
-    if (isNewData && isLoggedIn) {
-      refetch(); // Trigger a refetch immediately if isNewData is true
-    }
-  }, [isNewData, refetch, isLoggedIn]);
-
-  useEffect(() => {
-    if (error) {
-      console.error("No token found");
-    }
-  }, [error]);
+  }, [data, dispatch, isLoggedIn]);
 
   useEffect(() => {
     console.log("isLoggedIn changed:", isLoggedIn);
