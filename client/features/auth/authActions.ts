@@ -1,12 +1,12 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import RegistrationData from "@/types/RegistrationData";
-import User from "@/types/User";
-import LoginData from "@/types/LoginData";
-import LoginRes from "@/types/LoginRes";
-import UpdateScoreData from "@/types/UpdateScoreData";
-import PostScoreData from "@/types/PostScoreData";
-import PostFlashcard from "@/types/PostFlashcard";
+import RegistrationData from "../../types/RegistrationData";
+import User from "../../types/User";
+import LoginData from "../../types/LoginData";
+import LoginRes from "../../types/LoginRes";
+import UpdateScoreData from "../../types/UpdateScoreData";
+import PostScoreData from "../../types/PostScoreData";
+import PostFlashcard from "../../types/PostFlashcard";
 
 let backendUrl: string;
 if (process.env.NODE_ENV === "development") {

@@ -1,8 +1,5 @@
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import Link from "next/link";
-import { setCredentials, setNewData } from "@/features/auth/authSlice";
-import { useGetUserDetailsQuery } from "@/services/auth/authService";
 import styles from "./statsbar.module.css";
 
 interface Stat {
@@ -16,23 +13,6 @@ function Statsbar() {
   const state = useSelector((state: any) => state.auth, shallowEqual);
   const isNewData = useSelector((state: any) => state.auth.isNewData);
   const dispatch = useDispatch<any>();
-
-  // const { data, error, refetch } = useGetUserDetailsQuery("userDetails", {
-  //   pollingInterval: isNewData ? 0 : 600000, // Refetch immediately if isNewData is true
-  // });
-
-  // useEffect(() => {
-  //   if (data) {
-  //     dispatch(setCredentials(data));
-  //     dispatch(setNewData(false));
-  //   }
-  // }, [data, dispatch, state]);
-
-  // useEffect(() => {
-  //   if (isNewData) {
-  //     refetch(); // Trigger a refetch immediately if isNewData is true
-  //   }
-  // }, [isNewData, refetch]);
 
   const stats: Stat[] = useSelector(
     (state: any) => state.auth.stats,

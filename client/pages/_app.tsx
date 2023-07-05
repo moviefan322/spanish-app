@@ -1,7 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
-import Layout from "@/components/layout/layout";
+import Layout from "../components/layout/layout";
 import store from "../store/configureStore";
 import { Provider } from "react-redux";
 

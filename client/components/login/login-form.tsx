@@ -5,10 +5,10 @@ import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
 import Spinner from "../spinner/spinner";
 import { registerUser, loginUser } from "@/features/auth/authActions";
-import RegistrationData from "@/types/RegistrationData";
-import LoginData from "@/types/LoginData";
+import RegistrationData from "../../types/RegistrationData";
+import LoginData from "../../types/LoginData";
 import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
-import { RootState } from "@/store/configureStore";
+import { RootState } from "../../store/configureStore";
 
 function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);

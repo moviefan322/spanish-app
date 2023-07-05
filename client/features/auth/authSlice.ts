@@ -5,9 +5,8 @@ import {
   updateScore,
   postScore,
   createFlashcard,
-} from "@/features/auth/authActions";
-import User from "@/types/User";
-import AuthState from "@/types/AuthState";
+} from "./authActions";
+import AuthState from "../../types/AuthState";
 
 let token;
 if (typeof localStorage !== "undefined") {

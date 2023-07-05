@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SingleLesson from "@/components/lesson/single-lesson";
+import SingleLesson from "../../components/lesson/single-lesson";
 
 function UnitPage({ id, lesson }: { id: string; lesson: string }) {
   const [unit, setUnit] = useState<any>(null);

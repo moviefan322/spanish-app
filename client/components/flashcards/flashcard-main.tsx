@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./flashcard-main.module.css";
 import SingleFlashcard from "./singleFlashcard";
-import { shuffle } from "@/utils/shuffle";
 
 function FlashcardMain() {
   const { flashcards } = useSelector((state: any) => state.auth);

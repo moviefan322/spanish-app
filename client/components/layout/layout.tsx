@@ -1,4 +1,4 @@
-import Navbar from "@/components/layout/navbar";
+import Navbar from "./navbar";
 import { useSelector } from "react-redux";
 import Statsbar from "./statsbar";
 
