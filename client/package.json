@@ -8,6 +8,12 @@
     "start": "DISABLE_ESLINT_PLUGIN=true next start",
     "lint": "next lint"
   },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "jsx-a11y/anchor-is-valid": "off"
+    }
+  },
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.0",
