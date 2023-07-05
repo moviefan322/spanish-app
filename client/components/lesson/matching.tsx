@@ -77,7 +77,7 @@ function MatchingExercise({
     setDisplacedIndex(draggedIndex); // Set displacedIndex to draggedIndex
   };
 
-  console.log(draggedIndex);
+  console.log(updatedExercise);
 
   return (
     <>

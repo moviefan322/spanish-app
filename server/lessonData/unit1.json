@@ -504,19 +504,20 @@
               "Compongo",
               "Propongo",
               "Pongo",
-              "Salgo"
+              "Salgo",
+              "Caigo"
             ],
             "choices": [
-              "a mis compañeros de trabajo.",
-              "que trabajas mucho.",
-              "música para mis canciones.",
-              "en esa trampa (trap) a menudo.",
-              "de la conferencia ahora.",
-              "una solución para tu problema.",
-              "el agua en un vaso.",
-              "en estos pantalones."
+              "a. a mis compañeros de trabajo.",
+              "b. que trabajas mucho.",
+              "c. música para mis canciones.",
+              "d. en esa trampa a menudo.",
+              "e. de la conferencia ahora.",
+              "f. una solución para tu problema.",
+              "g. el agua en un vaso.",
+              "h. en estos pantalones."
             ],
-            "answers": [1, 0, 7, 2, 5, 6, 4, 3],
+            "answers": ["b", "a", "h", "c", "f", "g", "e", "d"],
             "type": "matching"
           }
         ]
