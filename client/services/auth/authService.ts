@@ -1,9 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+let baseUrl;
+if (process.env.NODE_ENV === "development") {
+  baseUrl = "http://localhost:3001";
+} else {
+  baseUrl = "";
+}
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001",
+    baseUrl,
     prepareHeaders: (headers, { getState }: { getState: any }) => {
       const token = getState().auth.token;
       if (token) {

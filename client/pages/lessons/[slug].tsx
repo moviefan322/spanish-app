@@ -5,9 +5,16 @@ function UnitPage({ id, lesson }: { id: string; lesson: string }) {
   const [unit, setUnit] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  let baseURL: string;
+  if (process.env.NODE_ENV === "development") {
+    baseURL = "http://localhost:3001";
+  } else {
+    baseURL = "";
+  }
+
   useEffect(() => {
     const fetchUnit = async () => {
-      const res = await fetch(`http://localhost:3001/lessons/${id}`);
+      const res = await fetch(`${baseURL}/lessons/${id}`);
       const data = await res.json();
       setUnit(JSON.parse(data));
       setLoading(false);
@@ -29,8 +36,8 @@ function UnitPage({ id, lesson }: { id: string; lesson: string }) {
       <br />
       <SingleLesson
         lesson={unit.lessons[lesson]}
-        unit={id}
-        nextLesson={lesson + 1}
+        unit={Number(id)}
+        nextLesson={Number(lesson + 1)}
         lessonCount={unit.lessons.length}
       />
     </>

@@ -8,7 +8,12 @@ import UpdateScoreData from "@/types/UpdateScoreData";
 import PostScoreData from "@/types/PostScoreData";
 import PostFlashcard from "@/types/PostFlashcard";
 
-const backendUrl = "http://localhost:3001";
+let backendUrl: string;
+if (process.env.NODE_ENV === "development") {
+  backendUrl = "http://localhost:3001";
+} else {
+  backendUrl = "";
+}
 const config = {
   headers: {
     "Content-Type": "application/json",
