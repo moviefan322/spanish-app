@@ -507,7 +507,7 @@
                 "Pongo",
                 "Salgo"
               ],
-              "answers": [
+              "choices": [
                 "a mis compañeros de trabajo.",
                 "que trabajas mucho.",
                 "música para mis canciones.",
@@ -516,7 +516,8 @@
                 "una solución para tu problema.",
                 "el agua en un vaso.",
                 "en estos pantalones."
-              ]
+              ],
+              "answers": [1, 0, 7, 2, 5, 6, 4, 3]
             },
             "type": "matching"
           }

@@ -8,6 +8,7 @@ import Stats from "@/types/Stats";
 import { setNewData } from "@/features/auth/authSlice";
 import { updateScore, postScore } from "@/features/auth/authActions";
 import Spinner from "../spinner/spinner";
+import MatchingExercise from "./matching";
 import styles from "./single-lesson.module.css";
 import {
   Lesson,
@@ -42,6 +43,7 @@ function SingleLesson({
   const [revealAnswers, setRevealAnswers] = useState(false);
   const [thisExercise, setThisExercise] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [shuffledChoices, setShuffledChoices] = useState<any[]>([]);
 
   const state = useSelector((state: any) => state.auth);
   let userId: number | null = null;
@@ -456,7 +458,12 @@ function SingleLesson({
           </>
         );
       case "matching":
-        return <h1>DO SOMETHING FUCK</h1>;
+        return (
+          <MatchingExercise
+            thisExercise={thisExercise}
+            revealAnswers={revealAnswers}
+          />
+        );
 
       default:
         return <p>INVALID TYPE</p>;

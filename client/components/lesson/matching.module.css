@@ -1,0 +1,8 @@
+.matching {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: auto;
+  padding: 0 2rem;
+  justify-content: space-between;
+}

@@ -168,6 +168,15 @@
   background-color: rgba(255, 0, 0, 0.2);
 }
 
+.matching {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: auto;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
 /* media queury for desktops */
 
 @media (min-width: 1024px) {
