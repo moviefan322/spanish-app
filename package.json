@@ -9,7 +9,7 @@
     "watch": "cd server && npm run start:dev",
     "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run watch\" \"npm run client\"",
-    "start": "cd server && npm start && cd ../client && npm start"
+    "start": "cd server && npm run build && npm run start && cd ../client && npm run build && npm run start"
   },
   "keywords": [],
   "author": "",
