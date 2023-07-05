@@ -43,7 +43,7 @@ function SingleLesson({
   const [revealAnswers, setRevealAnswers] = useState(false);
   const [thisExercise, setThisExercise] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const [shuffledChoices, setShuffledChoices] = useState<any[]>([]);
+  const [matchingInput, setMatchingInput] = useState<string[]>([]);
 
   const state = useSelector((state: any) => state.auth);
   let userId: number | null = null;
@@ -242,16 +242,33 @@ function SingleLesson({
   };
 
   const checkAnswers = () => {
+    if (thisExercise.type === "matching") {
+      matchingInput.forEach((input: string, index: number) => {
+        if (input === thisExercise.answers[index]) {
+          setInputCorrect((prevInputCorrect: boolean[]) => {
+            const newInputCorrect = [...prevInputCorrect];
+            newInputCorrect[index] = true;
+            return newInputCorrect;
+          });
+        } else {
+          setInputCorrect((prevInputCorrect: boolean[]) => {
+            const newInputCorrect = [...prevInputCorrect];
+            newInputCorrect[index] = false;
+            return newInputCorrect;
+          });
+        }
+      });
+      setSubmitted(true);
+      setError(null);
+      return;
+    }
+
     if (inputValues.length !== thisExercise.answers.length) {
       setError("Please answer all questions");
       return;
     }
     setSubmitted(true);
     setError(null);
-
-    if(thisExercise.type === "matching"){
-      
-    }
 
     inputValues.forEach((inputValue: string, index: number) => {
       if (!thisExercise.answers) {
@@ -466,6 +483,7 @@ function SingleLesson({
           <MatchingExercise
             thisExercise={thisExercise}
             revealAnswers={revealAnswers}
+            setMatchingInput={setMatchingInput}
           />
         );
 
@@ -484,10 +502,10 @@ function SingleLesson({
     }
 
     const handleCheckAnswers = () => {
+      checkAnswers();
       if (state.isLoggedIn) {
         submitScore();
       }
-      checkAnswers();
     };
 
     return (

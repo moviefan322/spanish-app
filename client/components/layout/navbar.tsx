@@ -6,7 +6,6 @@ import {
   setCredentials,
   logout,
   setNewData,
-  isToken,
 } from "../../features/auth/authSlice";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";

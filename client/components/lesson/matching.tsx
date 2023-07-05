@@ -11,13 +11,14 @@ interface MatchingExerciseProps {
     type: string;
   };
   revealAnswers: boolean;
+  setMatchingInput: (input: string[]) => void;
 }
 
 function MatchingExercise({
   thisExercise,
   revealAnswers,
+  setMatchingInput,
 }: MatchingExerciseProps) {
-  console.log(thisExercise);
   const [dropSpots, setDropSpots] = useState<number[]>([]);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [updatedExercise, setUpdatedExercise] = useState<any>(thisExercise);
@@ -75,6 +76,7 @@ function MatchingExercise({
     setUpdatedExercise(updatedQuestions);
     setHoveredIndex(null);
     setDisplacedIndex(draggedIndex); // Set displacedIndex to draggedIndex
+    setMatchingInput(updatedChoices);
   };
 
   console.log(updatedExercise);
