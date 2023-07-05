@@ -5,15 +5,16 @@
   margin: auto;
   padding: 0 2rem;
   justify-content: space-between;
+  font-size: .7rem;
 }
 
 .choices {
   border: 2px black solid;
   background-color: rgb(218, 255, 223);
   border-radius: 1rem;
+  padding: 0 .2rem;
 }
 
 .hovered {
   background-color: #f0f0f0;
 }
-
