@@ -2,7 +2,7 @@
   "name": "spanish-app",
   "version": "1.0.0",
   "engines": {
-    "node": "16.19.1",
+    "node": "18.x",
     "npm": "9.8.0"
   },
   "description": "",
