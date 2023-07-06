@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+// @ts-ignore
 import Chart from "./chart";
+// @ts-ignore
 import Vocab from "./vocab";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import Stats from "@/types/Stats";
+import Stats from "../../types/Stats";
 import { setNewData } from "../../features/auth/authSlice";
 import { updateScore, postScore } from "../../features/auth/authActions";
 import Spinner from "../spinner/spinner";
+// @ts-ignore
 import MatchingExercise from "./matching";
 import styles from "./single-lesson.module.css";
-import {
-  Lesson,
-  Exercise,
-  Chart as ChartType,
-  Vocabulary,
-  Grammar,
-} from "@/types/Unit";
+import { Lesson } from "../../types/Unit";
 
 interface SingleLessonProps {
   lesson: Lesson[];

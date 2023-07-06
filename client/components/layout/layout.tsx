@@ -1,5 +1,7 @@
+// @ts-ignore
 import Navbar from "./navbar";
 import { useSelector } from "react-redux";
+// @ts-ignore
 import Statsbar from "./statsbar";
 
 interface LayoutProps {

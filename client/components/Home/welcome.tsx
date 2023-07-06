@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./welcome.module.css";
+// @ts-ignore
 import ConfirmModal from "./confirmModal";
 
 function Welcome() {

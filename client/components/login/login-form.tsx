@@ -3,8 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./login-form.module.css";
 import { useRouter } from "next/router";
+// @ts-ignore
 import Spinner from "../spinner/spinner";
-import { registerUser, loginUser } from "@/features/auth/authActions";
+import { registerUser, loginUser } from "../../features/auth/authActions";
 import RegistrationData from "../../types/RegistrationData";
 import LoginData from "../../types/LoginData";
 import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./flashcard-main.module.css";
+// @ts-ignore
 import SingleFlashcard from "./singleFlashcard";
 
 function FlashcardMain() {

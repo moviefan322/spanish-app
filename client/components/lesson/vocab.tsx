@@ -1,8 +1,8 @@
 import React from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { createFlashcard } from "@/features/auth/authActions";
-import PostFlashcard from "@/types/PostFlashcard";
+import { createFlashcard } from "../../features/auth/authActions";
+import PostFlashcard from "../../types/PostFlashcard";
 import styles from "./single-lesson.module.css";
 
 function Vocab({ vocab }: any) {
