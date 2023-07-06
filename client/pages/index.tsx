@@ -1,7 +1,7 @@
-import Welcome from "../components/home/welcome.jsx";
+import Welcome from "../components/home/welcome";
 import Head from "next/head";
-import FreeAndFun from "../components/home/free-and-fun.jsx";
-import UserTestimonials from "../components/home/user-testimonials.jsx";
+import FreeAndFun from "../components/home/free-and-fun";
+import UserTestimonials from "../components/home/user-testimonials";
 
 export default function Home() {
   return (
