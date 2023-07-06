@@ -13,7 +13,9 @@
     "watch": "cd server && npm run start:dev",
     "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run watch\" \"npm run client\"",
-    "start": "cd server &&  npm run start:prod && cd ../client && npm run build && npm run start"
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:server": "cd server && npm run start:prod",
+    "start:client": "cd client && npm run build && npm run start"
   },
   "keywords": [],
   "author": "",
