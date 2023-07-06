@@ -1,3 +1,4 @@
+// @ts-ignore
 import Welcome from "../components/home/welcome";
 import Head from "next/head";
 import FreeAndFun from "../components/home/free-and-fun";
