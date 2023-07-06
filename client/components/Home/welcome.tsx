@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./welcome.module.css";
 // @ts-ignore
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "./confirmModal";
 
 function Welcome() {
   const { user } = useSelector((state: any) => state.auth);
