@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^10.1.7",
-    "@types/next": "^9.0.0"
+    "@types/next": "^9.0.0",
+    "@typescript-eslint/parser": "^4.28.5"
   }
 }
